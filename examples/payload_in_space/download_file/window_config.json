@@ -1,0 +1,9 @@
+{
+    "version": 1,
+    "signal_parameters": {
+        "tasking_parameters": {
+            "executable": "download_file.py",
+            "filename": "space.txt"
+        }
+    }
+}
