@@ -14,8 +14,8 @@ execution.
 
 ### payload_exec
 
-#### Execution Environment: Payload
-#### Language: Python
+**Execution Environment: Payload**
+**Language: Python**
 
 Python executable used to orchestrate operations during a contact window.
 
@@ -28,8 +28,8 @@ Please see the Signaling API documentation for more information on the expected 
 
 ### download_file.py
 
-#### Execution Environment: Payload
-#### Language: Python
+**Execution Environment: Payload**
+**Language: Python**
 
 Python script responsible for creating our file to download and downloading the file via the OORT SDK.
 This script takes two parameters
@@ -40,15 +40,15 @@ This script takes two parameters
 
 ### tasking.sh
 
-#### Execution Environment: Ground
-#### Language: Bash
+**Execution Environment: Ground**
+**Language: Bash**
 
 
 
 ## Workflow
 
-* tasking.sh is executed from the ground to uplink our download_file.py script and create the necessary 
-window to run the script on our payload.
+**tasking.sh is executed from the ground to uplink our download_file.py script and create the necessary 
+window to run the script on our payload.**
 
 At this point, we can call the `GET /windows` to check the status of our window.
 
@@ -141,7 +141,7 @@ If our `download_file.py` script was successfully uploaded, calling `GET /upload
 
 If it was only partially uploaded, we would see at status of `UPLOADING`.
 
-* Window start time is approaching
+**Window start time is approaching**
 
 Note: In this example we will use `123` as the ID of our window, but in production operations it could be any integer.
 
@@ -155,16 +155,27 @@ was successfully uploaded before the window start time.
 1. Call our `payload_exec` executable using the configure flag. `nohup /usr/bin/payload_exec -u john -e -w 123 &> /dev/null &`.
 Our payload_exec executable exits when it receives a configure command, so nothing will happen on the payload.
 
-* At window start time
+**Window start time**
 
-At window start time the satellite bus will issue another signaling command to `payload_exec`, this time without the configure command.  
+At window start time the satellite bus will issue another signaling command to `payload_exec`, this time without the configure flag.  
 The command executed will be `nohup /usr/bin/payload_exec -u john -w 1304893 -t 1611718292 &> /dev/null &`
 
-`payload_exec` will now do the following operations:
+`payload_exec` will do the following operations:
 
 1. Copy `download_file.py` from the Signaling API inbox to a top level directory (`/user_exec`).
 1. Load the window configuration JSON for the contact
 1. Call our `download_file.py` script (now located at `/user_exec/download_file.py`) with arguments taken from the window configuration JSON.
 
+`download_file.py` will:
 
+1. Create a temporary file named `space.txt` with the window_id as the contents.
+1. Send the file to the payloads local OORT Agent for download to the ground
 
+**After window end**
+
+OORT will attempt to download our `space.txt` file during the next contact opportunity.  The next contact could be up to five hours
+after the end of the window.  Additionally, larger files can take multiple contacts to download.
+
+Once the file is successfully downloaded to the ground, it will be placed in our S3 bucket and can be retrieved using:
+
+`aws s3 cp s3://example/space.txt space.txt`
