@@ -4,6 +4,7 @@ In this trivial example, we will be creating a file onboard our payload and down
 The filename will be specified during window creation and the file will simply contain the id of the window used for
 execution.
 
+
 ## Assumptions
 
 1. payload_exec was installed during flight flash of the payload
@@ -11,6 +12,8 @@ execution.
 1. An S3 bucket was provisioned for user data, we'll be using the bucket name `example` for this exercise
 
 ## Software
+
+Three files were created to complete this example task.
 
 ### payload_exec
 
@@ -44,10 +47,7 @@ This script takes two parameters
 **Execution Environment: Ground**
 **Language: Bash**
 
-**Execution Environment: Ground**
-**Language: Bash**
-
-Bash script responsible for uploading our `download_file.py` script to our payload and creating a payload 
+Bash script responsible for uploading our [download_file.py](./download_file.py) script to our payload and creating a payload 
 window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/index.html).
 
 ## Workflow
