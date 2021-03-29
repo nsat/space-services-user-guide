@@ -10,7 +10,7 @@ DESTINATION_PATH="download_file.py"
 CURR_TIME=$(`date -u +%s`)
 
 # Note that this is 24hrs in the future to allow enough time for file upload.
-# Estimated upload time will vary depending on uplink size.
+# Estimated upload time will vary depending on file size.
 # For large files, it is recommended to wait until the upload completes to schedule a window
 START_TIME=$((${CURR_TIME}+60*60*24))
 

@@ -6,11 +6,11 @@ SATELLITE_ID="FM200"
 DURATION="60"
 PAYLOAD="SDR"
 EXECUTABLE="true"
-DESTINATION_PATH="/usr/bin/sdr_processor"
+DESTINATION_PATH="/usr/bin/compress"
 CURR_TIME=$(`date -u +%s`)
 
 # Note that this is 24hrs in the future to allow enough time for file upload.
-# Estimated upload time will vary depending on uplink size.
+# Estimated upload time will vary depending on file size.
 # For large files, it is recommended to wait until the upload completes to schedule a window
 START_TIME=$((${CURR_TIME}+60*60*24))
 
@@ -20,10 +20,10 @@ QUERY_PARAMS="satellite=${SATELLITE_ID}&payload=${PAYLOAD}&destination_path=${DE
 # Upload our python script
 curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
 -H "${AUTH_HEADER}"  \
--F "file=@sdr_processor.py"
+-F "file=@compress.py"
 
 # Create the Tasking Window
-# This window will execute an SDR capture and process the generated IQ file using our sdr_processor script
+# This window will execute an SDR capture and process the generated IQ file using our compress script
 curl -X POST ${HOST}/tasking/window \
 -H "${AUTH_HEADER}" \
 -H "Content-Type: application/json" \
@@ -36,7 +36,7 @@ curl -X POST ${HOST}/tasking/window \
     "parameters": {
         "downlink_budget": 0,
         "capture_config": {
-            "capture_duration": 60,
+            "capture_duration": 5,
             "frequency_band": "VHF",
             "adc_config": {
               "bandwidth_khz": 4000,
@@ -54,10 +54,10 @@ curl -X POST ${HOST}/tasking/window \
             }
         },
         "user_command": {
-          "executable": "/usr/bin/sdr_processor",
+          "executable": "/usr/bin/compress",
           "executable_arguments": [
               "--input", "/inbox/capture.iq",
-              "--output", "/outbox/output.txt"
+              "--output", "/outbox/capture.iq.xz"
           ]
         }
     }

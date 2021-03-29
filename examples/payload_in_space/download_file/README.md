@@ -1,6 +1,6 @@
 # Example: Create and Download a File in Space
 
-In this trivial example, we will be creating a file onboard our payload and dowloaded it to our S3 bucket.
+In this trivial example, we will be creating a file onboard our payload and downloading it to our S3 bucket.
 The filename will be specified during window creation and the file will simply contain the id of the window used for
 execution.
 
@@ -24,7 +24,8 @@ Python executable used to orchestrate operations during a contact window.
 1. Parsing the window configuration file for the current window
 1. Executing our download_file.py script
 
-Please see the Signaling API documentation for more information on the expected arguments passed to this executable
+Please see the [Signaling API documentation](https://developers.spire.com/payload-signaling-api-docs/index.html) 
+for more information on the expected arguments passed to this executable.
 
 ### download_file.py
 
@@ -43,7 +44,11 @@ This script takes two parameters
 **Execution Environment: Ground**
 **Language: Bash**
 
+**Execution Environment: Ground**
+**Language: Bash**
 
+Bash script responsible for uploading our `download_file.py` script to our payload and creating a payload 
+window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/index.html).
 
 ## Workflow
 
@@ -53,10 +58,7 @@ window to run the script on our payload.**
 At this point, we can call the `GET /windows` to check the status of our window.
 
 ```bash
-SATELLITE_ID="satellite_id=FM200"
-QUERY_PARAMS="${SATELLITE_ID}"
-
-curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?${QUERY_PARAMS}
+curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?satellite_id=FM200
 ```
 
 Our response will look something like:
@@ -114,7 +116,7 @@ Calling `GET /windows` should now return a window with the status set to SYNCED
     "satellite_id": "FM200",
     "state": "SYNCED",
     "start": 1599503800,
-    "duration": 60∂,
+    "duration": 60,
     "parameters": {
       "executable": "download_file.py",
       "filename": "space.txt"
@@ -141,37 +143,57 @@ If our `download_file.py` script was successfully uploaded, calling `GET /upload
 
 If it was only partially uploaded, we would see at status of `UPLOADING`.
 
-**2. The window start time is approaching (1-5 minutes before the start of the window)**
+**2. Prior to the payload window (1-5 minutes before the start of the payload window)**
 
 Note: In this example we will use `123` as the ID of our window, but in production operations it could be any integer.
 
 Prior to the start of the window, the satellite bus will power on our payload and do the following operations
 
-1. Place our `download_file.py` on the payload at path `/signaling/inbox/download_file.py`, assuming the file
+1. Place our [download_file.py](./download_file.py) on the payload at path `/signaling/inbox/download_file.py`, assuming the file
 was successfully uploaded before the window start time.
 
-1. Place a window configuration file at path `/signaling/window_configs/123.json`
+1. Place a window configuration file at path `/signaling/window_configs/123.json`.  The contents of the file are shown below.
 
-1. Call our `payload_exec` executable using the configure flag. `nohup /usr/bin/payload_exec -u john -e -w 123 &> /dev/null &`.
-Our payload_exec executable exits when it receives a configure command, so nothing will happen on the payload.
+    ```json
+    {
+        "version": 1,
+        "signal_parameters": {
+            "tasking_parameters": {
+                "executable": "download_file.py",
+                "filename": "space.txt"
+            }
+        }
+    }
+    ```
 
-**3. During the window execution**
+1. Call [payload_exec](./payload_exec), located on our payload, with the argument `-e` (the configure flag). 
 
-At window start time the satellite bus will issue another signaling command to `payload_exec`, this time without the configure flag.  
-The command executed will be `nohup /usr/bin/payload_exec -u john -w 1304893 -t 1611718292 &> /dev/null &`
+   `nohup /usr/bin/payload_exec -u john -e -w 123 &> /dev/null &`.
 
-`payload_exec` will do the following operations:
+   Our payload_exec executable exits when it receives a configure command, so nothing will happen on the payload.
 
-1. Copy `download_file.py` from the Signaling API inbox to a top level directory (`/user_exec`).
+**3. During payload window execution**
+
+At window start time the satellite bus will issue another signaling command to [payload_exec](./payload_exec), 
+this time without the configure flag.
+
+```
+nohup /usr/bin/payload_exec -u john -w 1304893 -t 1611718292 &> /dev/null &`
+```
+
+[payload_exec](./payload_exec) will then executing the following operations:
+
+1. Copy [download_file.py](./download_file.py) from the Signaling API inbox to a top level directory (`/user_exec`).
 1. Load the window configuration JSON for the contact
-1. Call our `download_file.py` script (now located at `/user_exec/download_file.py`) with arguments taken from the window configuration JSON.
+1. Execute our [download_file.py](./download_file.py) script (now located at `/user_exec/download_file.py`) 
+with arguments taken from the window configuration JSON.
 
 `download_file.py` will:
 
 1. Create a temporary file named `space.txt` with the window_id as the contents.
 1. Send the file to the payloads local OORT Agent for download to the ground
 
-**4. Following the end of the window**
+**4. Following the end of the payload window**
 
 OORT will attempt to download our `space.txt` file during the next contact opportunity.  The next contact could be up to five hours
 after the end of the window.  Additionally, larger files can take multiple contacts to download.
