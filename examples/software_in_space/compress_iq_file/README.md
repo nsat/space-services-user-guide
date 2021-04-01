@@ -3,6 +3,11 @@
 In this trivial example, we will create a PAYLOAD_SDR window to capture a signal, compress the resulting IQ file and downlink the compressed
 file to our S3 bucket.  We will be using XZ Utils for compression.
 
+The full specification for PAYLOAD_SDR windows (along with other window types) can be found in the Tasking API
+documentation [here](https://developers.spire.com/tasking-api-docs/index.html#supported-windows)
+
+You can learn more about IQ components [here](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components#IQ_phase_convention)
+
 ## Assumptions
 
 1. The lzma Python library is installed on our payload sandbox
@@ -31,10 +36,10 @@ This script takes two parameters
 
 ## Workflow
 
-**1. The tasking.sh script is executed from the ground to uplink our compress.py script and create the necessary 
-window to run the script on our payload.**
+**1. The tasking.sh script is executed from the customer's cloud environment to uplink our compress.py script 
+and create the necessary window to run the script on our payload.**
 
-At this point, we can call the `GET /windows` to check the status of our window.
+At this point, we can call the `GET /tasking/windows` to check the status of our window.
 
 ```bash
 curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?satellite_id=FM200
@@ -64,7 +69,7 @@ Our response will look something like:
 }
 ```
 
-Additionally, we can also check the status of our upload by calling `GET /uploads`.
+Additionally, we can also check the status of our upload by calling `GET /tasking/uploads`.
 
 ```bash
 curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
@@ -89,9 +94,8 @@ Our response will look like:
 On the next contact, the payload window will be synced with the satellite.  Additionally, our 
 compress.py file will be uploaded to the satellite bus.  Note: for larger files this could take multiple contacts.
 
-Calling `GET /windows` should now return a window with the status set to SYNCED
+Calling `GET /tasking/windows` should now return a window with the status set to SYNCED
 
-``json
 ```json
 {
   "data": [{
@@ -114,7 +118,7 @@ Calling `GET /windows` should now return a window with the status set to SYNCED
 }
 ```
 
-If our `compress.py` script was successfully uploaded, calling `GET /uploads` should now return:
+If our `compress.py` script was successfully uploaded, calling `GET /tasking/uploads` should now return:
 
 ```json
 {

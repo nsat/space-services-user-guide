@@ -7,7 +7,7 @@ execution.
 
 ## Assumptions
 
-1. payload_exec was installed during flight flash of the payload
+1. [payload_exec](./payload_exec) was installed during flight flash of the payload
 1. A Python3 interpreter was installed during flight flash of the payload
 1. An S3 bucket was provisioned for user data, we'll be using the bucket name `example` for this exercise
 
@@ -55,7 +55,7 @@ window using curl commands to the [Tasking API](https://developers.spire.com/tas
 **1. The tasking.sh script is executed from the ground to uplink our download_file.py script and create the necessary 
 window to run the script on our payload.**
 
-At this point, we can call the `GET /windows` to check the status of our window.
+At this point, we can call the `GET /tasking/windows` to check the status of our window.
 
 ```bash
 curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?satellite_id=FM200
@@ -80,7 +80,7 @@ Our response will look something like:
 }
 ```
 
-Additionally, we can also check the status of our upload by calling `GET /uploads`.
+Additionally, we can also check the status of our upload by calling `GET /tasking/uploads`.
 
 ```bash
 curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
@@ -105,9 +105,8 @@ Our response will look like:
 On the next contact, the payload window will be synced with the satellite.  Additionally, our 
 download_task.py file will be uploaded to the satellite bus.  Note: for larger files this could take multiple contacts.
 
-Calling `GET /windows` should now return a window with the status set to SYNCED
+Calling `GET /tasking/windows` should now return a window with the status set to SYNCED
 
-``json
 ```json
 {
   "data": [{
@@ -125,7 +124,7 @@ Calling `GET /windows` should now return a window with the status set to SYNCED
 }
 ```
 
-If our `download_file.py` script was successfully uploaded, calling `GET /uploads` should now return:
+If our `download_file.py` script was successfully uploaded, calling `GET /tasking/uploads` should now return:
 
 ```json
 {
@@ -178,7 +177,7 @@ At window start time the satellite bus will issue another signaling command to [
 this time without the configure flag.
 
 ```
-nohup /usr/bin/payload_exec -u john -w 1304893 -t 1611718292 &> /dev/null &`
+nohup /usr/bin/payload_exec -u john -w 123 -t 1611718292 &> /dev/null &`
 ```
 
 [payload_exec](./payload_exec) will then executing the following operations:
