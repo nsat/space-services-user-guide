@@ -26,7 +26,7 @@ search: true
         contents = re.sub('\(\./assets/images/(.*)\.(png|jpg|jpeg)\)', '(./images/\\1.\\2)', contents)
         contents = re.sub(
             '\./(.*)/README.md',
-            'https://github.com/nsat/space-services-user-guide/tree/master/\\1/README.md',
+            'https://github.com/nsat/space-services-user-guide/tree/main/\\1/README.md',
             contents
         )
 
