@@ -37,7 +37,7 @@ This script takes two parameters
 ## Workflow
 
 **1. The tasking.sh script is executed from the customer's cloud environment to uplink our compress.py script 
-and create the necessary window to run the script on our payload.**
+and create the necessary payload window to run the script on our payload.**
 
 At this point, we can call the `GET /tasking/windows` to check the status of our window.
 

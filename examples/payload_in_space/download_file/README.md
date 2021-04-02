@@ -4,10 +4,12 @@ In this trivial example, we will be creating a file onboard our payload and down
 The filename will be specified during window creation and the file will simply contain the id of the window used for
 execution.
 
+The scripts for running this example are provided in this folder.  For production usage of the Payload in Space offering,
+it is the responsibility of the customer to author these scripts (notably `payload_exec`).
 
 ## Assumptions
 
-1. [payload_exec](./payload_exec) was installed during flight flash of the payload
+1. [payload_exec](./payload_exec) was installed during flight flash of the payload.
 1. A Python3 interpreter was installed during flight flash of the payload
 1. An S3 bucket was provisioned for user data, we'll be using the bucket name `example` for this exercise
 
