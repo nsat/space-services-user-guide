@@ -8,9 +8,11 @@ users can leverage these services for payload operations and workflows.
 
 For customers hosting their own payloads on a Spire satellite bus, please refer to the Payload in Space section of this guide.
 
-For customer deploying software to existing Spire hardware, please refer to the Software in Space Section
+For customer deploying software to existing Spire hardware, please refer to the Software in Space Section.
 
 ## Payload in Space
+
+The diagram below shows the architecture for customers hosting their own payloads on a Spire satellite bus.
 
 ![Payload in Space Architecture](./assets/images/payload_in_space_arch.png)
 
@@ -23,8 +25,8 @@ Spire provides three interface points for payload tasking and operations.
 
 #### Tasking API
 
-The Tasking API is the direct interface for scheduling windows in the Spire constellation. 
-It can be used directly for manual scheduling of individual windows or, more commonly, as a service for 
+The Tasking API is the direct interface for scheduling (time) windows in the Spire constellation. A window is an operation with a type, a start time, and an end time. 
+The API can be used directly for manual scheduling of individual windows or, more commonly, as a service for 
 automated scheduling systems. The Tasking API provides a set of endpoints used to task, configure, 
 and manage payload operations via a RESTful API web-service. 
 
@@ -32,7 +34,7 @@ Users will interact with this API to create Payload Windows which define the sta
 operation for a given window type (payload operation type), as well as set the configuration or parameters 
 of the desired operation.
 
-Additionally, the Tasking API can be used to upload software or any other arbitrary file to the user's payload
+Additionally, the Tasking API can be used to upload software or any other arbitrary file to the user's payload.
 
 Additional documentation for the Tasking API can be found [here](https://developers.spire.com/tasking-api-docs/index.html).
 
@@ -136,7 +138,7 @@ operation for a given window type (payload operation type), as well as set the c
 of the desired operation.
 
 Additionally, the Tasking API can be used to upload software or any other arbitrary file to the user's execution 
-environment
+environment.
 
 Additional documentation for the Tasking API can be found [here](https://developers.spire.com/tasking-api-docs/index.html).
 
