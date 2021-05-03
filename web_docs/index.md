@@ -162,6 +162,48 @@ for details about a specific window.  Files placed in this folder should be hand
 * `/outbox` - Any files placed in this folder by user software will be queued for downlink.  Files placed here will be removed by the OORT Agent after 
 any payload window.
 
+## Payload Specifications
+
+Below are the list of specifications for each payload type accessible to Software in Space customers including the list of packages pre-installed on the payload.
+
+### SDR
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| Memory       | 2GB                                 |
+| OS           | Yocto Poky 2.5 (Sumo)               |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.14.0                        |
+| Package List | [List](./text/sdr_package_list.txt) |
+
+
+### Sabertooth
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | NVIDIA Tegra TX2i                   |
+| CPU          | 4x ARM Cortex A57 @ 2GHz (+ 2x Denver 2 @ 2Ghz) |
+| Memory       | 8GB                                 |
+| OS           | Ubuntu 18.04.2                      |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.9.140                       |
+| Package List | [List](./text/sabertooth_package_list.txt) |
+
+
+### Dexter
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq 7020                    |
+| CPU          | 2x ARM Cortex A9 @ 866MHz	         |
+| Memory       | 1GB                                 |
+| OS           | Yocto Poky 2.3 (Pyro)               |
+| Arch         | 32-bit armv7-hardfp	             |
+| Kernel       | Linux 4.6.0-2016_R2                 |
+| Package List | [List](./text/dexter_package_list.txt) |
+
 ## Workflow
 
 ### Prior to Launch
