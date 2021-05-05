@@ -50,8 +50,8 @@ the Data Pipeline APIs.
 The agent binaries (for supported architectures) and source code can be found in the 
 [nsat/oort-agent](https://github.com/nsat/oort-agent) repository on Github.
 
-To interface with the Spire Linux Agent, Spire provides [C](https://github.com/nsat/oort-sdk-c) 
-and [Python](https://github.com/nsat/oort-sdk-python) SDKs.
+To interface with the Spire Linux Agent, Spire provides a [C SDK](https://github.com/nsat/oort-sdk-c)
+and a [Python SDK](https://github.com/nsat/oort-sdk-python).
 
 For other programming languages, users’s can make HTTP requests directly to the agent.
 
