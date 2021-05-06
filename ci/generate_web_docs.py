@@ -19,11 +19,17 @@ search: true
         shutil.rmtree(img_dest_path)
     shutil.copytree(path / 'assets' / 'images', img_dest_path)
 
+    txt_dest_path = path / 'web_docs' / 'text'
+    if os.path.exists(txt_dest_path):
+        shutil.rmtree(txt_dest_path)
+    shutil.copytree(path / 'assets' / 'text', txt_dest_path)
+
     with open(path / 'README.md', 'r') as f, open(path / 'web_docs' / 'index.md', 'w') as out:
         contents = f.read()
         contents = header + contents
 
         contents = re.sub('\(\./assets/images/(.*)\.(png|jpg|jpeg)\)', '(./images/\\1.\\2)', contents)
+        contents = re.sub('\(\./assets/text/(.*)\.(txt)\)', '(./text/\\1.\\2)', contents)
         contents = re.sub(
             '\./(.*)/README.md',
             'https://github.com/nsat/space-services-user-guide/tree/main/\\1/README.md',

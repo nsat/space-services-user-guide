@@ -36,25 +36,33 @@ Additionally, the Tasking API can be used to upload software or any other arbitr
 
 Additional documentation for the Tasking API can be found [here](https://developers.spire.com/tasking-api-docs/index.html).
 
-#### OORT API
+#### Spire Linux Agent
 
-The OORT API allows users to download data from their payload to their ground based data storage in S3.  
-This API was designed to abstract the complications of managing a disruption tolerant network from the end user 
-and provide a simple, always available, way to access the data pipeline.
-
-To interface with the OORT API, Payload developers must install an Agent daemon that runs on their payload 
-and exposes an HTTP API.
+The Spire Linux Agent (formally OORT Agent) is a daemon that Payload in Space customers install and run on their payload.  The daemon provides access to
+the Data Pipeline APIs.
 
 The agent binaries (for supported architectures) and source code can be found in the 
 [nsat/oort-agent](https://github.com/nsat/oort-agent) repository on Github.
 
-To interface with the local OORT Agent, Spire provides [C](https://github.com/nsat/oort-sdk-c) 
-and [Python](https://github.com/nsat/oort-sdk-python) SDKs.
+To interface with the Spire Linux Agent, Spire provides a [C SDK](https://github.com/nsat/oort-sdk-c)
+and a [Python SDK](https://github.com/nsat/oort-sdk-python).
+
 For other programming languages, users’s can make HTTP requests directly to the agent.
 
-The OORT API currently only supports linux payloads with an ssh daemon running.
+The agent currently only supports linux payloads with an ssh daemon running.
 
-Additional documentation for the OORT API can be found [here](https://developers.spire.com/oort-docs/index.html)
+Additional documentation for the Spire Linux Agent can be found [here](https://developers.spire.com/spire-linux-agent-docs/index.html)
+
+#### Data Pipeline API
+
+The Data Pipeline API allows users to download data from their payload to their ground based data storage in S3.  
+This API was designed to abstract the complications of managing a disruption tolerant network from the end user 
+and provide a simple, always available, way to access the data pipeline.
+
+The Data Pipeline API is made available by the Spire Linux Agent and associated SDKs (see Spire Linux Agent section above).
+
+More information on the Data Pipeline API and full API specs can be found [here](https://developers.spire.com/data-pipeline-docs/index.html)
+
 
 #### Signaling API
 
@@ -73,7 +81,7 @@ Additional documentation for the Signaling API can be found [here](https://devel
 Prior to launch, the user is responsible for providing Spire with:
 
 * The URI for an AWS S3 bucket to deliver user data and telemetry.  Spire must have write permissions to this bucket.
-* Production payload hardware with flight flashed software including the OORT Agent binary pre-installed as well as a payload_exec 
+* Production payload hardware with flight flashed software including the Spire Linux Agent binary pre-installed as well as a payload_exec 
 executable to be used by the Signaling API.
 
 Spire will provide the user with:
@@ -103,11 +111,11 @@ as any user configuration passed to the Tasking API when creating the window.
 
 The payload_exec script is responsible for orchestrating additional payload operations for the window.
 
-At any time during window execution software on the payload can use the OORT API to downlink files to the ground. 
+At any time during window execution software on the payload can use the Data Pipeline API to downlink files to the ground. 
 
 **After Window Execution**
 
-After the window is executed any data sent to the OORT API is queued for download.  After the spacecraft has received
+After the window is executed any data sent to the Data Pipeline API is queued for download.  After the spacecraft has received
 enough contact time to download each data file, the file will be persisted to the user's S3 bucket.
 
 ### Examples
@@ -153,8 +161,50 @@ The execution environment includes two top level directories used to manage inco
 For example, IQ files captures during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
 will vary between window types, please consult the [Tasking API documentation](https://developers.spire.com/tasking-api-docs/index.html) 
 for details about a specific window.  Files placed in this folder should be handled during the window which they are generated.
-* `/outbox` - Any files placed in this folder by user software will be queued for downlink.  Files placed here will be removed by the OORT Agent after 
+* `/outbox` - Any files placed in this folder by user software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 
 any payload window.
+
+### Payload Specifications
+
+Below are the list of specifications for each payload type accessible to Software in Space customers including the list of packages pre-installed on the payload.
+
+#### SDR
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| Memory       | 2GB                                 |
+| OS           | Yocto Poky 2.5 (Sumo)               |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.14.0                        |
+| Package List | [List](./assets/text/sdr_package_list.txt) |
+
+
+#### Sabertooth
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | NVIDIA Tegra TX2i                   |
+| CPU          | 4x ARM Cortex A57 @ 2GHz (+ 2x Denver 2 @ 2Ghz) |
+| Memory       | 8GB                                 |
+| OS           | Ubuntu 18.04.2                      |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.9.140                       |
+| Package List | [List](./assets/text/sabertooth_package_list.txt) |
+
+
+#### Dexter
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq 7020                    |
+| CPU          | 2x ARM Cortex A9 @ 866MHz	         |
+| Memory       | 1GB                                 |
+| OS           | Yocto Poky 2.3 (Pyro)               |
+| Arch         | 32-bit armv7-hardfp	             |
+| Kernel       | Linux 4.6.0-2016_R2                 |
+| Package List | [List](./assets/text/dexter_package_list.txt) |
 
 ### Workflow
 
