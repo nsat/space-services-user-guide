@@ -8,7 +8,7 @@ users can leverage these services for payload operations and workflows.
 
 For customers hosting their own payloads on a Spire satellite bus, please refer to the Payload in Space section of this guide.
 
-For customer deploying software to existing Spire hardware, please refer to the Software in Space Section.
+For customers deploying software to existing Spire hardware, please refer to the Software in Space section of this guide.
 
 ## Payload in Space
 
@@ -48,6 +48,8 @@ The agent binaries (for supported architectures) and source code can be found in
 
 To interface with the Spire Linux Agent, Spire provides a [C SDK](https://github.com/nsat/oort-sdk-c)
 and a [Python SDK](https://github.com/nsat/oort-sdk-python).
+
+Note: Access to the github source code and binaries requires approval by the Spire Space Services sales team.
 
 For other programming languages, users’s can make HTTP requests directly to the agent.
 
