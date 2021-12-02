@@ -1,7 +1,5 @@
 ---
 title: Software User Guide
-  
-columns: 1
 
 search: true
 ---    
@@ -268,19 +266,7 @@ The following tools and utilities are developed and supported by Spire, and prov
 
 ### RF Collect
 
-Payloads: `SDR`
-
-Chroot friendly command to collect raw IQ files (`int16` format). When executing `RFCollect`,
-the IQ is captured from the indicated UTC start (`-S`) time for the required duration (`-d`)
-period. Then it is written in the indicated output file (`-w`). The output file size is limited to 1GB.
-
-The command returns when the capture is finished and the IQ samples are written in the
-output file, or when an error occurs.
-
-The IQ can be recorded from UHF or SBAND (`-m`).
-
-## Usage
-```
+```shell
 rfcollect
   -w <file>        IQ file to receive
   -S <start>       Start UTC time of the capture in s, 0 will directly starts (default=0s)
@@ -297,39 +283,21 @@ rfcollect
   NOTE: The capture IQ file size is limited to 1024 MB
 ```
 
+Payloads: `SDR`
+
+Chroot friendly command to collect raw IQ files (`int16` format). When executing `RFCollect`,
+the IQ is captured from the indicated UTC start (`-S`) time for the required duration (`-d`)
+period. Then it is written in the indicated output file (`-w`). The output file size is limited to 1GB.
+
+The command returns when the capture is finished and the IQ samples are written in the
+output file, or when an error occurs.
+
+The IQ can be recorded from UHF or SBAND (`-m`).
+
 
 ### RF Transmit
 
-Payloads: `SDR`
-
-Chroot friendly application to transmit raw IQ files (`int16` format). When executing `RFTransmit`,
-it is possible to indicate the number of times (`-c`) the file is transmitted
-(e.g `-c 10` means transmit IQ file 10 time), and the period (`-r`) at which it is repeated.
-
-If the period at which the file needs to be repeated is smaller than the time
-to play the IQ file, the IQ file is cut to the repetition period. If no interval
-between repetition is indicated, the file is repeated as soon as it has been played.
-
-```
-|                         |                         |                         |
-| |----------|            | |----------|            | |----------|            |
-|-|    IQ    |------------|-|    IQ    |------------|-|    IQ    |------------|
-| |----------|            | |----------|            | |----------|            |
-|                         |                         |                         |
-
-x-------------------------X
-              |
-    Period at which the
-      file is repeated
-```
-
-The command returns after playing the IQ file the indicated number of
-times or when an error occurs.
-
-The IQ can be transmitted to UHF or SBAND (`-m`).
-
-## Usage
-```
+```shell
 rftransmit 
   -w <file>        IQ file to transmit
   -r <period>      Period in second at which the file is repeated (default=0s).
@@ -347,8 +315,51 @@ rftransmit
   -h               Help
 ```
 
+Payloads: `SDR`
+
+Chroot friendly application to transmit raw IQ files (`int16` format). When executing `RFTransmit`,
+it is possible to indicate the number of times (`-c`) the file is transmitted
+(e.g `-c 10` means transmit IQ file 10 time), and the period (`-r`) at which it is repeated.
+
+If the period at which the file needs to be repeated is smaller than the time
+to play the IQ file, the IQ file is cut to the repetition period. If no interval
+between repetition is indicated, the file is repeated as soon as it has been played.
+
+<div style="font-family:Courier New; white-space: pre; background-color: #333; width:680px; margin-left: 30px; padding-left: 6px;" class="highlight">
+
+|                         |                         |                         |
+| |----------|            | |----------|            | |----------|            |
+|-|    IQ    |------------|-|    IQ    |------------|-|    IQ    |------------|
+| |----------|            | |----------|            | |----------|            |
+|                         |                         |                         |
+
+x-------------------------X
+              |
+    Period at which the
+      file is repeated
+
+</div>
+
+The command returns after playing the IQ file the indicated number of
+times or when an error occurs.
+
+The IQ can be transmitted to UHF or SBAND (`-m`).
+
+
 
 ### IQ generator
+
+```shell
+iqgenerator 
+  -f <iqfile>               IQ filename
+  -S <samples-per-symbol>   Samples Per Symbol [default=2]
+  -b <bits-per-symbol>      BPSK=1, QPSK=2, PSK8=3 [default=1]
+  -d                        Enable differential encoding. (enabled by default with square|pn9)
+  -s <signal>               square|random|ones|zeros|pn9|coded|tone [default=square]
+  -o                        Print the logging on stdout instead in a file /var/log/iqgenerator.log.
+  -l <lvl>                  Set log level DEBUG=0, INFO=1, WARN=2, ERR=3, NONE=4 [default=1].
+  -h                        help
+```
 
 Payloads: `SDR`
 
@@ -361,31 +372,17 @@ type of signals available are:
 - `ones`, all bytes are 0x01
 - `pn9`
 
-## Usage
-```
-iqgenerator 
-  -f <iqfile>               IQ filename
-  -S <samples-per-symbol>   Samples Per Symbol [default=2]
-  -b <bits-per-symbol>      BPSK=1, QPSK=2, PSK8=3 [default=1]
-  -d                        Enable differential encoding. (enabled by default with square|pn9)
-  -s <signal>               square|random|ones|zeros|pn9|coded|tone [default=square]
-  -o                        Print the logging on stdout instead in a file /var/log/iqgenerator.log.
-  -l <lvl>                  Set log level DEBUG=0, INFO=1, WARN=2, ERR=3, NONE=4 [default=1].
-  -h                        help
-```
+#### Tone
+![Tone](./images/tone.png)
 
-## Signal
-### Tone
-![Tone](./images/iqgenerator/tone.png)
+#### Square
+![Square](./images/square.png)
 
-### Square
-![Square](./images/iqgenerator/square.png)
+#### Random
+![Random](./images/random.png)
 
-### Random
-![Random](./images/iqgenerator/random.png)
+#### pn9
+![pn9](./images/pn9.png)
 
-### pn9
-![pn9](./images/iqgenerator/pn9.png)
-
-### ones
-![ones](./images/iqgenerator/ones.png)
+#### ones
+![ones](./images/ones.png)
