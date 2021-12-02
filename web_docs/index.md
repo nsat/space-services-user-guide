@@ -186,8 +186,22 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
+| IP Address   | 10.2.1.8                            |
 | Package List | [List](./text/sdr_package_list.txt) |
 | Utilities    | - [RF Collect](#rf-collect)<br> - [RF Transmit](#rf-transmit)<br> - [IQ Generator](#iq-generator) |
+
+### IPI
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| Memory       | 2GB                                 |
+| OS           | Yocto Poky 2.5 (Sumo)               |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.14.0                        |
+| IP Address   | 10.2.1.16                            |
+| Package List | [List](./text/ipi_package_list.txt) |
 
 
 ### Sabertooth
@@ -200,6 +214,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Ubuntu 18.04.2                      |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
+| IP Address   | 10.2.1.10                           |
 | Package List | [List](./text/sabertooth_package_list.txt) |
 
 
@@ -213,6 +228,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.3 (Pyro)               |
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
+| IP Address   | 10.2.1.9                            |
 | Package List | [List](./text/dexter_package_list.txt) |
 
 ## Workflow
@@ -386,3 +402,35 @@ type of signals available are:
 
 #### ones
 ![ones](./images/ones.png)
+
+
+## Inter-Payload Communications
+TCP & UDP ports 10,000 and above are open between payloads where payload windows overlap. Developers should use a payloads IPv4 address - see [ Payload Specifications](#payload-specifications).
+
+
+## Inter-Satellite Links
+Where applicable, inter-satellite data transfer is possible via IP routing.  In order to utilize inter-satellite data transfer, both satellites must be tasked with an inter-satellite transfer payload window concurrently, with one satellite being selected as a transmitter and one satellite selected as a receiver.  A network gateway/route is available on the Sabertooth, SDR & IPI payloads that routes IPv4 traffic via the ISL radio for SIMPLEX transmission to a receiving satellite. UDP transmission is possible over the SIMPLEX link. The ISL gateway link provides the following features enabled by default: Link-layer encryption for secure data transfer; NAT for remote addressing; Error correction for packet loss & “bit-flipping”; Bandwidth can be manually adjusted by Spire to account for SNR. ISL contacts are scheduled via the Tasking API with the window type [`LEASE_ISL`](/tasking-api-docs/index.html#lease_isl).
+
+![ISL](./images/isl.png)
+
+The ISL network uses standard IP networking. Using NAT, the remote payloads are addressable on the `172.16.0.x` subnet (The subnet `10.2.1.x` is replaced with `172.16.0.x` by the NAT router).
+
+| Remote Payload | Local IP Address | Remote IP Address |
+|----------------|------------------|-------------------|
+| SDR | `10.2.1.8` | `172.16.0.8` |
+| IPI | `10.2.1.16` | `172.16.0.16` |
+| Sabertooth | `10.2.1.10` | `172.16.0.10` |
+| DEXTER | `10.2.1.10` | `172.16.0.9` |
+
+For example a script running on the receiving SDR could listen for UDP packets on port 10001:
+
+<code>
+$> nc -l -4u -w0 -p 10001 > rx.bin
+</code>
+
+While simultaneously a script running on the sending Sabertooth could send UDP packets to the remote SDR listening on port 10001:
+
+<code>
+$> echo -n "hello
+">/dev/udp/172.16.0.8/10001
+</code>
