@@ -86,6 +86,7 @@ gzip
 harfbuzz
 i2c-tools
 icu
+imagemagick
 init-ifupdown
 initramfs-framework
 initscripts
@@ -176,6 +177,7 @@ nss
 numactl
 onig
 oort
+opencv
 openssh
 openssl
 opkg-utils
@@ -198,6 +200,7 @@ psmisc
 python
 python3
 python3-iniparse
+python3-numpy
 python3-six
 python-asn1crypto
 python-certifi
@@ -208,7 +211,10 @@ python-enum34
 python-future
 python-futures
 python-idna
+python-imaging
 python-ipaddress
+python-numpy
+python-pandas
 python-pbr
 python-pip
 python-ply
