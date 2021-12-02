@@ -189,6 +189,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
 | Package List | [List](./text/sdr_package_list.txt) |
+| Utilities    | - [RF Collect](#rf-collect)<br> - [RF Transmit](#rf-transmit)<br> - [IQ Generator](#iq-generator) |
 
 
 ### Sabertooth
@@ -262,10 +263,10 @@ payload to S3.
 
 
 ## Tools & Utilities
-The following tools and utilities are developed and supported by Spire, and provided on the payload:
+The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s):
 
 
-### RFCollect
+### RF Collect
 
 Payloads: `SDR`
 
@@ -297,7 +298,7 @@ rfcollect
 ```
 
 
-### RFTransmit
+### RF Transmit
 
 Payloads: `SDR`
 
