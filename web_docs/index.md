@@ -277,7 +277,8 @@ payload to S3.
 
 
 ## Tools & Utilities
-The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s):
+The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for
+customers to run directly or indirectly within a payload windows [`user_command`](/tasking-api-docs/index.html#user_command) parameter.
 
 
 ### RF Collect
