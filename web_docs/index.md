@@ -388,20 +388,11 @@ type of signals available are:
 - `ones`, all bytes are 0x01
 - `pn9`
 
-#### Tone
-![Tone](./images/tone.png)
-
-#### Square
-![Square](./images/square.png)
-
-#### Random
-![Random](./images/random.png)
-
-#### pn9
-![pn9](./images/pn9.png)
-
-#### ones
-![ones](./images/ones.png)
+| Signal |  |
+|--|--|
+| <h3>Tone</h3> ![Tone](./images/tone.png) | <h3>Square</h3> ![Square](./images/square.png) |
+| <h3>Random</h3> ![Random](./images/random.png) | <h3>pn9</h3> ![pn9](./images/pn9.png) |
+| <h3>ones</h3> ![ones](./images/ones.png) |  |
 
 
 ## Inter-Payload Communications
