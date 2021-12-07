@@ -3,4 +3,4 @@ pages:
   - Fundamentals
 images:
   - images/**/*
-  - text/*  # A little hacky to put this under images, but works for any static file
+  - text/**/*  # A little hacky to put this under images, but works for any static file

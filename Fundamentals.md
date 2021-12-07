@@ -1,3 +1,13 @@
+---
+title: Fundamentals
+
+includes:
+  - js/update_links.md
+
+columns: 1
+
+---
+
 # Fundamentals
 
 TODO: Diagram
