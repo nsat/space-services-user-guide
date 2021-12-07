@@ -2,6 +2,7 @@
 
 ![Spire Space Services](./assets/images/spire.png)
 
+
 Spire Space Services provides a suite of APIs, libraries and services to enable customers to schedule payload operations, 
 interface with the satellite bus and provide execution environments for customer code hosted in space.  The purpose of this guide is to show how 
 users can leverage these services for payload operations and workflows.
