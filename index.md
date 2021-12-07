@@ -1,6 +1,62 @@
+![Spire Space Services](./images/spire.png)
+
+# Software In Space
+
+<table>
+    <tr>
+        <td>
+            <h3>Run Code In Space</h3>
+            <p> -blurb- </p>
+        </td>
+        <td>
+            <h3>Perform Experiments &amp; Gather Data</h3>
+            <p> -blurb- </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Control Satellite Systems</h3>
+            <p> -blurb- </p>
+        </td>
+        <td>
+            <h3>Contact Ground &amp; Space Assets</h3>
+            <p> -blurb- </p>
+        </td>
+    </tr>
+</table>
+
+TODO: DIAGRAM: Develop, deploy, measure, download, analyse etc.
+
+Develop and deploy code to space. Schedule time on satellite hardware. Track targets with a range of antennas and aperatures. Analyse data with GPU hardware. Send and receive using Spire ground-stations or self-managed ground assets on a variety of frequencies. Leverage inter-satellite-links for complex realtime operations. Orient satellites to an area of interest.
+
+TODO: Symbols: Spectrum frequencies, camera, infrared, GPU, dish, ISL
+
+an emoji: :blush: ha.
+
+
+## Next Steps
+Learn the fundamentals of how it works, or jump straight into the documentation or tutorials.
+
+### How It Works
+
+[Learn about the fundamentals of Spires Space Services](./Fundamentals.md)
+
+### Getting Started
+
+[Follow the step-by-step guide to get started](./GettingStarted.md)
+
+### Documentation
+
+  - [Tasking API]()
+  - [Spire]
+
+### FAQ
+
+[Check out the FAQ for an ever-growning list of helpful answers to common questions](./FAQ.md)
+
+
 # Software User Guide
 
-![Spire Space Services](./assets/images/spire.png)
 
 Spire Space Services provides a suite of APIs, libraries and services to enable customers to schedule payload operations, 
 interface with the satellite bus and provide execution environments for customer code hosted in space.  The purpose of this guide is to show how 
@@ -14,7 +70,7 @@ For customers deploying software to existing Spire hardware, please refer to the
 
 The diagram below shows the architecture for customers hosting their own payloads on a Spire satellite bus.
 
-![Payload in Space Architecture](./assets/images/payload_in_space_arch.png)
+![Payload in Space Architecture](./images/payload_in_space_arch.png)
 
 The processes highlighted in yellow represent code required by the user’s development team.  All of the other processes are
 handled by Spire software.
@@ -134,7 +190,7 @@ execution environment on the spacecraft.
 
 The purpose of this guide is to show how users can leverage these services for payload operations and workflows.
 
-![Payload in Space Architecture](./assets/images/software_in_space_arch.png)
+![Payload in Space Architecture](./images/software_in_space_arch.png)
 
 ### Tasking API
 
@@ -182,7 +238,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
-| Package List | [List](./assets/text/sdr_package_list.txt) |
+| Package List | [List](./text/sdr_package_list.txt) |
 
 
 #### Sabertooth
@@ -195,7 +251,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Ubuntu 18.04.2                      |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
-| Package List | [List](./assets/text/sabertooth_package_list.txt) |
+| Package List | [List](./text/sabertooth_package_list.txt) |
 
 
 #### Dexter
@@ -208,7 +264,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.3 (Pyro)               |
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
-| Package List | [List](./assets/text/dexter_package_list.txt) |
+| Package List | [List](./text/dexter_package_list.txt) |
 
 ### Workflow
 

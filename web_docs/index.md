@@ -5,6 +5,61 @@ columns: 1
 
 search: true
 ---    
+# Software In Space
+
+<table>
+    <tr>
+        <td>
+            <h3>Run Code In Space</h3>
+            <p> -blurb- </p>
+        </td>
+        <td>
+            <h3>Perform Experiments &amp; Gather Data</h3>
+            <p> -blurb- </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Control Satellite Systems</h3>
+            <p> -blurb- </p>
+        </td>
+        <td>
+            <h3>Contact Ground &amp; Space Assets</h3>
+            <p> -blurb- </p>
+        </td>
+    </tr>
+</table>
+
+TODO: DIAGRAM: Develop, deploy, measure, download, analyse etc.
+
+Develop and deploy code to space. Schedule time on satellite hardware. Track targets with a range of antennas and aperatures. Analyse data with GPU hardware. Send and receive using Spire ground-stations or self-managed ground assets on a variety of frequencies. Leverage inter-satellite-links for complex realtime operations. Orient satellites to an area of interest.
+
+TODO: Symbols: Spectrum frequencies, camera, infrared, GPU, dish, ISL
+
+an emoji: :blush: ha.
+
+
+# Next Steps
+Learn the fundamentals of how it works, or jump straight into the documentation or tutorials.
+
+## How It Works
+
+[Learn about the fundamentals of Spires Space Services](./Fundamentals.md)
+
+## Getting Started
+
+[Follow the step-by-step guide to get started](./GettingStarted.md)
+
+## Documentation
+
+  - [Tasking API]()
+  - [Spire]
+
+## FAQ
+
+[Check out the FAQ for an ever-growning list of helpful answers to common questions](./FAQ.md)
+
+
 # Software User Guide
 
 
