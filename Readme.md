@@ -16,7 +16,7 @@
     <tr>
         <td>
             <h3>Control Satellite Systems</h3>
-            <p> Programatic and command line access to transceivers and satellite orientation. </p>
+            <p> Programmatic and command line access to transceivers and satellite orientation. </p>
         </td>
         <td>
             <h3>Contact Ground &amp; Space Assets</h3>
@@ -28,7 +28,7 @@
 
 TODO: DIAGRAM: Develop, deploy, measure, download, analyze etc.
 
-Develop and deploy code to space. Schedule time on satellite hardware. Track targets with a range of antennas and aperatures. Analyze data with GPU hardware. Send and receive using Spire ground-stations or self-managed ground assets on a variety of frequencies. Leverage inter-satellite-links for complex realtime operations. Orient satellites to an area of interest.
+Develop and deploy code to space. Schedule time on satellite hardware. Track targets with a range of antennas and apertures. Analyze data with GPU hardware. Send and receive using Spire ground-stations or self-managed ground assets on a variety of frequencies. Leverage inter-satellite-links for complex real-time operations. Orient satellites to an area of interest.
 
 TODO: Symbols: Spectrum frequencies, camera, infrared, GPU, dish, ISL
 
@@ -52,5 +52,5 @@ Learn the fundamentals of how it works, or jump straight into the documentation 
 
 ### FAQ
 
-[Check out the FAQ for an ever-growning list of helpful answers to common questions](./FAQ.md)
+[Check out the FAQ for an ever-growing list of helpful answers to common questions](./FAQ.md)
 

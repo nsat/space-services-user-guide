@@ -2,43 +2,43 @@
 
 In simple terms, applications are deployed to the satellite, time is scheduled to run the applications, and the output is downloaded to AWS S3. Applications have access to satellite hardware and telemetry.
 
-Everything happens on a schedule. The schedule holds all upcoming contacts with the ground (and other satellites), and all reservation "windows" made by customers. To schedule a time window on a satellite the customer reserves the hardware needed for a specific time. The schedule is synchronized with the satellite at each contact.
+Everything happens as time windows on a schedule. The schedule holds all upcoming contact windows with the ground (and other satellites), and all reservation windows made by customers. Customers reserve specific hardware over a time window on a satellite. The schedule is synchronized with the satellite at each contact.
 
 
 ## Execution Environment
-The satellite hosts multiple linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent issolated execution environment for the customer to upload files to and run applications. An inbox and output provide a way to uplink and downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
+The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the customer to upload files to and run applications. An inbox and output provide a way to uplink and downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
 
 
 ## Satellite Bus
-The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, stationkeeping, communicating with the ground (and other satellites), and coordinating scheduled tasks. 
+The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, station-keeping, communicating with the ground (and other satellites), and coordinating scheduled tasks. 
 
 
 ## Ground Station
-Spire maintains ground-stations around the globe. The location & capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND trancievers.
+Spire maintains ground-stations around the globe. The location & capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND transceivers.
 
 
 ## Window
-A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exlusive access to different things, i.e. attitude control. Customer reservations are represented as types of windows too.
+A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exclusive access to different things, i.e. attitude control. Customer reservations are represented as types of windows too.
 
 
 ### Contact Window
-A contact is a type of window, and is a one or two-way radio transmission between a statellite and a ground-station, or between two satellites (inter-satellite links). The purpose of a contacts is broad, but includes time for maintenance, schedule synchronization and the transfer of data, logs and telemetry. Spire schedules contacts for its exclusive use - customer code is not made aware of these contacts. Customers may schedule their own contacts between satellites. 
+A contact is a type of window, and is a one or two-way radio transmission between a satellite and a ground-station, or between two satellites (inter-satellite links). The purpose of a contacts is broad, but includes time for maintenance, schedule synchronization and the transfer of data, logs and telemetry. Spire schedules contacts for its exclusive use - customer code is not made aware of these contacts. Customers may schedule their own contacts between satellites. 
 
 
 ## Satellite Schedule
-The list of windows for each satellite is held in a schedule. The schedule contains all windows, both for contacts and customer actibities. The schedule is synchronized with the satellite at each contact. 
+The list of windows for each satellite is held in a schedule. The schedule contains all windows, both for contacts and customer activities. The schedule is synchronized with the satellite at each contact. 
 
 
 ## Scheduling Time on a Payload
-A window is inserted into the schedule with the [Tasking API](). The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, aperatures, cameras etc. 
+A window is inserted into the schedule with the [Tasking API](). The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, apertures, cameras etc. 
 
 
 ## Uploading, Downloading & Sharing Files
-The [Tasking API]() provides an `upload` endpoint for uplinking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, mananged by Spire.
+The [Tasking API]() provides an `upload` endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire.
 
 
 ## Spire Linux Agent
-Each linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file inbox/outbox, telemetry, and attitude control.
+Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file inbox/outbox, telemetry, and attitude control.
 
 
 ## Inter-payload Networking
@@ -53,10 +53,10 @@ Inter-satellite-links (ISL) lease windows can be scheduled for customer use. The
 The satellite bus manages power consumption and collection of solar energy. In the unlikely event that there is not enough power to maintain the health of the satellite bus, a payload window may be aborted or not attempted at all. 
 
 
-## Antennas & Aperatures (Cameras)
+## Antennas & Apertures (Cameras)
 Various antennas are made available on the Software Defined Radio (SDR) payload.  Some antennas allow for Tx/Rx while others are Rx only. Spire provides utilities for RF capture and receive.
 
-The Imaging Payload Interface (IPI) payload provides customer with access to one or more cameras. Spire provides an SDK and utilities for managing and aquiring images.
+The Imaging Payload Interface (IPI) payload provides customer with access to one or more cameras. Spire provides an SDK and utilities for managing and acquiring images.
 
 
 ## Attitude Control
@@ -68,8 +68,8 @@ When a window is scheduled, attitude can be provided. The satellites attitude is
 
 
 ### In-orbit - Realtime
-Additionaly, a window can be scheduled to allow in-orbit control of attitude from one or more payloads. This allows payloads to respond to events in real-time by pointing directional antennas and/or aperatures/cameras at areas of interest. Attitude control is provided via REST API to the local agent. 
+Additionally, a window can be scheduled to allow in-orbit control of attitude from one or more payloads. This allows payloads to respond to events in real-time by pointing directional antennas and/or apertures at areas of interest. Attitude control is provided via REST API to the local agent. 
 
 
 ## Telemetry
-Various metrics are captured on the satellite bus and made available on the ground to customers. This telemety includes power levels and attitude data. 
+Various metrics are captured on the satellite bus and made available on the ground to customers. This telemetry includes power levels and attitude data. 
