@@ -60,9 +60,16 @@ The Imaging Payload Interface (IPI) payload provides customer with access to one
 
 
 ## Attitude Control
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including nadir and target tracking.
 
 
 ### Ground Based
+When a window is scheduled, attitude can be provided. The satellites attitude is set before the start of the window.
+
 
 ### In-orbit - Realtime
+Additionaly, a window can be scheduled to allow in-orbit control of attitude from one or more payloads. This allows payloads to respond to events in real-time by pointing directional antennas and/or aperatures/cameras at areas of interest. Attitude control is provided via REST API to the local agent. 
 
+
+## Telemetry
+Various metrics are captured on the satellite bus and made available on the ground to customers. This telemety includes power levels and attitude data. 
