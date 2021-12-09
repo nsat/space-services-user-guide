@@ -4,17 +4,20 @@ In simple terms, applications are deployed to the satellite, time is scheduled t
 
 Everything happens as time windows on a schedule. The schedule holds all upcoming contact windows with the ground (and other satellites), and all reservation windows made by customers. Customers reserve specific hardware over a time window on a satellite. The schedule is synchronized with the satellite at each contact.
 
+## Lifecycle
+
+1. **Develop** code to run on the satellite 
+1. **Deploy** applications and data to the satellite
+1. **Schedule** application to run at a specific time window
+1. **Wait** for window to complete & results downloaded
+1. **Analyze** received data
 
 ## Execution Environment
 The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the customer to upload files to and run applications. An inbox and output provide a way to uplink and downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
 
 
 ## Satellite Bus
-The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, station-keeping, communicating with the ground (and other satellites), and coordinating scheduled tasks. 
-
-
-## Ground Station
-Spire maintains ground-stations around the globe. The location & capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND transceivers.
+The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, station-keeping, communicating with the ground (and other satellites), running the schedule, and executing customer applications on the payloads. 
 
 
 ## Window
@@ -73,3 +76,7 @@ Additionally, a window can be scheduled to allow in-orbit control of attitude fr
 
 ## Telemetry
 Various metrics are captured on the satellite bus and made available on the ground to customers. This telemetry includes power levels and attitude data. 
+
+
+## Ground Station
+Spire maintains ground-stations around the globe. The location & capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND transceivers.
