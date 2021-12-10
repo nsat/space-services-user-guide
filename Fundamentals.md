@@ -13,7 +13,7 @@ Everything happens as time windows on a schedule. The schedule holds all upcomin
 1. **Analyze** received data
 
 ## Execution Environment
-The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the customer to upload files to and run applications. An inbox and output provide a way to uplink and downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
+The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the customer to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
 
 
 ## Satellite Bus
@@ -41,7 +41,7 @@ The [Tasking API]() provides an `upload` endpoint for up-linking files to a spec
 
 
 ## Spire Linux Agent
-Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file inbox/outbox, telemetry, and attitude control.
+Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control.
 
 
 ## Inter-payload Networking
