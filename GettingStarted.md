@@ -166,7 +166,7 @@ After `hello_world.sh` has run on the `SDR` the output file will be picked up by
 The file can be found in S3, i.e.:
 
 ```bash
-aws s3 ls s3://mybucket/
+aws s3 ls s3://mybucket/<TODO>/hello_world.txt
 ```
 
 > `TODO`
