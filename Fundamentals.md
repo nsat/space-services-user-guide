@@ -20,12 +20,16 @@ The satellite hosts multiple Linux computers ("payloads") with each managing spe
 The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, station-keeping, communicating with the ground (and other satellites), running the schedule, and executing customer applications on the payloads. 
 
 
-## Window
+## Windows
 A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exclusive access to different things, i.e. attitude control. Customer reservations are represented as types of windows too.
 
 
-### Contact Window
+### Contact Windows
 A contact is a type of window, and is a one or two-way radio transmission between a satellite and a ground-station, or between two satellites (inter-satellite links). The purpose of a contacts is broad, but includes time for maintenance, schedule synchronization and the transfer of data, logs and telemetry. Spire schedules contacts for its exclusive use - customer code is not made aware of these contacts. Customers may schedule their own contacts between satellites. 
+
+
+### Payload Windows
+Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window](/tasking-api-docs/index.html#supported-windows) to execute applications in. Customers schedule payload windows via the [Tasking API]().
 
 
 ## Satellite Schedule
@@ -36,12 +40,16 @@ The list of windows for each satellite is held in a schedule. The schedule conta
 A window is inserted into the schedule with the [Tasking API](). The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, apertures, cameras etc. 
 
 
-## Uploading, Downloading & Sharing Files
-The [Tasking API]() provides an `upload` endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire.
+## Uploading Files
+The Tasking API provides an [`upload`]() endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire.
 
 
-## Spire Linux Agent
-Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control.
+## Downloading Files
+Any files found in the `/outbox` directory on a payload at the end of a window will be transferred off the payload by the satellite bus and queued for download to AWS S3. 
+
+
+## Sharing Files
+Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows overlap.  More on that in the next 2 sections...
 
 
 ## Inter-payload Networking
@@ -50,6 +58,10 @@ When windows on a satellite overlap, ethernet is provided for IP networking, Pin
 
 ## Inter-satellite Networking
 Inter-satellite-links (ISL) lease windows can be scheduled for customer use. They are requested with the [Tasking API]() and create a Tx window on one satellite and Rx window on the other, as the link is simplex/one-way. ISL leases require a satellite pair in synchronous orbit.  An ISL lease window opens up a route to payloads on the remote/Rx satellite. To make use of the ISL network, windows on the sending a receiving satellites would be scheduled concurrently. Destination ports of 10,000+ are routed across the link. The simplex link means that TCP can not be "acknowledged" - UDP is supported.
+
+
+## Spire Linux Agent
+Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control. Additional information can be found [here](/spire-linux-agent-docs/).
 
 
 ## Power
@@ -63,7 +75,7 @@ The Imaging Payload Interface (IPI) payload provides customer with access to one
 
 
 ## Attitude Control
-The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including nadir and target tracking.
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](/tasking-api-docs/index.html#adcs_config).
 
 
 ### Ground Based
