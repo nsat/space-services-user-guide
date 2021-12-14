@@ -29,7 +29,7 @@ Python executable used to orchestrate operations during a contact window.
 1. Parsing the window configuration file for the current window
 1. Executing our download_file.py script
 
-Please see the [Signaling API documentation](https://developers.spire.com/payload-signaling-api-docs/index.html) 
+Please see the [Signaling API documentation](https://developers.spire.com/payload-signaling-api-docs/) 
 for more information on the expected arguments passed to this executable.
 
 ### download_file.py
@@ -50,7 +50,7 @@ This script takes two parameters
 **Language: Bash**
 
 Bash script responsible for uploading our [download_file.py](./download_file.py) script to our payload and creating a payload 
-window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/index.html).
+window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/).
 
 ## Workflow
 

@@ -29,7 +29,7 @@ A contact is a type of window, and is a one or two-way radio transmission betwee
 
 
 ### Payload Windows
-Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window](/tasking-api-docs/index.html#supported-windows) to execute applications in. Customers schedule payload windows via the [Tasking API]().
+Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Customers schedule payload windows via the [Tasking API]().
 
 
 ## Satellite Schedule
@@ -41,7 +41,11 @@ A window is inserted into the schedule with the [Tasking API](). The window type
 
 
 ## Uploading Files
-The Tasking API provides an [`upload`]() endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire.
+The Tasking API provides an [`upload`]() endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be [flight-flashed](#flight-flash) to the payload while on the ground, before launch.
+
+
+### Flight Flash
+Flight-flash is the process of creating and installing file system images into the payloads on the ground before launch.  This is often a good time for large customer applications to be installed, i.e. machine learning models or frameworks like Python or TensorFlow. 
 
 
 ## Downloading Files
@@ -75,7 +79,7 @@ The Imaging Payload Interface (IPI) payload provides customer with access to one
 
 
 ## Attitude Control
-The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](/tasking-api-docs/index.html#adcs_config).
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](https://developers.spire.com/tasking-api-docs/#adcs_config).
 
 
 ### Ground Based

@@ -5,7 +5,9 @@
 }
 .content pre {
 	float: unset;
-	margin: 0;
+}
+.content pre, .content blockquote {
+    margin: 20px;
 }
 .highlight {
     margin: 20px;

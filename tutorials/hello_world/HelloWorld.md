@@ -1,6 +1,7 @@
 # Hello World Tutorial
 
-
+|Complexity|Easiest|
+|-|-|
 
 This walk-through shows how to upload and run a script on a satellite. This example runs on the [`SDR`](), but could run equally well on any of the Linux payloads.
 
@@ -14,7 +15,7 @@ This walk-through shows how to upload and run a script on a satellite. This exam
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](/tasking-api-docs/index.html#authentication)
+1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
 1. The `FM` number of a satellite with an SDR payload
 1. An AWS S3 bucket set up with Spire
 1. `curl` or similar
@@ -49,7 +50,7 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 
 ## Deploy
 
-Upload the script via the [Tasking API](/tasking-api-docs/index.html#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
+Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
 
 ```bash
 HOST="https://test.orb.spire.com"
@@ -110,7 +111,7 @@ Response:
 
 ## Schedule Execution
 
-Add a [`PAYLOAD_SDR`](/tasking-api-docs/index.html#payload_sdr) window to the schedule for in 6 hours. 6 hours was chosen as it's the earliest time that the window is likely run.
+Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 6 hours. 6 hours was chosen as it's the earliest time that the window is likely run.
 
 ```bash
 START=$(( `date -u +'%s'` + 21600 ))
@@ -176,15 +177,11 @@ After `hello_world.sh` has run on the `SDR` the output file will be picked up by
 
 ## Review
 
-The file can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
+The file can be found in the pre-arranged AWS S3 bucket with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
 
 ```bash
-aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM123/downlink/
-```
+$ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM123/downlink/
 
-Response:
-
-```bash
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
 2021-09-06 04:32:29          0 2021/09/06/
