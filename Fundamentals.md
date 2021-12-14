@@ -90,5 +90,12 @@ Additionally, a window can be scheduled to allow in-orbit control of attitude fr
 Various metrics are captured on the satellite bus and made available on the ground to customers. This telemetry includes power levels and attitude data. 
 
 
-## Ground Station
+## Ground Stations
 Spire maintains ground-stations around the globe. The location & capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND transceivers.
+
+
+
+## Next
+
+ - [Execution Environment](./ExecutionEnvironment.md)
+ - [Getting Started Guide](./GettingStarted.md)

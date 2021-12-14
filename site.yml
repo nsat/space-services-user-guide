@@ -2,7 +2,9 @@ pages:
   - index
   - Fundamentals
   - GettingStarted
+  - ExecutionEnvironment
   - FAQ
+  - tutorials/hello_world/HelloWorld
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file
