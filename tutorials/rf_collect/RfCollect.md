@@ -1,10 +1,10 @@
 # RF Collect Tutorial
 
-|Complexity|Easy|
+|Complexity:|Easy|
 |-|-|
-|Payloads|`SDR`|
+|Payloads:|`SDR`|
 
-This tutorial will demonstrate receiving signals from the VHF radio on the `SDR` using the [`rfcollect`](../Utilities.md#rf-collect) utility, and download an [`IQ`](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log file.
+This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../Utilities.md#rf-collect) utility, and download the produced [`IQ`](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log files.
 
 
 ## Prerequisites
@@ -17,7 +17,7 @@ This tutorial will demonstrate receiving signals from the VHF radio on the `SDR`
 
 ## Develop
 
-Create a script that will run on the `SDR` Linux payload called `rf_collect.sh`. Append the date and the system name to help diagnose any issues. The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file.
+Create a script that will run on the `SDR` Linux payload called `rf_collect.sh`. Append the date and the system name to help diagnose any issues. The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file (16bit in-phase + 16bit quadrature (4 bytes) @ 1MHz).
 
 ```sh
 #!/usr/bin/env sh
@@ -69,14 +69,7 @@ curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
 Response:
 
 ```json
-{
-    "satellite_id": "FM123",
-    "payload": "SDR",
-    "destination_path": "/rf_collect.sh",
-    "executable": true,
-    "status": "PENDING",
-    "id": "71c92e3c57bc440ea89d76c94cdf387f",
-}
+{"data": {"id": "71c92e3c57bc440ea89d76c94cdf387f"}}
 ```
 
 At this point the file has been queued for upload at the next possible contact. 
@@ -93,7 +86,18 @@ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
 Response:
 
 ```json
-{"data": {"id": "71c92e3c57bc440ea89d76c94cdf387f"}}
+{
+  "data": [
+    {
+      "satellite_id": "FM142",
+      "payload": "SDR",
+      "destination_path": "/rf_collect.sh",
+      "executable": true,
+      "status": "PENDING",
+      "id": "71c92e3c57bc440ea89d76c94cdf387f",
+    }
+  ]
+}
 ```
 
 
@@ -163,9 +167,9 @@ Response:
 After `rf_collect.sh` has run on the `SDR` the output files will be picked up by the satellite bus and queued for downlink to AWS S3.
 
 
-## Review
+## Analyze
 
-The file can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
+The files can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the files:
 
 ```bash
 aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM123/downlink/
@@ -177,5 +181,10 @@ Response:
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
 2021-09-06 04:32:29          0 2021/09/06/
-2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_hello_world.txt
+2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_rf_collect.log
+2021-09-06 04:32:29    4000000 2021/09/06/20210906T043229Z_rf_collect.iq
 ```
+
+The IQ file can be further analyzed using digital signal analysis (DSP). For example the file can be loaded in [Universal Radio Hacker](https://github.com/jopohl/urh) to view the spectrum:
+
+![Spectrum](../../images/spectrum.png)

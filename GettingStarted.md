@@ -11,5 +11,6 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
 ## Tutorials
 
  - [Hello World](./tutorials/hello_world/HelloWorld.md)
+ - [RF Collect](./tutorials/rf_collect/RfCollect.md)
 
 
