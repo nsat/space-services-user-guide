@@ -93,18 +93,7 @@ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
 Response:
 
 ```json
-{
-  "data": [
-    {
-      "satellite_id": "FM142",
-      "payload": "SDR",
-      "destination_path": "/rf_collect.sh",
-      "executable": true,
-      "status": "PENDING",
-      "id": "71c92e3c57bc440ea89d76c94cdf387f",
-    }
-  ]
-}
+{"data": {"id": "71c92e3c57bc440ea89d76c94cdf387f"}}
 ```
 
 
@@ -136,7 +125,7 @@ EOF
 Response:
 
 ```json
-{todo}
+{"data": {"id": "5f7770a7984c4b30856a3a810c1b3e2f"}}
 ```
 
 

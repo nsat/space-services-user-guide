@@ -7,10 +7,9 @@
 	float: unset;
 }
 .content pre, .content blockquote {
-    margin: 20px;
-}
-.highlight {
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 div.highlight {
 	display: unset;
