@@ -3,8 +3,10 @@ pages:
   - Fundamentals
   - GettingStarted
   - ExecutionEnvironment
+  - Utilities
   - FAQ
   - tutorials/hello_world/HelloWorld
+  - tutorials/rf_collect/RfCollect
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file

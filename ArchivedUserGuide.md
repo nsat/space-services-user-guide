@@ -2,6 +2,7 @@
 
 ![Spire Space Services](./assets/images/spire.png)
 
+
 Spire Space Services provides a suite of APIs, libraries and services to enable customers to schedule payload operations, 
 interface with the satellite bus and provide execution environments for customer code hosted in space.  The purpose of this guide is to show how 
 users can leverage these services for payload operations and workflows.
@@ -182,8 +183,22 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
+| IP Address   | 10.2.1.8                            |
 | Package List | [List](./assets/text/sdr_package_list.txt) |
+| Utilities    | - [RF Collect](#rf-collect)<br> - [RF Transmit](#rf-transmit)<br> - [IQ Generator](#iq-generator) |
 
+#### IPI
+
+| Attribute    | Value                               |
+| ------------ | ------------------------------------|
+| SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| Memory       | 2GB                                 |
+| OS           | Yocto Poky 2.5 (Sumo)               |
+| Arch         | 64-bit armv8-hardfp	             |
+| Kernel       | Linux 4.14.0                        |
+| IP Address   | 10.2.1.16                            |
+| Package List | [List](./text/ipi_package_list.txt) |
 
 #### Sabertooth
 
@@ -195,6 +210,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Ubuntu 18.04.2                      |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
+| IP Address   | 10.2.1.10                           |
 | Package List | [List](./assets/text/sabertooth_package_list.txt) |
 
 
@@ -208,6 +224,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.3 (Pyro)               |
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
+| IP Address   | 10.2.1.9                            |
 | Package List | [List](./assets/text/dexter_package_list.txt) |
 
 ### Workflow
@@ -253,3 +270,155 @@ After the spacecraft has received enough contact time to download a data file qu
 [Capture an signal using the SDR payload and download a compressed IQ file](./examples/software_in_space/compress_iq_file/README.md) -
 A trivial example showing the code necessary to capture a signal using the SDR payload, compressing the resulting IQ file, and downloading the compressed file from the 
 payload to S3.
+
+
+### Tools & Utilities
+The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for
+customers to run directly or indirectly within a payload windows [`user_command`](/tasking-api-docs/index.html#user_command) parameter.
+
+
+#### RF Collect
+
+```shell
+rfcollect
+  -w <file>        IQ file to receive
+  -S <start>       Start UTC time of the capture in s, 0 will directly starts (default=0s)
+  -d <duration>    Duration of the capture in s, (default=10s)
+  -f <freq>        Set frequency RX Hz (default=2022500000Hz)
+  -g <gain>        Set RX gain dB (range -3dB to 70dB, default=70dB)
+  -s <fs>          Set RX sample rate Hz (default=1000000Hz)
+  -b <bdw>         Set RX bandwidth Hz (default=1000000Hz)
+  -m <band>        SBAND|UHF (default=SBAND)
+  -o               Print the logging on stdout instead in file (/var/log/rfcollect.log).
+  -l <lvl>         Set log level DEBUG=0, INFO=1, WARN=2, ERR=3, NONE=4 (default=1).
+  -h               Help
+
+  NOTE: The capture IQ file size is limited to 1024 MB
+```
+
+Payloads: `SDR`
+
+Chroot friendly command to collect raw IQ files (`int16` format). When executing `RFCollect`,
+the IQ is captured from the indicated UTC start (`-S`) time for the required duration (`-d`)
+period. Then it is written in the indicated output file (`-w`). The output file size is limited to 1GB.
+
+The command returns when the capture is finished and the IQ samples are written in the
+output file, or when an error occurs.
+
+The IQ can be recorded from UHF or SBAND (`-m`).
+
+
+#### RF Transmit
+
+```shell
+rftransmit 
+  -w <file>        IQ file to transmit
+  -r <period>      Period in second at which the file is repeated (default=0s).
+                   If the file to play is longer than the period, the samples are cut
+                   to the period. If the period is 0, the file is play continuously
+                   without pause or cut.
+  -c <play>        Number of time the IQ file is played (-1 means infinite) (default=1)
+  -f <freq>        Set frequency TX Hz (default=2022500000Hz)
+  -g <gain>        Set TX gain dB (range -80dB to 0dB, default=-8dB)
+  -s <fs>          Set TX sample rate Hz (default=1000000Hz)
+  -b <bdw>         Set TX bandwidth Hz (default=1000000Hz)
+  -m <band>        SBAND|UHF (default=SBAND)
+  -o               Print the logging on stdout instead in file (/var/log/rftransmit.log).
+  -l <lvl>         Set log level DEBUG=0, INFO=1, WARN=2, ERR=3, NONE=4 (default=1).
+  -h               Help
+```
+
+Payloads: `SDR`
+
+Chroot friendly application to transmit raw IQ files (`int16` format). When executing `RFTransmit`,
+it is possible to indicate the number of times (`-c`) the file is transmitted
+(e.g `-c 10` means transmit IQ file 10 time), and the period (`-r`) at which it is repeated.
+
+If the period at which the file needs to be repeated is smaller than the time
+to play the IQ file, the IQ file is cut to the repetition period. If no interval
+between repetition is indicated, the file is repeated as soon as it has been played.
+
+<div style="font-family:Courier New; white-space: pre; background-color: #333; width:680px; margin-left: 30px; padding-left: 6px;" class="highlight">
+
+|                         |                         |                         |
+| |----------|            | |----------|            | |----------|            |
+|-|    IQ    |------------|-|    IQ    |------------|-|    IQ    |------------|
+| |----------|            | |----------|            | |----------|            |
+|                         |                         |                         |
+
+x-------------------------X
+              |
+    Period at which the
+      file is repeated
+
+</div>
+
+The command returns after playing the IQ file the indicated number of
+times or when an error occurs.
+
+The IQ can be transmitted to UHF or SBAND (`-m`).
+
+
+
+#### IQ generator
+
+```shell
+iqgenerator 
+  -f <iqfile>               IQ filename
+  -S <samples-per-symbol>   Samples Per Symbol [default=2]
+  -b <bits-per-symbol>      BPSK=1, QPSK=2, PSK8=3 [default=1]
+  -d                        Enable differential encoding. (enabled by default with square|pn9)
+  -s <signal>               square|random|ones|zeros|pn9|coded|tone [default=square]
+  -o                        Print the logging on stdout instead in a file /var/log/iqgenerator.log.
+  -l <lvl>                  Set log level DEBUG=0, INFO=1, WARN=2, ERR=3, NONE=4 [default=1].
+  -h                        help
+```
+
+Payloads: `SDR`
+
+This utility generates IQ files based on the desired signal based on
+coding (BPSK, QPSK, PSK8) and sample per symbol. The
+type of signals available are:
+- `tone`, all bytes are 0x00
+- `square`, all bytes are 0xAA
+- `random`, all word are randomly generated using stdlib `rand()`
+- `ones`, all bytes are 0x01
+- `pn9`
+
+| Signal |  |
+|--|--|
+| <h3>Tone</h3> ![Tone](./images/tone.png) | <h3>Square</h3> ![Square](./images/square.png) |
+| <h3>Random</h3> ![Random](./images/random.png) | <h3>pn9</h3> ![pn9](./images/pn9.png) |
+| <h3>ones</h3> ![ones](./images/ones.png) |  |
+
+
+### Inter-Payload Communications
+TCP & UDP ports 10,000 and above are open between payloads where payload windows overlap. Developers should use a payloads IPv4 address - see [ Payload Specifications](#payload-specifications).
+
+
+### Inter-Satellite Links
+Where applicable, inter-satellite data transfer is possible via IP routing.  In order to utilize inter-satellite data transfer, both satellites must be tasked with an inter-satellite transfer payload window concurrently, with one satellite being selected as a transmitter and one satellite selected as a receiver.  A network gateway/route is available on the Sabertooth, SDR & IPI payloads that routes IPv4 traffic via the ISL radio for SIMPLEX transmission to a receiving satellite. UDP transmission is possible over the SIMPLEX link. The ISL gateway link provides the following features enabled by default: Link-layer encryption for secure data transfer; NAT for remote addressing; Error correction for packet loss & “bit-flipping”; Bandwidth can be manually adjusted by Spire to account for SNR. ISL contacts are scheduled via the Tasking API with the window type [`LEASE_ISL`](/tasking-api-docs/index.html#lease_isl).
+
+![ISL](./images/isl.png)
+
+The ISL network uses standard IP networking. Using NAT, the remote payloads are addressable on the `172.16.0.x` subnet (The subnet `10.2.1.x` is replaced with `172.16.0.x` by the NAT router).
+
+| Remote Payload | Local IP Address | Remote IP Address |
+|----------------|------------------|-------------------|
+| SDR | `10.2.1.8` | `172.16.0.8` |
+| IPI | `10.2.1.16` | `172.16.0.16` |
+| Sabertooth | `10.2.1.10` | `172.16.0.10` |
+| DEXTER | `10.2.1.10` | `172.16.0.9` |
+
+For example a script running on the receiving SDR could listen for UDP packets on port 10001:
+
+<code>
+$> nc -l -4u -w0 -p 10001 > rx.bin
+</code>
+
+While simultaneously a script running on the sending Sabertooth could send UDP packets to the remote SDR listening on port 10001:
+
+<code>
+$> echo -n "hello
+">/dev/udp/172.16.0.8/10001
+</code>
