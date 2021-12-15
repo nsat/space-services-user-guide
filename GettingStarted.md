@@ -12,5 +12,8 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
 
  - [Hello World](./tutorials/hello_world/HelloWorld.md)
  - [RF Collect](./tutorials/rf_collect/RfCollect.md)
+ - [RF Transmit](./tutorials/rf_transmit/RfTransmit.md)
+ - [Scheduling over an area of interest](./tutorials/aio_scheduling/AoiScheduling.md)
+
 
 
