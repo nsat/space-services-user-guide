@@ -77,7 +77,7 @@ curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
 Response:
 
 ```json
-{"data": {"id": "71c92e3c57bc440ea89d76c94cdf387f"}}
+{"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
 ```
 
 At this point the file has been queued for upload at the next possible contact. 
@@ -102,7 +102,7 @@ Response:
       "destination_path": "/rf_transmit.sh",
       "executable": true,
       "status": "PENDING",
-      "id": "71c92e3c57bc440ea89d76c94cdf387f",
+      "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
     }
   ]
 }
@@ -137,7 +137,7 @@ EOF
 Response:
 
 ```json
-{"data": {"id": "5f7770a7984c4b30856a3a810c1b3e2f"}}
+{"data": {"id": "3020553"}}
 ```
 
 
@@ -157,7 +157,7 @@ Response:
 ```json
 {
   "data": [{
-    "id": "5f7770a7984c4b30856a3a810c1b3e2f",
+    "id": "3020553",
     "type": "PAYLOAD_SDR",
     "satellite_id": "FM123",
     "state": "PENDING_SYNC",

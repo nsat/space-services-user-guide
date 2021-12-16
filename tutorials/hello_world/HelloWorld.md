@@ -78,7 +78,7 @@ Response:
     "destination_path": "/hello_world.sh",
     "executable": true,
     "status": "PENDING",
-    "id": "71c92e3c57bc440ea89d76c94cdf387f",
+    "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
 }
 ```
 
@@ -96,7 +96,7 @@ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
 Response:
 
 ```json
-{"data": {"id": "71c92e3c57bc440ea89d76c94cdf387f"}}
+{"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
 ```
 
 
@@ -128,7 +128,7 @@ EOF
 Response:
 
 ```json
-{"data": {"id": "5f7770a7984c4b30856a3a810c1b3e2f"}}
+{"data": {"id": "3020553"}}
 ```
 
 
@@ -148,7 +148,7 @@ Response:
 ```json
 {
   "data": [{
-    "id": "5f7770a7984c4b30856a3a810c1b3e2f",
+    "id": "3020553",
     "type": "PAYLOAD_SDR",
     "satellite_id": "FM123",
     "state": "PENDING_SYNC",
