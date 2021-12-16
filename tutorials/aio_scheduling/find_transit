@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import argparse
+from datetime import datetime
+import json
+import requests
+import sys
+import time
+
+# https://github.com/nsat/pypredict
+import predict
+
+# could be any TLE server
+TLE_URL = 'http://tle.spire.com/'
+
+
+def find(sat, lat, lon, alt, min, hours):
+    # PyPredect deviates from standard with West-positive longitude
+    qth = (lat, 0-lon, alt)
+    
+    with requests.get(TLE_URL + str(sat)) as r:
+        tle = r.content.decode('ascii')
+    
+    # returns a generator that can be enumerated forever, but with decreasing accuracy
+    p = predict.transits(tle, qth)
+    found = []
+    end = time.time() + hours * 3600
+
+    for transit in p:
+        if transit.start > end:
+            break
+        peak = transit.peak()
+        elevation = peak['elevation']
+        if elevation >= min:
+            sys.stderr.write("%s\t%f\t%f\n" % (datetime.fromtimestamp(transit.start), transit.duration(), elevation))
+            found.append({
+                'start': transit.start,
+                'end': transit.end,
+                'peak_elevation': elevation,
+                'peak_time': peak['epoch']
+            })
+            if len(found) >= 10:
+                break;
+    return found
+
+
+def main(sat, lat, lon, alt, min, hours):
+    passes = find(sat, lat, lon, alt, min, hours)
+    print(json.dumps(passes, indent=4, sort_keys=True))
+    return 0 if len(passes) > 0 else 1
+    
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description='Find transit times over lat,lon. Default LEMUR1 & San Francisco @ 30 degrees',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--sat', type=int,   default=40044,       help='Satellite norad id')
+    parser.add_argument('--lat', type=float, default=37.771034,   help='AIO latitude')
+    parser.add_argument('--lon', type=float, default=-122.413815, help='AIO longitude')
+    parser.add_argument('--alt', type=float, default=0,           help='AIO altitude, in meters')
+    parser.add_argument('--min', type=float, default=30,          help='Min elevation, in degrees')
+    parser.add_argument('--hours', type=float, default=72,        help='Hours to search')
+    exit(main(**vars(parser.parse_args())))
