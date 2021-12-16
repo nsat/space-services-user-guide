@@ -13,7 +13,6 @@ This example requires the [satellites TLE](https://en.wikipedia.org/wiki/Two-lin
 ## Prerequisites
 
 1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number or Norad Catalog Number of a satellite
 1. An AWS S3 bucket set up with Spire
 1. `python3`
 1. [`pypredict`](https://github.com/nsat/pypredict) python module
@@ -46,7 +45,7 @@ The result shows that windows can be scheduled on `FM142` which has Norad Id `46
 
 ## TLE
 
-We can take a look at the [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite at any time by visiting [`http://tle.spire.com/46926`](http://tle.spire.com/46926):
+We can take a look at the [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite at any time by visiting [`http://tle.spire.com/46926`](http://tle.spire.com/46926). Notice that the Norad Id is appended to the URL:
 
 ```bash
 $ curl http://tle.spire.com/46926
@@ -70,8 +69,8 @@ optional arguments:
   -h, --help     show this help message and exit
   --sat SAT      Satellite norad id (default: 40044)
   --lat LAT      AIO latitude (default: 37.771034)
-  --lon LON      AIO longitude (non-negative) (default: 122.413815)
-  --alt ALT      AIO altitude, in meters (default: 7)
+  --lon LON      AIO longitude (non-negative) (default: -122.413815)
+  --alt ALT      AIO altitude, in meters (default: 0)
   --min MIN      Min elevation, in degrees (default: 30)
   --hours HOURS  Hours to search (default: 48)
   ```
