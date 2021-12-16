@@ -43,7 +43,7 @@ More information on this endpoint is available [here](https://developers.spire.c
  - [Hello World](./tutorials/hello_world/HelloWorld.md)
  - [RF Collect](./tutorials/rf_collect/RfCollect.md)
  - [RF Transmit](./tutorials/rf_transmit/RfTransmit.md)
- - [Scheduling over an area of interest](./tutorials/aio_scheduling/AoiScheduling.md)
+ - [Tracking an Area Of Interest](./tutorials/aoi/AOI.md)
  
 
 

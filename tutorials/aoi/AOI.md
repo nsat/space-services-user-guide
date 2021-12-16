@@ -1,11 +1,11 @@
-# Scheduling over an area of interest (AIO)
+# Tracking an Area Of Interest
 
 |Complexity:|Medium|
 |-|-|
-|Payloads:|N/A|
+|Payloads:|`SDR`|
 
 
-A satellite is useful for it's ability to be over a specific area of interest (AIO). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AIO, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
+A satellite is useful for it's ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AIO, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
 
 This example requires the [satellites TLE](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity and which is needed to calculate transits over an AIO. It can be obtained from a range of places including [tle.spire.com](http://tle.spire.com/).
 
@@ -46,7 +46,7 @@ The result shows that windows can be scheduled on `FM142` which has Norad Id `46
 
 ## TLE
 
-We can take a look at the TLE of this satellite at any time by visiting [`http://tle.spire.com/46926`](http://tle.spire.com/46926):
+We can take a look at the [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite at any time by visiting [`http://tle.spire.com/46926`](http://tle.spire.com/46926):
 
 ```bash
 $ curl http://tle.spire.com/46926
@@ -57,7 +57,7 @@ $ curl http://tle.spire.com/46926
 
 ## Finding a Transit Time
 
-This tutorial has an accompanying script called [`find_transit`](./find_transit). It relies on the [`pypredict`](https://github.com/nsat/pypredict) python module.
+This tutorial has an accompanying script called [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`](https://github.com/nsat/pypredict) python module.
 
 ```bash
 usage: find_transit [-h] [--sat SAT] [--lat LAT] [--lon LON] [--alt ALT]
