@@ -1,4 +1,4 @@
-# Tracking an Area Of Interest
+# Tracking an Area Of Interest Tutorial
 
 |Complexity:|Medium|
 |-|-|
@@ -17,7 +17,7 @@ This example requires the [satellites TLE](https://en.wikipedia.org/wiki/Two-lin
 1. `python3`
 1. [`pypredict`](https://github.com/nsat/pypredict) python module
 
-## Determining Norad Catalog Number
+## Norad Catalog Number
 
 The Norad Catalog Number (Norad Id) can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 

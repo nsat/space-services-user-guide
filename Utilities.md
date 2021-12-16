@@ -62,7 +62,7 @@ Chroot friendly application to transmit raw in-phase quadrature (IQ) files (`int
 
 If the period at which the file needs to be repeated is smaller than the time to play the IQ file, the IQ file is cut to the repetition period. If no interval between repetition is indicated, the file is repeated as soon as it has been played.
 
-```shell
+```
 |                         |                         |                         |
 | |----------|            | |----------|            | |----------|            |
 |-|    IQ    |------------|-|    IQ    |------------|-|    IQ    |------------|
