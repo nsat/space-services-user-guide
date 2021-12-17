@@ -12,17 +12,16 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
 
-The example response below shows that the authentication token has access to [3 window types](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM142`:
+The example response below shows that the authentication token has access to [3 window types](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
 
 ```bash
 {
   "data": [{
-    "id": "FM142",
+    "id": "FM1",
     "norad_id": "46926",
     "supported_windows": [
       "PAYLOAD_SDR",
-      "PAYLOAD_SABERTOOTH",
-      "CONTACT_SDR_IQ"
+      "PAYLOAD_SABERTOOTH"
     ]
   }]
 }
@@ -44,6 +43,7 @@ More information on this endpoint is available [here](https://developers.spire.c
  - [RF Collect](./tutorials/rf_collect/RfCollect.md)
  - [RF Transmit](./tutorials/rf_transmit/RfTransmit.md)
  - [Tracking an Area Of Interest](./tutorials/aoi/AOI.md)
+ - [Inter-Payload Communications](./tutorials/ipc/InterPayloadComms.md)
  
 
 

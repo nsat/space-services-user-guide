@@ -27,17 +27,16 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
 
-The result shows that windows can be scheduled on `FM142` which has Norad Id `46926`:
+The result shows that windows can be scheduled on `FM1` which has Norad Id `46926`:
 
 ```json
 {
   "data": [{
-    "id": "FM142",
+    "id": "FM1",
     "norad_id": "46926",
     "supported_windows": [
       "PAYLOAD_SDR",
-      "PAYLOAD_SABERTOOTH",
-      "CONTACT_SDR_IQ"
+      "PAYLOAD_SABERTOOTH"
     ]
   }]
 }
@@ -114,7 +113,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "start": ${START},
     "duration": ${DURATION},
     "parameters": {

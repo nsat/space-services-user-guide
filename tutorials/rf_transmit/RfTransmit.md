@@ -60,10 +60,10 @@ rftransmit error: 127
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
 
 ```bash
-HOST="https://test.orb.spire.com"
+HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
-SATELLITE_ID="satellite_id=FM123"
+SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SDR"
 DESTINATION_PATH="destination_path=/rf_transmit.sh"
 EXECUTABLE="executable=true"
@@ -97,7 +97,7 @@ Response:
 {
   "data": [
     {
-      "satellite_id": "FM142",
+      "satellite_id": "FM1",
       "payload": "SDR",
       "destination_path": "/rf_transmit.sh",
       "executable": true,
@@ -122,7 +122,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -146,7 +146,7 @@ Response:
 Schedule synchronization can be polled by querying for upcoming windows. `state` will change from `PENDING_SYNC` to `SYNCED`.
 
 ```bash
-SATELLITE_ID="satellite_id=FM123"
+SATELLITE_ID="satellite_id=FM1"
 QUERY_PARAMS="${SATELLITE_ID}"
 
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/windows?${QUERY_PARAMS}"
@@ -159,7 +159,7 @@ Response:
   "data": [{
     "id": "3020553",
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "state": "PENDING_SYNC",
     "start": 1599503800,
     "duration": 60,
@@ -180,7 +180,7 @@ After `rf_transmit.sh` has run on the `SDR` the file file will be picked up by t
 The log file can be found in S3 with the timestamp appended to guarantee uniqueness:
 
 ```bash
-aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM123/downlink/
+aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/

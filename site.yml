@@ -10,6 +10,7 @@ pages:
   - tutorials/rf_collect/RfCollect
   - tutorials/rf_transmit/RfTransmit
   - tutorials/aoi/AOI
+  - tutorials/ipc/InterPayloadComms
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file

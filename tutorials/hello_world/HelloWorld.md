@@ -55,10 +55,10 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
 
 ```bash
-HOST="https://test.orb.spire.com"
+HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
-SATELLITE_ID="satellite_id=FM123"
+SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SDR"
 DESTINATION_PATH="destination_path=/hello_world.sh"
 EXECUTABLE="executable=true"
@@ -73,7 +73,7 @@ Response:
 
 ```json
 {
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "payload": "SDR",
     "destination_path": "/hello_world.sh",
     "executable": true,
@@ -113,7 +113,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -137,7 +137,7 @@ Response:
 Schedule synchronization can be polled by querying for upcoming windows. `state` will change from `PENDING_SYNC` to `SYNCED`.
 
 ```bash
-SATELLITE_ID="satellite_id=FM123"
+SATELLITE_ID="satellite_id=FM1"
 QUERY_PARAMS="${SATELLITE_ID}"
 
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/windows?${QUERY_PARAMS}"
@@ -150,7 +150,7 @@ Response:
   "data": [{
     "id": "3020553",
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM123",
+    "satellite_id": "FM1",
     "state": "PENDING_SYNC",
     "start": 1599503800,
     "duration": 60,
@@ -171,7 +171,7 @@ After `hello_world.sh` has run on the `SDR` the output file will be picked up by
 The file can be found in the pre-arranged AWS S3 bucket with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
 
 ```bash
-$ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM123/downlink/
+$ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
