@@ -3,6 +3,7 @@
 |Complexity:|Moderate|
 |-|-|
 |Payloads:|`SDR`|
+|Windows:|`PAYLOAD_SDR`|
 
 This tutorial will demonstrate creating and sending a waveform through the S-BAND radio on the `SDR` using the [`iqgenerator`](../../Utilities.md#iq-generator) and [`rftransmit`](../../Utilities.md#rf-transmit) utilities, and finally downloading a log of the activities.
 

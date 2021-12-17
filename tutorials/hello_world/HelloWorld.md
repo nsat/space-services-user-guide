@@ -3,6 +3,7 @@
 |Complexity:|Easiest|
 |-|-|
 |Payloads:|`SDR`|
+|Windows:|`PAYLOAD_SDR`|
 
 This walk-through shows how to upload and run a script on a satellite. This example runs on the [`SDR`](), but could run equally well on any of the Linux payloads.
 

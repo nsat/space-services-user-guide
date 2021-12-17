@@ -10,6 +10,7 @@ pages:
   - tutorials/rf_collect/RfCollect
   - tutorials/rf_transmit/RfTransmit
   - tutorials/aoi/AOI
+  - tutorials/isl/ISL
   - tutorials/ipc/InterPayloadComms
 images:
   - images/**/*

@@ -3,6 +3,7 @@
 |Complexity:|Easy|
 |-|-|
 |Payloads:|`SDR`|
+|Windows:|`PAYLOAD_SDR`|
 
 This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../../Utilities.md#rf-collect) utility, and download the produced [`IQ`](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log files. The frequency can be changed to capture specific signals. 
 

@@ -3,6 +3,7 @@
 |Complexity:|Medium|
 |-|-|
 |Payloads:|`SDR` & `SABERTOOTH`|
+|Windows:|`PAYLOAD_SDR` `PAYLOAD_SABERTOOTH`|
 
 This walk-through shows how to communicate between two payloads on a satellite using HTTP over TCP/IP through the local ethernet.
 

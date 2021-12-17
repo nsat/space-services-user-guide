@@ -3,7 +3,7 @@
 |Complexity:|Medium|
 |-|-|
 |Payloads:|`SDR`|
-
+|Windows:|`PAYLOAD_SDR`|
 
 A satellite is useful for it's ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AIO, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
 
