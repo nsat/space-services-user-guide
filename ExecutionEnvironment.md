@@ -53,7 +53,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | SoC          | NVIDIA Tegra TX2i                   |
 | CPU          | 4x ARM Cortex A57 @ 2GHz (+ 2x Denver 2 @ 2Ghz) |
 | Memory       | 8GB                                 |
-| OS           | Ubuntu 18.04.2                      |
+| OS           | Ubuntu 18.04.2 ([Jetpack 4.2.2](https://developer.nvidia.com/jetpack-422-archive)) |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
 | IP Address   | 10.2.1.10                           |
