@@ -1,5 +1,3 @@
-![Spire Space Services](./images/spire.png)
-
 # Software User Guide
 
 Spire Space Services provides a suite of APIs, libraries and services to enable customers to schedule payload operations, 
@@ -124,7 +122,7 @@ enough contact time to download each data file, the file will be persisted to th
 
 ### Examples
 
-[Download a File from Space](./examples/payload_in_space/download_file/README.md) - A trivial example showing 
+[Download a File from Space](https://github.com/nsat/space-services-user-guide/tree/main/web_docs/examples/payload_in_space/download_file) - A trivial example showing 
 the code necessary to create and download a file from a payload.
 
 ## Software in Space
@@ -182,7 +180,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
-| Package List | [List](./assets/text/sdr_package_list.txt) |
+| Package List | [List](./text/sdr_package_list.txt) |
 
 
 #### Sabertooth
@@ -195,7 +193,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Ubuntu 18.04.2                      |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
-| Package List | [List](./assets/text/sabertooth_package_list.txt) |
+| Package List | [List](./text/sabertooth_package_list.txt) |
 
 
 #### Dexter
@@ -208,7 +206,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | OS           | Yocto Poky 2.3 (Pyro)               |
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
-| Package List | [List](./assets/text/dexter_package_list.txt) |
+| Package List | [List](./text/dexter_package_list.txt) |
 
 ### Workflow
 
@@ -250,6 +248,6 @@ After the spacecraft has received enough contact time to download a data file qu
 
 ### Examples
 
-[Capture an signal using the SDR payload and download a compressed IQ file](./examples/software_in_space/compress_iq_file/README.md) -
+[Capture an signal using the SDR payload and download a compressed IQ file](https://github.com/nsat/space-services-user-guide/tree/main/web_docs/examples/compress_iq_file/) -
 A trivial example showing the code necessary to capture a signal using the SDR payload, compressing the resulting IQ file, and downloading the compressed file from the 
 payload to S3.
