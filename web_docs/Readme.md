@@ -122,7 +122,7 @@ enough contact time to download each data file, the file will be persisted to th
 
 ### Examples
 
-[Download a File from Space](https://github.com/nsat/space-services-user-guide/tree/main/web_docs/examples/payload_in_space/download_file) - A trivial example showing 
+[Download a File from Space](https://github.com/nsat/space-services-user-guide/tree/main/examples/payload_in_space/download_file) - A trivial example showing 
 the code necessary to create and download a file from a payload.
 
 ## Software in Space
@@ -248,6 +248,6 @@ After the spacecraft has received enough contact time to download a data file qu
 
 ### Examples
 
-[Capture an signal using the SDR payload and download a compressed IQ file](https://github.com/nsat/space-services-user-guide/tree/main/web_docs/examples/compress_iq_file/) -
+[Capture an signal using the SDR payload and download a compressed IQ file](https://github.com/nsat/space-services-user-guide/tree/main/examples/compress_iq_file/) -
 A trivial example showing the code necessary to capture a signal using the SDR payload, compressing the resulting IQ file, and downloading the compressed file from the 
 payload to S3.
