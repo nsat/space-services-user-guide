@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-
-# 1. download all packages
-# 2. zip only required files
-
 set -xeu
 
 CWD=$PWD
@@ -13,17 +9,16 @@ SETUPTOOLS="setuptools-59.6.0-py3-none-any.whl"
 PYUTIL="pyutil-3.3.0.tar.gz"
 ZFEC="zfec-1.5.1.tar.gz"
 
-#tmpdir=$(mktemp -d -p /tmp)
 tmpdir="/tmp/$PACKAGE"
-mkdir -p $tmpdir
+mkdir -p "$tmpdir"
 #trap "rm -rf $tmpdir" EXIT
 
 # download packages
-#curl -o "$tmpdir/$LIBPYTHON3" "http://ports.ubuntu.com/ubuntu-ports/pool/main/p/python3.6/$LIBPYTHON3"
-#curl -o "$tmpdir/$PIP" "https://files.pythonhosted.org/packages/a4/6d/6463d49a933f547439d6b5b98b46af8742cc03ae83543e4d7688c2420f8b/$PIP"
-#curl -o "$tmpdir/$SETUPTOOLS" "https://files.pythonhosted.org/packages/b0/3a/88b210db68e56854d0bcf4b38e165e03be377e13907746f825790f3df5bf/$SETUPTOOLS"
-#curl -o "$tmpdir/$PYUTIL" "https://files.pythonhosted.org/packages/79/e5/26dc921e91c00d1eaf09f35f10f4d788cccec3b0dc73a69920f42950f189/$PYUTIL"
-#curl -o "$tmpdir/$ZFEC" "https://files.pythonhosted.org/packages/21/59/dc3a360533e64030ac08aaf1448d2d116a1c11008acfdc88a974a692ae74/$ZFEC"
+curl -C - -o "$tmpdir/$LIBPYTHON3" "http://ports.ubuntu.com/ubuntu-ports/pool/main/p/python3.6/$LIBPYTHON3"
+curl -C - -o "$tmpdir/$PIP" "https://files.pythonhosted.org/packages/a4/6d/6463d49a933f547439d6b5b98b46af8742cc03ae83543e4d7688c2420f8b/$PIP"
+curl -C - -o "$tmpdir/$SETUPTOOLS" "https://files.pythonhosted.org/packages/b0/3a/88b210db68e56854d0bcf4b38e165e03be377e13907746f825790f3df5bf/$SETUPTOOLS"
+curl -C - -o "$tmpdir/$PYUTIL" "https://files.pythonhosted.org/packages/79/e5/26dc921e91c00d1eaf09f35f10f4d788cccec3b0dc73a69920f42950f189/$PYUTIL"
+curl -C - -o "$tmpdir/$ZFEC" "https://files.pythonhosted.org/packages/21/59/dc3a360533e64030ac08aaf1448d2d116a1c11008acfdc88a974a692ae74/$ZFEC"
 
 
 PKGDIR="$tmpdir/$PACKAGE"
@@ -34,12 +29,15 @@ mkdir -p "$PKGDIR"
 ar x --output "$tmpdir/tmp" "$tmpdir/$LIBPYTHON3" data.tar.xz
 (cd "$tmpdir/tmp" && tar -xJf data.tar.xz)
 rm -rf "$PKGDIR/py-include"
+# only need the includes from this package
 mv "$tmpdir/tmp/usr/include" "$PKGDIR/py-include"
 
 unzip -o -q "$tmpdir/$PIP" -d "$PKGDIR/pip"
 unzip -o -q "$tmpdir/$SETUPTOOLS" -d "$PKGDIR/setuptools"
-(mkdir -p "$PKGDIR/pyutil" && cd "$PKGDIR/pyutil" && tar -zxf "$tmpdir/$PYUTIL")
-(mkdir -p "$PKGDIR/zfec" && cd "$PKGDIR/zfec" && tar -zxf "$tmpdir/$ZFEC")
+mkdir -p "$PKGDIR/pyutil"
+tar -C "$PKGDIR/pyutil" -zxf "$tmpdir/$PYUTIL"
+mkdir -p "$PKGDIR/zfec"
+tar -C "$PKGDIR/zfec" -zxf "$tmpdir/$ZFEC"
 
 # build installer
 cat "$CWD/install.in" > "$CWD/install"
