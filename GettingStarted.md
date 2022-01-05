@@ -43,5 +43,5 @@ More information on this endpoint is available [here](https://developers.spire.c
  - [RF Collect](./tutorials/rf_collect/RfCollect.md)
  - [RF Transmit](./tutorials/rf_transmit/RfTransmit.md)
  - [Tracking an Area Of Interest](./tutorials/aoi/AOI.md)
- - [Inter-Payload Communications](./tutorials/ipc/InterPayloadComms.md)
+ - [Inter-Payload Communications](./tutorials/ipc/IPC.md)
  - [Inter-Satellite Links](./tutorials/isl/ISL.md) 
