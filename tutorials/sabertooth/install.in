@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -xeu
+
+# find start of tar file appended to this file
+match=$(grep --text --line-number '^PAYLOAD:' $0 | cut -d ':' -f 1)
+payload_start=$((match + 1))
+
+
+# extract tar file from end of this file
+tail -n +$payload_start $0 | tar --no-overwrite-dir --no-same-owner -xmJf -
+
+
+# pip
+(   cd sabertooth-py-setup/pip \
+    && zip -0 -q -r ../pip-21.3.1-py3-none-any.whl * \
+    && cd .. \
+    && python3 pip-21.3.1-py3-none-any.whl/pip install --force-reinstall --no-index pip-21.3.1-py3-none-any.whl
+)
+
+
+# setuptools
+(   cd sabertooth-py-setup/setuptools \
+    && zip -0 -q -r ../setuptools-59.6.0-py3-none-any.whl * \
+    && cd .. \
+    && pip3 install --force-reinstall setuptools-59.6.0-py3-none-any.whl
+)
+
+
+# pyutil
+pip3 install \
+    --force-reinstall \
+    sabertooth-py-setup/pyutil/pyutil-3.3.0
+
+
+# zfec
+cp -af sabertooth-py-setup/py-include ~/.local/include
+pip3 install \
+    --force-reinstall \
+    --no-deps \
+    --global-option=build_ext \
+    --global-option="-I~/.local/include/python3.6m/:~/.local/include" \
+    sabertooth-py-setup/zfec/zfec-1.5.1/
+
+exit 0
+
+# marker for finding tar file
+PAYLOAD:
