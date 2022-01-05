@@ -1,0 +1,520 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>RF Collect Tutorial</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="../../stylesheets/screen-9950053b.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch-ea811c3e.js"></script>
+
+    <style>
+    :root { --examples-width: 0; }
+    div.highlight { display: none; }
+    </style>
+    <link href="https://3qjvwc2vv8nz2r2w5vhhzkj4-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/favicon.ico" rel="icon" type="image/ico" />
+  </head>
+
+  <body class="tutorials tutorials_rf_collect tutorials_rf_collect_RfCollect" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../../images/spire_white_logo-87ed221e.svg" class="logo" alt="" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#rf-collect-tutorial" class="toc-h1 toc-link" data-title="RF Collect Tutorial">RF Collect Tutorial</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisites" class="toc-h2 toc-link" data-title="Prerequisites">Prerequisites</a>
+                  </li>
+                  <li>
+                    <a href="#develop" class="toc-h2 toc-link" data-title="Develop">Develop</a>
+                  </li>
+                  <li>
+                    <a href="#deploy" class="toc-h2 toc-link" data-title="Deploy">Deploy</a>
+                  </li>
+                  <li>
+                    <a href="#wait" class="toc-h2 toc-link" data-title="Wait">Wait</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-execution" class="toc-h2 toc-link" data-title="Schedule Execution">Schedule Execution</a>
+                  </li>
+                  <li>
+                    <a href="#wait-2" class="toc-h2 toc-link" data-title="Wait">Wait</a>
+                  </li>
+                  <li>
+                    <a href="#review" class="toc-h2 toc-link" data-title="Review">Review</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="../../index.html">Spire Space Services</a></li>
+            <li><a href="../../Fundamentals.html">Fundamentals</a></li>
+            <li><a href="../../GettingStarted.html">Getting Started</a></li>
+            <li><a href="../../ExecutionEnvironment.html">Execution Environment</a></li>
+            <li><a href="../../FAQ.html">FAQ</a></li>
+            <li><a href="https://github.com/nsat/space-services-user-guide">GitHub</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <!-- updates slatedocs internal links from .md to .html -->
+
+<script>
+$(function() {
+var anchors = document.getElementsByTagName("a");
+
+for (var i = 0; i < anchors.length; i++) {
+    var href = anchors[i].getAttribute("href");
+    if ((href.startsWith("http") || href.startsWith("//")) || !(href.endsWith(".md") || href.includes(".md#"))){
+        continue;
+    }
+    href = href.replace(/.md$/, ".html");
+    anchors[i].setAttribute("href", href);
+}
+});
+</script>
+<!-- moves code blocks inline -->
+
+<style>
+:root {
+    --examples-width: unset;
+}
+.content pre {
+    float: unset;
+}
+.content pre, .content blockquote {
+    margin: 20px;
+}
+.highlight {
+    margin: 20px;
+}
+div.highlight {
+    display: unset;
+}
+</style>
+<h1 id='rf-collect-tutorial'>RF Collect Tutorial</h1>
+<table><thead>
+<tr>
+<th>Complexity</th>
+<th>Easiest</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Hardware</td>
+<td><code>SDR</code></td>
+</tr>
+</tbody></table>
+
+<p>This tutorial will demonstrate receiving signals from the VHF radio on the <code>SDR</code> using the `</p>
+<h2 id='prerequisites'>Prerequisites</h2>
+<ol>
+<li><a href="https://developers.spire.com/tasking-api-docs/#authentication">Tasking API Authentication Token</a></li>
+<li>The <code>FM</code> number of a satellite with an SDR payload</li>
+<li>An AWS S3 bucket set up with Spire</li>
+<li><code>curl</code> or similar</li>
+</ol>
+<h2 id='develop'>Develop</h2>
+<p>Create a script that will run on the <code>SDR</code> Linux payload called <code>rf_collect.sh</code>:</p>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="c">#!/usr/bin/env sh</span>
+
+<span class="nb">echo</span> <span class="s2">"hello world"</span> <span class="o">&gt;</span> /outbox/hello_world.txt
+<span class="nb">uname</span> <span class="nt">-a</span> <span class="o">&gt;&gt;</span> /outbox/hello_world.txt
+</code></pre></div>
+<p>Mark it executable and test it:</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nb">chmod </span>755 hello_world.sh
+<span class="nb">mkdir</span> /outbox
+./hello_world.sh
+<span class="nb">cat</span> /outbox/hello_world.txt
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre class="highlight shell"><code>hello world
+Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 <span class="c">#1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 Linux</span>
+</code></pre></div><h2 id='deploy'>Deploy</h2>
+<p>Upload the script via the <a href="https://developers.spire.com/tasking-api-docs/#post-upload">Tasking API</a> to the <code>SDR</code> on the satellite. Please change <code>&lt;FM&gt;</code> to the satellite <code>id</code>, and <code>&lt;token&gt;</code> to the token provided by Spire.</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">HOST</span><span class="o">=</span><span class="s2">"https://test.orb.spire.com"</span>
+<span class="nv">AUTH_HEADER</span><span class="o">=</span><span class="s2">"Authorization: Bearer YOUR_AUTH_TOKEN"</span>
+
+<span class="nv">SATELLITE_ID</span><span class="o">=</span><span class="s2">"satellite_id=FM123"</span>
+<span class="nv">PAYLOAD</span><span class="o">=</span><span class="s2">"payload=SDR"</span>
+<span class="nv">DESTINATION_PATH</span><span class="o">=</span><span class="s2">"destination_path=/hello_world.sh"</span>
+<span class="nv">EXECUTABLE</span><span class="o">=</span><span class="s2">"executable=true"</span>
+<span class="nv">QUERY_PARAMS</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">SATELLITE_ID</span><span class="k">}</span><span class="s2">&amp;</span><span class="k">${</span><span class="nv">PAYLOAD</span><span class="k">}</span><span class="s2">&amp;</span><span class="k">${</span><span class="nv">DESTINATION_PATH</span><span class="k">}</span><span class="s2">&amp;</span><span class="k">${</span><span class="nv">EXECUTABLE</span><span class="k">}</span><span class="s2">"</span>
+
+curl <span class="nt">-X</span> POST <span class="k">${</span><span class="nv">HOST</span><span class="k">}</span>/tasking/upload?<span class="k">${</span><span class="nv">QUERY_PARAMS</span><span class="k">}</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AUTH_HEADER</span><span class="k">}</span><span class="s2">"</span>  <span class="se">\</span>
+<span class="nt">-F</span> <span class="s2">"file=@hello_world.sh"</span>
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"satellite_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SDR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destination_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hello_world.sh"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"executable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71c92e3c57bc440ea89d76c94cdf387f"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>At this point the file has been queued for upload at the next possible contact. </p>
+<h2 id='wait'>Wait</h2>
+<p>We can poll for the status of the upload with the following command, and wait until it changes from <code>PENDING</code> to <code>UPLOADING</code> then finally <code>UPLOADED</code>.</p>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AUTH_HEADER</span><span class="k">}</span><span class="s2">"</span> <span class="k">${</span><span class="nv">HOST</span><span class="k">}</span>/tasking/uploads
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"satellite_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM142"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SDR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"destination_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hello_world.sh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"executable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71c92e3c57bc440ea89d76c94cdf387f"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='schedule-execution'>Schedule Execution</h2>
+<p>Add a <a href="https://developers.spire.com/tasking-api-docs/#payload_sdr"><code>PAYLOAD_SDR</code></a> window to the schedule for in 6 hours. 6 hours was chosen as it&#39;s the earliest time that the window is likely run.</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">START</span><span class="o">=</span><span class="k">$((</span> <span class="sb">`</span><span class="nb">date</span> <span class="nt">-u</span> +<span class="s1">'%s'</span><span class="sb">`</span> <span class="o">+</span> <span class="m">21600</span> <span class="k">))</span>
+
+curl <span class="nt">-X</span> POST <span class="k">${</span><span class="nv">HOST</span><span class="k">}</span>/tasking/window <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AUTH_HEADER</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> @- <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "FM123",
+    "start": </span><span class="k">${</span><span class="nv">START</span><span class="k">}</span><span class="sh">,
+    "duration": 60,
+    "parameters": {
+        "user_command": {
+            "executable": "/hello_world.sh"
+        }
+    }
+}
+</span><span class="no">EOF
+</span></code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">todo</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='wait-2'>Wait</h2>
+<p>Schedule synchronization can be polled by querying for upcoming windows. <code>state</code> will change from <code>PENDING_SYNC</code> to <code>SYNCED</code>.</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">SATELLITE_ID</span><span class="o">=</span><span class="s2">"satellite_id=FM123"</span>
+<span class="nv">QUERY_PARAMS</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">SATELLITE_ID</span><span class="k">}</span><span class="s2">"</span>
+
+curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s2">"</span><span class="k">${</span><span class="nv">AUTH_HEADER</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">HOST</span><span class="k">}</span><span class="s2">/tasking/windows?</span><span class="k">${</span><span class="nv">QUERY_PARAMS</span><span class="k">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f7770a7984c4b30856a3a810c1b3e2f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYLOAD_SDR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"satellite_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FM123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING_SYNC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1599503800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"user_command"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"executable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/hello_world.sh"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>After <code>hello_world.sh</code> has run on the <code>SDR</code> the output file will be picked up by the satellite bus and queued for downlink to AWS S3.</p>
+<h2 id='review'>Review</h2>
+<p>The file can be found in S3 with the timestamp appended to guarantee uniqueness. The <code>awscli</code> can be used with the <code>--recursive</code> option to see the file:</p>
+<div class="highlight"><pre class="highlight shell"><code>aws s3 <span class="nb">ls</span> <span class="nt">--recursive</span> s3://customer-s3-bucket/a/directory/FM123/downlink/
+</code></pre></div>
+<p>Response:</p>
+<div class="highlight"><pre class="highlight shell"><code>2021-09-06 04:32:29          0 2021/
+2021-09-06 04:32:29          0 2021/09/
+2021-09-06 04:32:29          0 2021/09/06/
+2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_hello_world.txt
+</code></pre></div>
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

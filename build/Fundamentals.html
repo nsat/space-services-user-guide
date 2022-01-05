@@ -1,0 +1,459 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Fundamentals</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9950053b.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-ea811c3e.js"></script>
+
+    <style>
+    :root { --examples-width: 0; }
+    div.highlight { display: none; }
+    </style>
+    <link href="https://3qjvwc2vv8nz2r2w5vhhzkj4-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/favicon.ico" rel="icon" type="image/ico" />
+  </head>
+
+  <body class="Fundamentals" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/spire_white_logo-87ed221e.svg" class="logo" alt="" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#fundamentals" class="toc-h1 toc-link" data-title="Fundamentals">Fundamentals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#lifecycle" class="toc-h2 toc-link" data-title="Lifecycle">Lifecycle</a>
+                  </li>
+                  <li>
+                    <a href="#execution-environment" class="toc-h2 toc-link" data-title="Execution Environment">Execution Environment</a>
+                  </li>
+                  <li>
+                    <a href="#satellite-bus" class="toc-h2 toc-link" data-title="Satellite Bus">Satellite Bus</a>
+                  </li>
+                  <li>
+                    <a href="#windows" class="toc-h2 toc-link" data-title="Windows">Windows</a>
+                  </li>
+                  <li>
+                    <a href="#satellite-schedule" class="toc-h2 toc-link" data-title="Satellite Schedule">Satellite Schedule</a>
+                  </li>
+                  <li>
+                    <a href="#scheduling-time-on-a-payload" class="toc-h2 toc-link" data-title="Scheduling Time on a Payload">Scheduling Time on a Payload</a>
+                  </li>
+                  <li>
+                    <a href="#uploading-files" class="toc-h2 toc-link" data-title="Uploading Files">Uploading Files</a>
+                  </li>
+                  <li>
+                    <a href="#downloading-files" class="toc-h2 toc-link" data-title="Downloading Files">Downloading Files</a>
+                  </li>
+                  <li>
+                    <a href="#sharing-files" class="toc-h2 toc-link" data-title="Sharing Files">Sharing Files</a>
+                  </li>
+                  <li>
+                    <a href="#inter-payload-networking" class="toc-h2 toc-link" data-title="Inter-payload Networking">Inter-payload Networking</a>
+                  </li>
+                  <li>
+                    <a href="#inter-satellite-networking" class="toc-h2 toc-link" data-title="Inter-satellite Networking">Inter-satellite Networking</a>
+                  </li>
+                  <li>
+                    <a href="#spire-linux-agent" class="toc-h2 toc-link" data-title="Spire Linux Agent">Spire Linux Agent</a>
+                  </li>
+                  <li>
+                    <a href="#power" class="toc-h2 toc-link" data-title="Power">Power</a>
+                  </li>
+                  <li>
+                    <a href="#antennas-amp-apertures-cameras" class="toc-h2 toc-link" data-title="Antennas &amp; Apertures (Cameras)">Antennas &amp; Apertures (Cameras)</a>
+                  </li>
+                  <li>
+                    <a href="#attitude-control" class="toc-h2 toc-link" data-title="Attitude Control">Attitude Control</a>
+                  </li>
+                  <li>
+                    <a href="#telemetry" class="toc-h2 toc-link" data-title="Telemetry">Telemetry</a>
+                  </li>
+                  <li>
+                    <a href="#ground-stations" class="toc-h2 toc-link" data-title="Ground Stations">Ground Stations</a>
+                  </li>
+                  <li>
+                    <a href="#next" class="toc-h2 toc-link" data-title="Next">Next</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="index.html">Spire Space Services</a></li>
+            <li><a href="Fundamentals.html">Fundamentals</a></li>
+            <li><a href="GettingStarted.html">Getting Started</a></li>
+            <li><a href="ExecutionEnvironment.html">Execution Environment</a></li>
+            <li><a href="Utilities.html">Tools & Untilities</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="https://github.com/nsat/space-services-user-guide">GitHub</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <!-- updates slatedocs internal links from .md to .html -->
+
+<script>
+$(function() {
+var anchors = document.getElementsByTagName("a");
+
+for (var i = 0; i < anchors.length; i++) {
+    var href = anchors[i].getAttribute("href");
+    if ((href.startsWith("http") || href.startsWith("//")) || !(href.endsWith(".md") || href.includes(".md#"))){
+        continue;
+    }
+    href = href.replace(/.md$/, ".html");
+    anchors[i].setAttribute("href", href);
+}
+});
+</script>
+<h1 id='fundamentals'>Fundamentals</h1>
+<p>In simple terms, applications are deployed to the satellite, time is scheduled to run the applications, and the output is downloaded to AWS S3. Applications have access to satellite hardware and telemetry.</p>
+
+<p>Everything happens as time windows on a schedule. The schedule holds all upcoming contact windows with the ground (and other satellites), and all reservation windows made by customers. Customers reserve specific hardware over a time window on a satellite. The schedule is synchronized with the satellite at each contact.</p>
+<h2 id='lifecycle'>Lifecycle</h2>
+<ol>
+<li><strong>Develop</strong> code to run on the satellite </li>
+<li><strong>Deploy</strong> applications and data to the satellite</li>
+<li><strong>Schedule</strong> application to run at a specific time window</li>
+<li><strong>Wait</strong> for window to complete &amp; results downloaded</li>
+<li><strong>Analyze</strong> received data</li>
+</ol>
+<h2 id='execution-environment'>Execution Environment</h2>
+<p>The satellite hosts multiple Linux computers (&quot;payloads&quot;) with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the customer to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. </p>
+<h2 id='satellite-bus'>Satellite Bus</h2>
+<p>The satellite bus is a broad name given to the many systems on the satellite that support a customers activities.  Spire maintains the satellite bus, which includes powering systems on and off, charging batteries, station-keeping, communicating with the ground (and other satellites), running the schedule, and executing customer applications on the payloads. </p>
+<h2 id='windows'>Windows</h2>
+<p>A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exclusive access to different things, i.e. attitude control. Customer reservations are represented as types of windows too.</p>
+<h3 id='contact-windows'>Contact Windows</h3>
+<p>A contact is a type of window, and is a one or two-way radio transmission between a satellite and a ground-station, or between two satellites (inter-satellite links). The purpose of a contacts is broad, but includes time for maintenance, schedule synchronization and the transfer of data, logs and telemetry. Spire schedules contacts for its exclusive use - customer code is not made aware of these contacts. Customers may schedule their own contacts between satellites. </p>
+<h3 id='payload-windows'>Payload Windows</h3>
+<p>Each payload type (i.e. <code>SDR</code>, <code>Sabertooth</code> or <code>IPI</code>) has a <a href="https://developers.spire.com/tasking-api-docs/#supported-windows">corresponding window</a> to execute applications in. Customers schedule payload windows via the <a href="#">Tasking API</a>.</p>
+<h2 id='satellite-schedule'>Satellite Schedule</h2>
+<p>The list of windows for each satellite is held in a schedule. The schedule contains all windows, both for contacts and customer activities. The schedule is synchronized with the satellite at each contact. </p>
+<h2 id='scheduling-time-on-a-payload'>Scheduling Time on a Payload</h2>
+<p>A window is inserted into the schedule with the <a href="#">Tasking API</a>. The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, apertures, cameras etc. </p>
+<h2 id='uploading-files'>Uploading Files</h2>
+<p>The Tasking API provides an <a href="#"><code>upload</code></a> endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be <a href="#flight-flash">flight-flashed</a> to the payload while on the ground, before launch.</p>
+<h3 id='flight-flash'>Flight Flash</h3>
+<p>Flight-flash is the process of creating and installing file system images into the payloads on the ground before launch.  This is often a good time for large customer applications to be installed, i.e. machine learning models or frameworks like Python or TensorFlow. </p>
+<h2 id='downloading-files'>Downloading Files</h2>
+<p>Any files found in the <code>/outbox</code> directory on a payload at the end of a window will be transferred off the payload by the satellite bus and queued for download to AWS S3. </p>
+<h2 id='sharing-files'>Sharing Files</h2>
+<p>Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows overlap.  More on that in the next 2 sections...</p>
+<h2 id='inter-payload-networking'>Inter-payload Networking</h2>
+<p>When windows on a satellite overlap, ethernet is provided for IP networking, Ping and UDP &amp; TCP ports 10,000+ are enabled. This allows application code to communicate, i.e. listen on a port for requests from a different payload.</p>
+<h2 id='inter-satellite-networking'>Inter-satellite Networking</h2>
+<p>Inter-satellite-links (ISL) lease windows can be scheduled for customer use. They are requested with the <a href="#">Tasking API</a> and create a Tx window on one satellite and Rx window on the other, as the link is simplex/one-way. ISL leases require a satellite pair in synchronous orbit.  An ISL lease window opens up a route to payloads on the remote/Rx satellite. To make use of the ISL network, windows on the sending a receiving satellites would be scheduled concurrently. Destination ports of 10,000+ are routed across the link. The simplex link means that TCP can not be &quot;acknowledged&quot; - UDP is supported.</p>
+<h2 id='spire-linux-agent'>Spire Linux Agent</h2>
+<p>Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control. Additional information can be found <a href="/spire-linux-agent-docs/">here</a>.</p>
+<h2 id='power'>Power</h2>
+<p>The satellite bus manages power consumption and collection of solar energy. In the unlikely event that there is not enough power to maintain the health of the satellite bus, a payload window may be aborted or not attempted at all. </p>
+<h2 id='antennas-amp-apertures-cameras'>Antennas &amp; Apertures (Cameras)</h2>
+<p>Various antennas are made available on the Software Defined Radio (SDR) payload.  Some antennas allow for Tx/Rx while others are Rx only. Spire provides utilities for RF capture and receive.</p>
+
+<p>The Imaging Payload Interface (IPI) payload provides customer with access to one or more cameras. Spire provides an SDK and utilities for managing and acquiring images.</p>
+<h2 id='attitude-control'>Attitude Control</h2>
+<p>The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including <a href="https://developers.spire.com/tasking-api-docs/#adcs_config">nadir and target tracking</a>.</p>
+<h3 id='ground-based'>Ground Based</h3>
+<p>When a window is scheduled, attitude can be provided. The satellites attitude is set before the start of the window.</p>
+<h3 id='in-orbit-realtime'>In-orbit - Realtime</h3>
+<p>Additionally, a window can be scheduled to allow in-orbit control of attitude from one or more payloads. This allows payloads to respond to events in real-time by pointing directional antennas and/or apertures at areas of interest. Attitude control is provided via REST API to the local agent. </p>
+<h2 id='telemetry'>Telemetry</h2>
+<p>Various metrics are captured on the satellite bus and made available on the ground to customers. This telemetry includes power levels and attitude data. </p>
+<h2 id='ground-stations'>Ground Stations</h2>
+<p>Spire maintains ground-stations around the globe. The location &amp; capabilities of each ground-station affect when a customer can expect their data to be uplinked or downlinked. Ground stations are fitted with some combination of UHF, S-BAND and X-BAND transceivers.</p>
+<h2 id='next'>Next</h2>
+<ul>
+<li><a href="./ExecutionEnvironment.md">Execution Environment</a></li>
+<li><a href="./GettingStarted.md">Getting Started Guide</a></li>
+</ul>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>

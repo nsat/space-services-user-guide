@@ -1,6 +1,6 @@
-# Software User Guide
+![Spire Space Services](./images/spire.png)
 
-![Spire Space Services](./assets/images/spire.png)
+# Software User Guide
 
 Spire Space Services provides a suite of APIs, libraries and services to enable customers to schedule payload operations, 
 interface with the satellite bus and provide execution environments for customer code hosted in space.  The purpose of this guide is to show how 
@@ -14,7 +14,7 @@ For customers deploying software to existing Spire hardware, please refer to the
 
 The diagram below shows the architecture for customers hosting their own payloads on a Spire satellite bus.
 
-![Payload in Space Architecture](./assets/images/payload_in_space_arch.png)
+![Payload in Space Architecture](./images/payload_in_space_arch.png)
 
 The processes highlighted in yellow represent code required by the user’s development team.  All of the other processes are
 handled by Spire software.
@@ -134,7 +134,7 @@ execution environment on the spacecraft.
 
 The purpose of this guide is to show how users can leverage these services for payload operations and workflows.
 
-![Payload in Space Architecture](./assets/images/software_in_space_arch.png)
+![Payload in Space Architecture](./images/software_in_space_arch.png)
 
 ### Tasking API
 

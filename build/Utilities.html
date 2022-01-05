@@ -1,0 +1,472 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Tools & Utilities</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9950053b.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-ea811c3e.js"></script>
+
+    <style>
+    :root { --examples-width: 0; }
+    div.highlight { display: none; }
+    </style>
+    <link href="https://3qjvwc2vv8nz2r2w5vhhzkj4-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/favicon.ico" rel="icon" type="image/ico" />
+  </head>
+
+  <body class="Utilities" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/spire_white_logo-87ed221e.svg" class="logo" alt="" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#tools-amp-utilities" class="toc-h1 toc-link" data-title="Tools &amp; Utilities">Tools &amp; Utilities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#" class="toc-h2 toc-link" data-title="Tone">Tone</a>
+                  </li>
+                  <li>
+                    <a href="#" class="toc-h2 toc-link" data-title="Square">Square</a>
+                  </li>
+                  <li>
+                    <a href="#" class="toc-h2 toc-link" data-title="Random">Random</a>
+                  </li>
+                  <li>
+                    <a href="#" class="toc-h2 toc-link" data-title="pn9">pn9</a>
+                  </li>
+                  <li>
+                    <a href="#" class="toc-h2 toc-link" data-title="ones">ones</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="index.html">Spire Space Services</a></li>
+            <li><a href="Fundamentals.html">Fundamentals</a></li>
+            <li><a href="GettingStarted.html">Getting Started</a></li>
+            <li><a href="ExecutionEnvironment.html">Execution Environment</a></li>
+            <li><a href="Utilities.html">Tools & Untilities</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="https://github.com/nsat/space-services-user-guide">GitHub</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <!-- updates slatedocs internal links from .md to .html -->
+
+<script>
+$(function() {
+var anchors = document.getElementsByTagName("a");
+
+for (var i = 0; i < anchors.length; i++) {
+    var href = anchors[i].getAttribute("href");
+    if ((href.startsWith("http") || href.startsWith("//")) || !(href.endsWith(".md") || href.includes(".md#"))){
+        continue;
+    }
+    href = href.replace(/.md$/, ".html");
+    anchors[i].setAttribute("href", href);
+}
+});
+</script>
+<h1 id='tools-amp-utilities'>Tools &amp; Utilities</h1>
+<p>The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for
+customers to run directly or indirectly within a payload windows <a href="https://developers.spire.com/tasking-api-docs/#user_command"><code>user_command</code></a> parameter.</p>
+<h4 id='rf-collect'>RF Collect</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>rfcollect
+  <span class="nt">-w</span> &lt;file&gt;        IQ file to receive
+  <span class="nt">-S</span> &lt;start&gt;       Start UTC <span class="nb">time </span>of the capture <span class="k">in </span>s, 0 will directly starts <span class="o">(</span><span class="nv">default</span><span class="o">=</span>0s<span class="o">)</span>
+  <span class="nt">-d</span> &lt;duration&gt;    Duration of the capture <span class="k">in </span>s, <span class="o">(</span><span class="nv">default</span><span class="o">=</span>10s<span class="o">)</span>
+  <span class="nt">-f</span> &lt;freq&gt;        Set frequency RX Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>2022500000Hz<span class="o">)</span>
+  <span class="nt">-g</span> &lt;gain&gt;        Set RX gain dB <span class="o">(</span>range <span class="nt">-3dB</span> to 70dB, <span class="nv">default</span><span class="o">=</span>70dB<span class="o">)</span>
+  <span class="nt">-s</span> &lt;fs&gt;          Set RX sample rate Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1000000Hz<span class="o">)</span>
+  <span class="nt">-b</span> &lt;bdw&gt;         Set RX bandwidth Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1000000Hz<span class="o">)</span>
+  <span class="nt">-m</span> &lt;band&gt;        SBAND|UHF <span class="o">(</span><span class="nv">default</span><span class="o">=</span>SBAND<span class="o">)</span>
+  <span class="nt">-o</span>               Print the logging on stdout instead <span class="k">in </span>file <span class="o">(</span>/var/log/rfcollect.log<span class="o">)</span><span class="nb">.</span>
+  <span class="nt">-l</span> &lt;lvl&gt;         Set log level <span class="nv">DEBUG</span><span class="o">=</span>0, <span class="nv">INFO</span><span class="o">=</span>1, <span class="nv">WARN</span><span class="o">=</span>2, <span class="nv">ERR</span><span class="o">=</span>3, <span class="nv">NONE</span><span class="o">=</span>4 <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1<span class="o">)</span><span class="nb">.</span>
+  <span class="nt">-h</span>               Help
+
+  NOTE: The capture IQ file size is limited to 1024 MB
+</code></pre></div>
+<p>Payloads: <code>SDR</code></p>
+
+<p>Chroot friendly command to collect raw IQ files (<code>int16</code> format). When executing <code>rfcollect</code>,
+the IQ is captured from the indicated UTC start (<code>-S</code>) time for the required duration (<code>-d</code>)
+period. Then it is written in the indicated output file (<code>-w</code>). The output file size is limited to 1GB.</p>
+
+<p>The command returns when the capture is finished and the IQ samples are written in the
+output file, or when an error occurs.</p>
+
+<p>The IQ can be recorded from UHF or SBAND (<code>-m</code>).</p>
+<h4 id='rf-transmit'>RF Transmit</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>rftransmit 
+  <span class="nt">-w</span> &lt;file&gt;        IQ file to transmit
+  <span class="nt">-r</span> &lt;period&gt;      Period <span class="k">in </span>second at which the file is repeated <span class="o">(</span><span class="nv">default</span><span class="o">=</span>0s<span class="o">)</span><span class="nb">.</span>
+                   If the file to play is longer than the period, the samples are <span class="nb">cut
+                   </span>to the period. If the period is 0, the file is play continuously
+                   without pause or cut.
+  <span class="nt">-c</span> &lt;play&gt;        Number of <span class="nb">time </span>the IQ file is played <span class="o">(</span><span class="nt">-1</span> means infinite<span class="o">)</span> <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1<span class="o">)</span>
+  <span class="nt">-f</span> &lt;freq&gt;        Set frequency TX Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>2022500000Hz<span class="o">)</span>
+  <span class="nt">-g</span> &lt;gain&gt;        Set TX gain dB <span class="o">(</span>range <span class="nt">-80dB</span> to 0dB, <span class="nv">default</span><span class="o">=</span><span class="nt">-8dB</span><span class="o">)</span>
+  <span class="nt">-s</span> &lt;fs&gt;          Set TX sample rate Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1000000Hz<span class="o">)</span>
+  <span class="nt">-b</span> &lt;bdw&gt;         Set TX bandwidth Hz <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1000000Hz<span class="o">)</span>
+  <span class="nt">-m</span> &lt;band&gt;        SBAND|UHF <span class="o">(</span><span class="nv">default</span><span class="o">=</span>SBAND<span class="o">)</span>
+  <span class="nt">-o</span>               Print the logging on stdout instead <span class="k">in </span>file <span class="o">(</span>/var/log/rftransmit.log<span class="o">)</span><span class="nb">.</span>
+  <span class="nt">-l</span> &lt;lvl&gt;         Set log level <span class="nv">DEBUG</span><span class="o">=</span>0, <span class="nv">INFO</span><span class="o">=</span>1, <span class="nv">WARN</span><span class="o">=</span>2, <span class="nv">ERR</span><span class="o">=</span>3, <span class="nv">NONE</span><span class="o">=</span>4 <span class="o">(</span><span class="nv">default</span><span class="o">=</span>1<span class="o">)</span><span class="nb">.</span>
+  <span class="nt">-h</span>               Help
+</code></pre></div>
+<p>Payloads: <code>SDR</code></p>
+
+<p>Chroot friendly application to transmit raw IQ files (<code>int16</code> format). When executing <code>rftransmit</code>,
+it is possible to indicate the number of times (<code>-c</code>) the file is transmitted
+(e.g <code>-c 10</code> means transmit IQ file 10 time), and the period (<code>-r</code>) at which it is repeated.</p>
+
+<p>If the period at which the file needs to be repeated is smaller than the time
+to play the IQ file, the IQ file is cut to the repetition period. If no interval
+between repetition is indicated, the file is repeated as soon as it has been played.</p>
+
+<div style="font-family:Courier New; white-space: pre; background-color: #333; width:680px; margin-left: 30px; padding-left: 6px;" class="highlight">
+
+|                         |                         |                         |
+| |----------|            | |----------|            | |----------|            |
+|-|    IQ    |------------|-|    IQ    |------------|-|    IQ    |------------|
+| |----------|            | |----------|            | |----------|            |
+|                         |                         |                         |
+
+x-------------------------X
+              |
+    Period at which the
+      file is repeated
+
+</div>
+
+<p>The command returns after playing the IQ file the indicated number of
+times or when an error occurs.</p>
+
+<p>The IQ can be transmitted to UHF or SBAND (<code>-m</code>).</p>
+<h4 id='iq-generator'>IQ generator</h4><div class="highlight"><pre class="highlight shell tab-shell"><code>iqgenerator 
+  <span class="nt">-f</span> &lt;iqfile&gt;               IQ filename
+  <span class="nt">-S</span> &lt;samples-per-symbol&gt;   Samples Per Symbol <span class="o">[</span><span class="nv">default</span><span class="o">=</span>2]
+  <span class="nt">-b</span> &lt;bits-per-symbol&gt;      <span class="nv">BPSK</span><span class="o">=</span>1, <span class="nv">QPSK</span><span class="o">=</span>2, <span class="nv">PSK8</span><span class="o">=</span>3 <span class="o">[</span><span class="nv">default</span><span class="o">=</span>1]
+  <span class="nt">-d</span>                        Enable differential encoding. <span class="o">(</span>enabled by default with square|pn9<span class="o">)</span>
+  <span class="nt">-s</span> &lt;signal&gt;               square|random|ones|zeros|pn9|coded|tone <span class="o">[</span><span class="nv">default</span><span class="o">=</span>square]
+  <span class="nt">-o</span>                        Print the logging on stdout instead <span class="k">in </span>a file /var/log/iqgenerator.log.
+  <span class="nt">-l</span> &lt;lvl&gt;                  Set log level <span class="nv">DEBUG</span><span class="o">=</span>0, <span class="nv">INFO</span><span class="o">=</span>1, <span class="nv">WARN</span><span class="o">=</span>2, <span class="nv">ERR</span><span class="o">=</span>3, <span class="nv">NONE</span><span class="o">=</span>4 <span class="o">[</span><span class="nv">default</span><span class="o">=</span>1].
+  <span class="nt">-h</span>                        <span class="nb">help</span>
+</code></pre></div>
+<p>Payloads: <code>SDR</code></p>
+
+<p>This utility generates IQ files based on the desired signal based on
+coding (BPSK, QPSK, PSK8) and sample per symbol. The
+type of signals available are:
+- <code>tone</code>, all bytes are 0x00
+- <code>square</code>, all bytes are 0xAA
+- <code>random</code>, all word are randomly generated using <code>stdlib</code> <code>rand()</code>
+- <code>ones</code>, all bytes are 0x01
+- <code>pn9</code></p>
+
+<table><thead>
+<tr>
+<th>Signal</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><h3>Tone</h3> <img src="images/images/tone.png" alt="Tone" /></td>
+<td><h3>Square</h3> <img src="images/images/square.png" alt="Square" /></td>
+</tr>
+<tr>
+<td><h3>Random</h3> <img src="images/images/random.png" alt="Random" /></td>
+<td><h3>pn9</h3> <img src="images/images/pn9.png" alt="pn9" /></td>
+</tr>
+<tr>
+<td><h3>ones</h3> <img src="images/images/ones.png" alt="ones" /></td>
+<td></td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
