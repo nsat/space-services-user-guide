@@ -99,7 +99,7 @@ Spire maintains ground-stations around the globe. The location & capabilities of
 
 
 
-## Next
+## Next Steps
 
  - [Execution Environment](./ExecutionEnvironment.md)
  - [Getting Started Guide](./GettingStarted.md)

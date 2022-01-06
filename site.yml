@@ -12,6 +12,7 @@ pages:
   - tutorials/aoi/AOI
   - tutorials/isl/ISL
   - tutorials/ipc/IPC
+  - tutorials/sabertooth/index
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file

@@ -46,6 +46,7 @@ curl -X POST ${HOST}/tasking/window \
             "executable": "python3",
             "executable_arguments": [
                 "-m", "http.server", "10101", "--bind", "0.0.0.0"
+            ]
         }
     }
 }
@@ -76,6 +77,7 @@ curl -X POST ${HOST}/tasking/window \
             "executable": "curl",
             "executable_arguments": [
                 "http://10.2.1.8:10101/var/log/syslog", "-o", "/outbox/sdr_syslog"
+            ]
         }
     }
 }

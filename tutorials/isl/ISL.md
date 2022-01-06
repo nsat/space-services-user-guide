@@ -1,17 +1,19 @@
-Inter-Satellite LinksTracking an Area Of Interest Tutorial
+# Inter-Satellite Links Tutorial
 
 |Complexity:|High|
 |-|-|
 |Payloads:|2 satellites with ISL: `SDR` & `SABERTOOTH`|
 |Windows:|`LEASE_ISL`, `PAYLOAD_SDR` & `PAYLOAD_SABERTOOTH`|
 
-Inter-Satellite Links (ISL) are enabled for some satellites. ISL links can be made between 2 satellites following the same orbit so that they can be in contact at any time, and there is little relative motion between them. Satellites that are in intermittent contact when their orbits overlap may also be used for ISL contacts, so long as their direction is similar enough for meaningful contact time as well as low doppler-shift.
 
-For this example we will be assuming that the satellites are in synchronous orbit to simplify calculating when to schedule the windows.
+Inter-Satellite Links (ISL) are enabled for some satellites. ISL links can be made between a single pair of satellites following the same orbit so that they can be in contact at any time, where there is little relative motion between them. Satellites that are in intermittent contact (i.e. when their orbits overlap) may also be used for ISL contacts, so long as their direction is similar enough for meaningful contact time as well as low doppler-shift.
+
+
+To simplify calculating when to schedule the windows, for this example we will be assuming that the satellites are in synchronous orbit.
 
 
 1. Schedule an ISL between 2 satellites
-1. Upload listener and client to satellites
+1. Upload listener and client scripts to the respective satellites
 1. Schedule the `SDR` on the transmitting satellite to send data
 1. Schedule the `SABERTOOTH` on the receiving satellite to listen for & downlink data
 1. Review
@@ -19,7 +21,7 @@ For this example we will be assuming that the satellites are in synchronous orbi
 
 ## Schedule LEASE_ISL
 
-The `LEASE_ISL` is used to configure a one-way S-BAND ISL, providing a simplex IP link between the satellites. UDP is used for data transfer as the protocol has no return acknowledgment.
+The `LEASE_ISL` is used to configure a one-way ISL using the S-BAND radio, providing a simplex IP link between the satellites. In this example UDP is used for data transfer as the protocol has no return acknowledgment and ideal for simplex links.
 
 A single call to the Tasking API creates a `LEASE_ISL` in both satellites. For this example satellites `FM1` and `FM2` are scheduled for 5 minutes. Everything is scheduled 24 hours out when there are no conflicts with existing down-link contact windows.
 
