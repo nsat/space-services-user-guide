@@ -1,5 +1,17 @@
 pages:
   - index
+  - Fundamentals
+  - GettingStarted
+  - ExecutionEnvironment
+  - AttitudeControl
+  - Utilities
+  - FAQ
+  - tutorials/hello_world/HelloWorld
+  - tutorials/rf_collect/RfCollect
+  - tutorials/rf_transmit/RfTransmit
+  - tutorials/aoi/AOI
+  - tutorials/isl/ISL
+  - tutorials/ipc/IPC
 images:
   - images/**/*
-  - text/*  # A little hacky to put this under images, but works for any static file
+  - text/**/*  # A little hacky to put this under images, but works for any static file
