@@ -110,6 +110,8 @@ EOF
 
 ```bash
 aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
+
+aws s3 cp s3://customer-s3-bucket/a/directory/FM1/downlink/2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log -
 ```
 
 Response:
@@ -118,5 +120,7 @@ Response:
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
 2021-09-06 04:32:29          0 2021/09/06/
-2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_py-install.log
+2021-09-06 04:32:29       5131 2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log
+
+<install log contents....>
 ```
