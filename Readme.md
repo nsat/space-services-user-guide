@@ -47,8 +47,10 @@ Learn the fundamentals of how it works, or jump straight into the documentation 
 
 ### Documentation
 
-  - [Tasking API]()
-  - [Spire]()
+ - [Tasking API](https://developers.spire.com/spire-linux-agent-docs/)
+ - [Spire Linux Agent (in-orbit)](https://developers.spire.com/spire-linux-agent-docs/)
+ - [Data Pipeline API (in-orbit)](https://developers.spire.com/data-pipeline-docs/)
+ - [Constellation Scheduling API)]()
 
 ### FAQ
 
