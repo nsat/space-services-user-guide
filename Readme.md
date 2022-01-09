@@ -132,7 +132,7 @@ execution environment on the spacecraft.
 
 The purpose of this guide is to show how users can leverage these services for payload operations and workflows.
 
-![Payload in Space Architecture](./images/software_in_space_arch.png)
+![Software in Space Architecture](./images/software_in_space_arch.png)
 
 ## Tasking API
 
