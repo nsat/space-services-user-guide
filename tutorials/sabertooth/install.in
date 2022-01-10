@@ -4,7 +4,7 @@ set -xeu
 LOGFILE="py-install-$(date +"%Y_%m_%d_%H_%M_%S").log"
 
 if mkdir -p /outbox 2>/dev/null; then
-    LOGFILE = "/outbox/$LOGFILE"
+    LOGFILE="/outbox/$LOGFILE"
 fi
 
 ((
