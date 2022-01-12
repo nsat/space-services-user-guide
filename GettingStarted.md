@@ -31,7 +31,7 @@ More information on this endpoint is available [here](https://developers.spire.c
 
 ## Start Here
 
- - [**Hello World Tutorial**](./tutorials/hello_world/HelloWorld.md)
+ - [**Hello World Tutorial**](./tutorials/hello_world/)
  - [Full list of tutorials](#tutorials)
  - [Understanding the Execution Environment](./ExecutionEnvironment.md)
  - [SABERTOOTH Setup](./tutorials/sabertooth/)
@@ -40,9 +40,9 @@ More information on this endpoint is available [here](https://developers.spire.c
 
 ## Tutorials
 
- - [Hello World](./tutorials/hello_world/HelloWorld.md)
- - [RF Collect](./tutorials/rf_collect/RfCollect.md)
- - [RF Transmit](./tutorials/rf_transmit/RfTransmit.md)
- - [Tracking an Area Of Interest](./tutorials/aoi/AOI.md)
- - [Inter-Payload Communications](./tutorials/ipc/IPC.md)
- - [Inter-Satellite Links](./tutorials/isl/ISL.md) 
+ - [Hello World](./tutorials/hello_world/)
+ - [RF Collect](./tutorials/rf_collect/)
+ - [RF Transmit](./tutorials/rf_transmit/)
+ - [Tracking an Area Of Interest](./tutorials/aoi/)
+ - [Inter-Payload Communications](./tutorials/ipc/)
+ - [Inter-Satellite Links](./tutorials/isl/) 

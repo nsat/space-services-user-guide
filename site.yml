@@ -6,12 +6,12 @@ pages:
   - AttitudeControl
   - Utilities
   - FAQ
-  - tutorials/hello_world/HelloWorld
-  - tutorials/rf_collect/RfCollect
-  - tutorials/rf_transmit/RfTransmit
-  - tutorials/aoi/AOI
-  - tutorials/isl/ISL
-  - tutorials/ipc/IPC
+  - tutorials/hello_world/index
+  - tutorials/rf_collect/index
+  - tutorials/rf_transmit/index
+  - tutorials/aoi/index
+  - tutorials/isl/index
+  - tutorials/ipc/index
   - tutorials/sabertooth/index
 images:
   - images/**/*

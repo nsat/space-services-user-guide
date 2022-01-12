@@ -74,7 +74,7 @@ optional arguments:
   --hours HOURS  Hours to search (default: 48)
   ```
 
-Any non-json output is written to `stderr` and can be discarded with `2>/dev/null` if needed. The exit code (`$?`) is non-zero if no transits are found. Searching for an overhead transit in the next week would look like:
+Any non-json output is written to `stderr` and can be discarded with `2>/dev/null` if needed. The exit code (`$?`) is non-zero if no transits are found. Searching for an 80+ degree overhead transit of San Francisco (the default) in the next week would look like:
 
 ```json
 $ python3 find_transit --sat 46926 --min 80 --hours 168
@@ -89,7 +89,7 @@ $ python3 find_transit --sat 46926 --min 80 --hours 168
 ]
 ```
 
-PyPredict returns substantially more data than `find_transit` outputs.
+PyPredict returns substantially more data than [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) outputs.
 
 
 ### Interpreting the Data
