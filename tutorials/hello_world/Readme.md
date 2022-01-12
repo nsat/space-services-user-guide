@@ -88,6 +88,8 @@ At this point the file has been queued for upload at the next possible contact.
 
 ## Wait
 
+_Consider moving on to [schedule execution](#schedule-execution) while waiting for this to run._
+
 We can poll for the status of the upload with the following command, and wait until it changes from `PENDING` to `UPLOADING` then finally `UPLOADED`.
 
 ```bash
@@ -135,6 +137,8 @@ Response:
 
 ## Wait
 
+_Consider moving on to the [next tutorial](#next-steps) while waiting for this to run._
+
 Schedule synchronization can be polled by querying for upcoming windows. `state` will change from `PENDING_SYNC` to `SYNCED`.
 
 ```bash
@@ -179,3 +183,8 @@ $ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
 2021-09-06 04:32:29          0 2021/09/06/
 2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_hello_world.txt
 ```
+
+
+## Next Steps
+
+Next, try the [RF Collect](../rf_collect/) tutorial.

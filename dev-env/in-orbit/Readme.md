@@ -1,21 +1,17 @@
-# Sabertooth Python Build Environment Setup
+# In-Orbit Python Environment Setup
 
 |Complexity:|High|
 |-|-|
-|Payloads:|`SABERTOOTH`|
-|Windows:|`PAYLOAD_SABERTOOTH`|
-
-The `SABERTOOTH` payload is installed with the stock NVIDIA JETSON Ubuntu 18.04.2 Linux distro ([specs](../../ExecutionEnvironment.md#sabertooth)). The environment requires further setup if the user plans to deploy python modules. This walkthrough can be adapted for any Linux distro package or python module.
-
- A list of packages installed on the `SABERTOOTH` payload can be found [here](../../text/sabertooth_package_list.txt). 
+|Payloads:|`SABERTOOTH`, `SDR`, `IPI`|
 
 
- ## Packages
+The [ISL tutorial](../tutorials/isl/) requires the python module `zfec`. This module has a native C library that is built at installation time by `setuptools`. The ``SABERTOOTH`, `SDR`, `IPI` payloads require further setup if the user plans to deploy python modules that have a C/C++ native build step. This walkthrough can be adapted for any Linux distro package or python module.
 
-The ISL tutorial requires the python module `zfec`. The following instructions demonstrate deploying this module and it's dependencies:
+
+## Packages
 
   - [Python 3.6.9 headers](http://ports.ubuntu.com/ubuntu-ports/pool/main/p/python3.6/libpython3.6-dev_3.6.9-1~18.04ubuntu1.6_arm64.deb) (43 MB)
-  - [Python3 pip v21.3.1](https://pypi.org/project/pip/) (1.7 MB)
+  - [Python3 pip v20.3.4](https://pypi.org/project/pip/) (1.7 MB)
   - [Python3 setuptools v59.6.0](https://pypi.org/project/setuptools/) (952 KB)
   - [pyutil 3.3.0 Python module](https://pypi.org/project/pyutil/) (292 KB)
   - [zfec 1.5.1 Python module](https://pypi.org/project/zfec/) (70 KB)
@@ -37,7 +33,7 @@ Steps:
 1. Move include files to `~/.local/include`
 1. `pip install` modules
 
-See the [`install.in`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/sabertooth/install.in) input script in [github](https://github.com/nsat/space-services-user-guide/tree/main/tutorials/sabertooth/).
+See the [`install.in`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/install.in) input script in [github](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
 
 
 ## Create Deploy Package
@@ -51,12 +47,12 @@ Steps:
 1. Append the tarball to a `bash` install script
 
 
-See the [`create_package`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/sabertooth/create_package) script in [github](https://github.com/nsat/space-services-user-guide/tree/main/tutorials/sabertooth/).
+See the [`create_package`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/create_package) script in [github](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
 
 
 ## Deploy Script
 
-Deployment is a 2-step process of uploading the install file and executing it on the `SABERTOOTH`.
+Deployment is a 2-step process of uploading the install file and executing it on the payload. Below are the steps for the `SABERTOOTH` payload. All steps should be repeated for the `SDR` and `IPI` if required.
 
 
 ### Upload Script
@@ -66,7 +62,7 @@ HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
 SATELLITE_ID="satellite_id=FM1"
-PAYLOAD="payload=SDR"
+PAYLOAD="payload=SABERTOOTH"
 DESTINATION_PATH="destination_path=/py-install"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
