@@ -12,7 +12,7 @@ pages:
   - tutorials/aoi/index
   - tutorials/isl/index
   - tutorials/ipc/index
-  - tutorials/sabertooth/index
+  - dev-env/sabertooth/index
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file

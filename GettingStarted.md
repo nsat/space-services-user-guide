@@ -34,7 +34,7 @@ More information on this endpoint is available [here](https://developers.spire.c
  - [**Hello World Tutorial**](./tutorials/hello_world/)
  - [Full list of tutorials](#tutorials)
  - [Understanding the Execution Environment](./ExecutionEnvironment.md)
- - [SABERTOOTH Setup](./tutorials/sabertooth/)
+ - [SABERTOOTH Setup](./dev-env/sabertooth/)
  - [FAQ](./FAQ.md)
 
 
