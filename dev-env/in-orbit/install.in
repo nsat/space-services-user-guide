@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -xeu
 
+export PYTHONUSERBASE=$1
+mkdir -p "$PYTHONUSERBASE/usr/include"
+
+export CPATH="$PYTHONUSERBASE/usr/include/python3.6m/:$PYTHONUSERBASE/usr/include"
+export PATH=$PYTHONUSERBASE/bin:$PATH
+
 LOGFILE="py-install-$(date +"%Y_%m_%d_%H_%M_%S").log"
 
 SETUPTOOLS="setuptools-59.6.0-py3-none-any.whl"
@@ -8,6 +14,9 @@ PIP="pip-20.3.4-py2.py3-none-any.whl"
 
 if mkdir -p /outbox 2>/dev/null; then
     LOGFILE="/outbox/$LOGFILE"
+else
+    mkdir -p "$PYTHONUSERBASE/var/log" 
+    LOGFILE="$PYTHONUSERBASE/var/log/$LOGFILE"
 fi
 
 ((
@@ -27,7 +36,7 @@ fi
     (   cd sabertooth-py-setup/pip \
         && zip -0 -q -r ../$PIP * \
         && cd .. \
-        && python3 $PIP/pip install --force-reinstall --no-index $PIP
+        && python3 $PIP/pip install --force-reinstall --no-index --user $PIP
     )
 
 
@@ -35,24 +44,24 @@ fi
     (   cd sabertooth-py-setup/setuptools \
         && zip -0 -q -r ../$SETUPTOOLS * \
         && cd .. \
-        && pip3 install --force-reinstall $SETUPTOOLS
+        && pip3 install --force-reinstall --user $SETUPTOOLS
     )
 
 
     # pyutil
     pip3 install \
         --force-reinstall \
+        --user \
         sabertooth-py-setup/pyutil/pyutil-3.3.0
 
 
     # zfec
-    mkdir -p ~/.local
-    cp -af sabertooth-py-setup/py-include ~/.local/include
+    cp -af sabertooth-py-setup/py-include/* "$PYTHONUSERBASE/usr/include/"
     pip3 install \
         --force-reinstall \
         --no-deps \
+        --user \
         --global-option=build_ext \
-        --global-option="-I~/.local/include/python3.6m/:~/.local/include" \
         sabertooth-py-setup/zfec/zfec-1.5.1/
 
     echo "$(date) Done"

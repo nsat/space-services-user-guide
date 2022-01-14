@@ -5,7 +5,7 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-This walk-through shows how to upload and run a script on a satellite. This example runs on the [`SDR`](), but could run equally well on any of the Linux payloads.
+This walk-through shows how to upload and run a script on a satellite. This example runs on the [`SDR`](../../ExecutionEnvironment.md#SDR), but could run equally well on any of the Linux payloads.
 
 1. Develop Hello World script
 1. Deploy script
@@ -61,7 +61,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
 SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SDR"
-DESTINATION_PATH="destination_path=/hello_world.sh"
+DESTINATION_PATH="destination_path=/persist/bin/hello_world.sh"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
 
@@ -76,7 +76,7 @@ Response:
 {
     "satellite_id": "FM1",
     "payload": "SDR",
-    "destination_path": "/hello_world.sh",
+    "destination_path": "/persist/bin/hello_world.sh",
     "executable": true,
     "status": "PENDING",
     "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
@@ -121,7 +121,7 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/hello_world.sh"
+            "executable": "/persist/bin/hello_world.sh"
         }
     }
 }
@@ -161,7 +161,7 @@ Response:
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/hello_world.sh"
+            "executable": "/persist/bin/hello_world.sh"
         }
     }
   }]

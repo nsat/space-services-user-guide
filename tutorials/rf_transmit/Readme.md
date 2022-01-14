@@ -66,7 +66,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
 SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SDR"
-DESTINATION_PATH="destination_path=/rf_transmit.sh"
+DESTINATION_PATH="destination_path=/persist/bin/rf_transmit.sh"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
 
@@ -100,7 +100,7 @@ Response:
     {
       "satellite_id": "FM1",
       "payload": "SDR",
-      "destination_path": "/rf_transmit.sh",
+      "destination_path": "/persist/bin/rf_transmit.sh",
       "executable": true,
       "status": "PENDING",
       "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
@@ -128,7 +128,7 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/rf_transmit.sh"
+            "executable": "/persist/bin/rf_transmit.sh"
         }
     }
 }
@@ -166,7 +166,7 @@ Response:
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/rf_transmit.sh"
+            "executable": "/persist/bin/rf_transmit.sh"
         }
     }
   }]
@@ -189,4 +189,4 @@ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
 2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_rf_transmit.log
 ```
 
-Receiving the transmitted waveform is beyond the scope of this tutorial. See the advanced [RF Tx/Rx Tutorial](../rf_txrx/RfTxRx.md) for how this can be achieved.  
+Receiving the transmitted waveform is beyond the scope of this tutorial as it requires a receiver to be listening.

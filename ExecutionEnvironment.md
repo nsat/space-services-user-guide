@@ -11,6 +11,16 @@ for details about a specific window.  Files placed in this folder should be hand
 * `/outbox` - Any files placed in this folder by user software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 
 any payload window.
 
+## Filesystem
+
+The root filesystem is writable to the user. Common Linux directories have been bind-mounted read-only, i.e. `/bin`, `/usr`, `/proc`, `/var` etc. The user's home directory `~` may not be on the same path for each payload. The Tasking API executes customer applications outside of a shell. For these reasons it recommended to:
+
+1. Create a wrapper shell script to add environment variables
+1. Create and use `/persist` or similar directory name at the root of the filesystem
+1. Treat all other directories as read-only
+1. When installing, install to this directory
+
+
 ## Payload Specifications
 
 Below are the list of specifications for each payload type accessible to Software in Space customers including the list of packages pre-installed on the payload.

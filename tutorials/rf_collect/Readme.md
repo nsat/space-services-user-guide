@@ -58,7 +58,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
 SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SDR"
-DESTINATION_PATH="destination_path=/rf_collect.sh"
+DESTINATION_PATH="destination_path=/persist/bin/rf_collect.sh"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
 
@@ -92,7 +92,7 @@ Response:
     {
       "satellite_id": "FM1",
       "payload": "SDR",
-      "destination_path": "/rf_collect.sh",
+      "destination_path": "/persist/bin/rf_collect.sh",
       "executable": true,
       "status": "PENDING",
       "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
@@ -120,7 +120,7 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/rf_collect.sh"
+            "executable": "/persist/bin/rf_collect.sh"
         }
     }
 }
@@ -158,7 +158,7 @@ Response:
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/rf_collect.sh"
+            "executable": "/persist/bin/rf_collect.sh"
         }
     }
   }]

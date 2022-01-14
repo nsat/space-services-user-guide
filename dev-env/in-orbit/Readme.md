@@ -30,7 +30,7 @@ Steps:
 1. Locate tarball at end of `install` file
 1. Extract the tarball to `CWD`
 1. Recreate wheel packages for python
-1. Move include files to `~/.local/include`
+1. Move include files to `/persist/usr/include`
 1. `pip install` modules
 
 See the [`install.in`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/install.in) input script in [github](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
@@ -63,7 +63,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 
 SATELLITE_ID="satellite_id=FM1"
 PAYLOAD="payload=SABERTOOTH"
-DESTINATION_PATH="destination_path=/py-install"
+DESTINATION_PATH="destination_path=/persist/bin/py-install"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
 
@@ -94,7 +94,8 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/py-install"
+            "executable": "/persist/bin/py-install",
+            "executable_arguments": ["/persist"]
         }
     }
 }
