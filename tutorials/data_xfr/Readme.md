@@ -41,9 +41,9 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "curl",
+            "executable": "/persist/bin/entry.sh",
             "executable_arguments": [
-                "-XPOST", "-v",
+                "curl", "-XPOST", "-v",
                 "-H", "Content-type: application/json",
                 "-d", "${DATA}",
                 "http://localhost:2005/sdk/v1/send_file"

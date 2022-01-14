@@ -17,10 +17,8 @@ This walk-through shows how to upload and run a script on a satellite. This exam
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number of a satellite with an SDR payload
-1. An AWS S3 bucket set up with Spire
-1. `curl` or similar
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+
 
 
 ## Develop
@@ -121,12 +119,16 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/persist/bin/hello_world.sh"
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": ["/persist/bin/hello_world.sh"]
         }
     }
 }
 EOF
 ```
+
+It's important to note here the use of `/persist/bin/entry.sh` as a wrapper script. It is an optional script uploaded and maintained by the user to set up the environment. More information can be found in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+
 
 Response:
 
@@ -161,14 +163,15 @@ Response:
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/persist/bin/hello_world.sh"
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": ["/persist/bin/hello_world.sh"]
         }
     }
   }]
 }
 ```
 
-After `hello_world.sh` has run on the `SDR` the output file will be picked up by the satellite bus and queued for downlink to AWS S3.
+After `hello_world.sh` has run on the `SDR` the output file will be picked up by the satellite bus and queued for downlink to AWS S3. The wrapper script produces a log of the activity that is also downloaded.
 
 
 ## Review
@@ -182,6 +185,7 @@ $ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
 2021-09-06 04:32:29          0 2021/09/
 2021-09-06 04:32:29          0 2021/09/06/
 2021-09-06 04:32:29       2568 2021/09/06/20210906T043229Z_hello_world.txt
+2021-09-06 04:32:29       9876 2021/09/06/20210906T043229Z_session-2022_01_14_15_03_17.log
 ```
 
 

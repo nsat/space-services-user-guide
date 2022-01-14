@@ -124,11 +124,11 @@ curl -X POST ${HOST}/tasking/window \
             "target_longitude_east": -122.413815
         },        
         "user_command": {
-            "executable": "rfcollect",
+            "executable": "/persist/bin/entry.sh",
             "executable_arguments": [
+                "rfcollect",
                 "-w", "/outbox/rf_collect.iq",
-                "-o",
-                "-l", "0"
+                "-o", "-l", "0"
             ]
         }
     }

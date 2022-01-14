@@ -120,7 +120,8 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 60,
     "parameters": {
         "user_command": {
-            "executable": "/persist/bin/rf_collect.sh"
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": ["/persist/bin/rf_collect.sh"]
         }
     }
 }
