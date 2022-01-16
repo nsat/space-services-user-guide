@@ -12,10 +12,7 @@ This tutorial will demonstrate creating and sending a waveform through the S-BAN
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number of a satellite with an SDR payload
-1. An AWS S3 bucket set up with Spire
-1. `curl` or similar
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
 ## Develop
@@ -59,6 +56,8 @@ rftransmit error: 127
 ## Deploy
 
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
+
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"

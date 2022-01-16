@@ -19,7 +19,11 @@ The SDR & IPI payloads run on an ARM Cortex A53, with Yocto Poky 2.5 (Sumo) inst
 
 # In-Orbit Compiling
 
-Developers have the option to compile on the payloads, in-orbit. This option is not recommended because the environment will be untested by the developer.  For Python this requires additional steps:
+All payloads include the software and libraries to compile C & C++ applications. This environment is not well suited to the iterative process usually needed due to the time taken to upload files, schedule activities, and wait for the results to appear in the bucket. Where dependent packages are needed, large uploads will require additional time to upload.
+
+Developers should consider using the [cross compiler](./cross-compiling/) if possible.
+
+An example is provided for installing the `zfec` Python module which includes a native C library built at install time:
 
  * [In-Orbit Python Setup](./in-orbit/)
 

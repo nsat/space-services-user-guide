@@ -12,14 +12,21 @@ This example requires the [satellites TLE](https://en.wikipedia.org/wiki/Two-lin
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. An AWS S3 bucket set up with Spire
-1. `python3`
-1. [`pypredict`](https://github.com/nsat/pypredict) python module
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup). For this tutorial Python 3.6+ & the `pypredict` python module is used (on the ground only).
+
+### pypredict
+
+Install the [`pypredict`](https://github.com/nsat/pypredict) python module:
+
+```bash
+python3 -m pip install git+https://github.com/nsat/pypredict.git
+```
 
 ## Norad Catalog Number
 
 The Norad Catalog Number (Norad Id) can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
+
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"

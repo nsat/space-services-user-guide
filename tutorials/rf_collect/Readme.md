@@ -10,10 +10,7 @@ This tutorial will demonstrate receiving signals from the S-BAND radio on the `S
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number of a satellite with an SDR payload
-1. An AWS S3 bucket set up with Spire
-1. `curl` or similar
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
 ## Develop

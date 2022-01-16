@@ -20,7 +20,6 @@ This walk-through shows how to upload and run a script on a satellite. This exam
 All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
-
 ## Develop
 
 Create a script that will run on the `SDR` Linux payload called `hello_world.sh`:

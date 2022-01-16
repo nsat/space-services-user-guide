@@ -16,16 +16,14 @@ Only ports 10000 and above are available to connect to. Only payloads with an ov
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number of a satellite with SDR & SABERTOOTH payloads
-1. An AWS S3 bucket set up with Spire
-1. `curl` or similar
-
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
 ## Schedule PAYLOAD_SDR Window
 
 Create a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down.
+
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"

@@ -19,6 +19,12 @@ To simplify calculating when to schedule the windows, for this example we will b
 1. Review
 
 
+## Prerequisites
+
+All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup). Additionally the `zfec` python module must be installed on the payload. See the [In-Orbit Python Environment Setup
+](../../dev-env/in-orbit/) instructions for more information.
+
+
 ## Schedule LEASE_ISL
 
 The `LEASE_ISL` is used to configure a one-way ISL using the S-BAND radio, providing a simplex IP link between the satellites. In this example UDP is used for data transfer as the protocol has no return acknowledgment and ideal for simplex links.

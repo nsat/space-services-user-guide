@@ -23,6 +23,7 @@ This tutorial demonstrates queueing low-priority data for download, with a short
 
 Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the file `/var/log/syslog` to the ground on the `demo` topic. If the file is not downloaded within 24 hours, it can be discarded. 
 
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
