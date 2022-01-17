@@ -31,10 +31,12 @@ The `LEASE_ISL` is used to configure a one-way ISL using the S-BAND radio, provi
 
 A single call to the Tasking API creates a `LEASE_ISL` in both satellites. For this example satellites `FM1` and `FM2` are scheduled for 5 minutes. Everything is scheduled 24 hours out when there are no conflicts with existing down-link contact windows.
 
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
 START=$(( `date -u +'%s'` + 86400 ))
 
 curl -X POST ${HOST}/tasking/window \
@@ -43,7 +45,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "LEASE_ISL",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 300,
     "parameters": {

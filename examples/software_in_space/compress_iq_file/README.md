@@ -1,6 +1,6 @@
 # Example: IQ Capture and Compression
 
-In this trivial example, we will create a PAYLOAD_SDR window to capture a signal, compress the resulting IQ file and downlink the compressed
+In this trivial example, we will create a PAYLOAD_SDR window to capture a signal, compress the resulting [IQ](../../Utilities.md#iq-generator) file and downlink the compressed
 file to our S3 bucket.  We will be using XZ Utils for compression.
 
 The full specification for PAYLOAD_SDR windows (along with other window types) can be found in the Tasking API
@@ -36,7 +36,7 @@ This script takes two parameters
 
 ## Workflow
 
-**1. The tasking.sh script is executed from the customer's cloud environment to uplink our compress.py script 
+**1. The tasking.sh script is executed from the user's cloud environment to uplink our compress.py script 
 and create the necessary payload window to run the script on our payload.**
 
 At this point, we can call the `GET /tasking/windows` to check the status of our window.

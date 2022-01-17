@@ -52,11 +52,14 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
 
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
+
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
 
-SATELLITE_ID="satellite_id=FM1"
+SATELLITE_ID="satellite_id=${SAT_ID}"
 PAYLOAD="payload=SDR"
 DESTINATION_PATH="destination_path=/persist/bin/hello_world.sh"
 EXECUTABLE="executable=true"
@@ -113,7 +116,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -178,7 +181,7 @@ After `hello_world.sh` has run on the `SDR` the output file will be picked up by
 The file can be found in the pre-arranged AWS S3 bucket with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
 
 ```bash
-$ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
+$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/

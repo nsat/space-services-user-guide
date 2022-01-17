@@ -26,11 +26,13 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 The Norad Catalog Number (Norad Id) can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` and `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
+
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
 
@@ -120,7 +122,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": ${DURATION},
     "parameters": {

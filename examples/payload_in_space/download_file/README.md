@@ -5,7 +5,7 @@ The filename will be specified during window creation and the file will simply c
 execution.
 
 The scripts for running this example are provided in this folder.  For production usage of the Payload in Space offering,
-it is the responsibility of the customer to author these scripts (notably `payload_exec`).
+it is the responsibility of the user to author these scripts (notably `payload_exec`).
 
 ## Assumptions
 

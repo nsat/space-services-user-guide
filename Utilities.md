@@ -1,6 +1,6 @@
 # Tools & Utilities
 
-The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for customers to run directly or indirectly within a payload windows [`user_command`](https://developers.spire.com/tasking-api-docs/#user_command) parameter.
+The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for users to run directly or indirectly within a payload windows [`user_command`](https://developers.spire.com/tasking-api-docs/#user_command) parameter.
 
 
 ## RF Collect
@@ -99,13 +99,12 @@ iqgenerator
   -h                        help
 ```
 
-This utility generates IQ files based on the desired signal based on
-coding (BPSK, QPSK, PSK8) and sample per symbol. The
-type of signals available are:
-- `tone`, all bytes are 0x00
-- `square`, all bytes are 0xAA
+This utility generates [IQ](./FAQ/#iq-file) files based on the desired signal based on coding (BPSK, QPSK, PSK8) and sample per symbol. The types of signals available are:
+
+- `tone`, all bytes are `0x00`
+- `square`, all bytes are `0xAA`
 - `random`, all word are randomly generated using `stdlib` `rand()`
-- `ones`, all bytes are 0x01
+- `ones`, all bytes are `0x01`
 - `pn9`
 
 | Signal |  |
@@ -113,3 +112,8 @@ type of signals available are:
 | <h3>Tone</h3> ![Tone](./images/tone.png) | <h3>Square</h3> ![Square](./images/square.png) |
 | <h3>Random</h3> ![Random](./images/random.png) | <h3>pn9</h3> ![pn9](./images/pn9.png) |
 | <h3>ones</h3> ![ones](./images/ones.png) |  |
+
+
+## Next Steps
+
+ - [Getting Started Guide](./GettingStarted.md)

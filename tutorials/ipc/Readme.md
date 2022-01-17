@@ -23,11 +23,12 @@ All tutorials require the steps outlined in the [Getting Started Guide](GettingS
 
 Create a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down.
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
 START=$(( `date -u +'%s'` + 21600 ))
 
 curl -X POST ${HOST}/tasking/window \
@@ -36,7 +37,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -72,7 +73,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SABERTOOTH",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -95,7 +96,7 @@ EOF
 Once the windows have completed and enough time has passed for the file to download, we can review it in AWS S3:
 
 ```bash
-$ aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
+$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/

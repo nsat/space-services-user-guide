@@ -23,11 +23,13 @@ This tutorial demonstrates queueing low-priority data for download, with a short
 
 Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the file `/var/log/syslog` to the ground on the `demo` topic. If the file is not downloaded within 24 hours, it can be discarded. 
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
+
 START=$(( `date -u +'%s'` + 86400 ))
 DATA='{\"destination\":\"ground\",\"filepath\":\"/var/log/syslog\",\"topic\":\"demo\",\"options\":{\"reliable\":true,\"TTLParams\":{\"urgent\":0,\"bulk\":0,\"surplus\":86400}}}'
 
@@ -37,7 +39,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -58,4 +60,4 @@ EOF
 
 ## Review
 
-It is 24 hours before the window runs, and may take up to 24 more hours until the low-priority file is downloaded. The file can be found in the customer AWS S3 bucket (see [Hello World tutorial](../hello_world/#review)).
+It is 24 hours before the window runs, and may take up to 24 more hours until the low-priority file is downloaded. The file can be found in the user AWS S3 bucket (see [Hello World tutorial](../hello_world/#review)).

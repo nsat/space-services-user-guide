@@ -9,7 +9,7 @@ All payloads include the software and libraries to compile C & C++ applications.
 
 Developers should consider using the [cross compiler](../cross-compiling/) if possible.
 
-The [ISL tutorial](../tutorials/isl/) requires the python module `zfec`. This module has a native C library that is built at installation time by `setuptools`. The ``SABERTOOTH`, `SDR`, `IPI` payloads require further setup if the user plans to deploy python modules that have a C/C++ native build step. This walkthrough can be adapted for any Linux distro package or python module.
+The [ISL tutorial](../tutorials/isl/) requires the python module `zfec`. This module has a native C library that is built at installation time by `setuptools`. The ``SABERTOOTH`, `SDR`, `IPI` payloads require further setup if the developer plans to deploy python modules that have a C/C++ native build step. This walkthrough can be adapted for any Linux distro package or python module.
 
 
 ## Packages
@@ -61,13 +61,14 @@ Deployment is a 2-step process of uploading the install file and executing it on
 
 ### Upload Script
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
 
-SATELLITE_ID="satellite_id=FM1"
+SATELLITE_ID="satellite_id=SAT_ID"
 PAYLOAD="payload=SABERTOOTH"
 DESTINATION_PATH="destination_path=/persist/bin/py-install"
 EXECUTABLE="executable=true"
@@ -95,7 +96,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SABERTOOTH",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -112,9 +113,9 @@ EOF
 ## Review Deploy Log
 
 ```bash
-aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
+aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
-aws s3 cp s3://customer-s3-bucket/a/directory/FM1/downlink/2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log -
+aws s3 cp s3://user-s3-bucket/a/directory/FM1/downlink/2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log -
 ```
 
 Response:

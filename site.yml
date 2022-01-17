@@ -5,6 +5,7 @@ pages:
   - ExecutionEnvironment
   - AttitudeControl
   - Utilities
+  - Tutorials
   - FAQ
   - tutorials/hello_world/index
   - tutorials/rf_collect/index

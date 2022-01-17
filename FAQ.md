@@ -1,9 +1,7 @@
 # FAQ
 
-### This is a very long question that doesn't fit in the menu
+### IQ File
 
-And a short answer with a [link]().
+**I**n-phase and **Q**uadrature. The IQ file format comprises unsigned 16-bit pairs of imaginary and quadrature numbers. The file format is used to store samples from, or played into a Software Defined Radio (SDR).
 
-### Next Q
-
-Next answer.
+More information can be found on [Wikipedia](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components).
