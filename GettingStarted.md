@@ -22,7 +22,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
 
-The example response below shows that the authentication token has access to [3 window types](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
+The example response below shows that the authentication token has access to [2 window types](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
 
 ```bash
 {

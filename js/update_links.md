@@ -8,7 +8,7 @@ for (var i = 0; i < anchors.length; i++) {
     if ((href.startsWith("http") || href.startsWith("//")) || !(href.endsWith(".md") || href.includes(".md#"))){
         continue;
     }
-    href = href.replace(/.md$/, ".html");
+    href = href.replace(/.md/, ".html");
     anchors[i].setAttribute("href", href);
 }
 });

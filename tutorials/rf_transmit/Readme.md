@@ -57,13 +57,14 @@ rftransmit error: 127
 
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `FM1` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
 
-SATELLITE_ID="satellite_id=FM1"
+SATELLITE_ID="satellite_id=${SAT_ID}"
 PAYLOAD="payload=SDR"
 DESTINATION_PATH="destination_path=/persist/bin/rf_transmit.sh"
 EXECUTABLE="executable=true"
@@ -122,7 +123,7 @@ curl -X POST ${HOST}/tasking/window \
 -d @- << EOF
 {
     "type": "PAYLOAD_SDR",
-    "satellite_id": "FM1",
+    "satellite_id": "${SAT_ID}",
     "start": ${START},
     "duration": 60,
     "parameters": {
@@ -181,7 +182,7 @@ After `rf_transmit.sh` has run on the `SDR` the file file will be picked up by t
 The log file can be found in S3 with the timestamp appended to guarantee uniqueness:
 
 ```bash
-aws s3 ls --recursive s3://customer-s3-bucket/a/directory/FM1/downlink/
+aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
