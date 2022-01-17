@@ -7,11 +7,11 @@
 
 This walk-through shows how to upload and run a script on a satellite. This example runs on the [`SDR`](../../ExecutionEnvironment.md#sdr), but could run equally well on any of the Linux payloads.
 
-1. Develop Hello World script
+1. Develop script
 1. Deploy script
-1. Wait for the script to be uploaded
-1. Schedule script to run
-1. Wait for script to run & results downloaded
+1. Wait for script to upload
+1. Schedule script execution
+1. Wait for results
 1. Review
 
 
@@ -20,7 +20,7 @@ This walk-through shows how to upload and run a script on a satellite. This exam
 All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
-## Develop
+## Develop Script
 
 Create a script that will run on the `SDR` Linux payload called `hello_world.sh`:
 
@@ -48,11 +48,11 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 ```
 
 
-## Deploy
+## Deploy Script
 
-Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. Please change `<FM>` to the satellite `id`, and `<token>` to the token provided by Spire.
+Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. 
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed. See the [Getting Started Guide](GettingStarted.md#execution-environment-setup)._
 
 ```bash
 HOST="https://api.orb.spire.com"
@@ -73,20 +73,14 @@ curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
 Response:
 
 ```json
-{
-    "satellite_id": "FM1",
-    "payload": "SDR",
-    "destination_path": "/persist/bin/hello_world.sh",
-    "executable": true,
-    "status": "PENDING",
-    "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
-}
+{"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
 ```
+
 
 At this point the file has been queued for upload at the next possible contact. 
 
 
-## Wait
+## Wait for Script Upload
 
 _Consider moving on to [schedule execution](#schedule-execution) while waiting for this to run._
 
@@ -99,11 +93,18 @@ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
 Response:
 
 ```json
-{"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
+{
+    "satellite_id": "FM1",
+    "payload": "SDR",
+    "destination_path": "/persist/bin/hello_world.sh",
+    "executable": true,
+    "status": "PENDING",
+    "id": "d25c7a43-b70d-4f57-81d5-ff5177b26158",
+}
 ```
 
 
-## Schedule Execution
+## Schedule Script Execution
 
 Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 6 hours. 6 hours was chosen as it's the earliest time that the window is likely run.
 
@@ -139,7 +140,7 @@ Response:
 ```
 
 
-## Wait
+## Wait for Results
 
 _Consider moving on to the [next tutorial](#next-steps) while waiting for this to run._
 

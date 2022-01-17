@@ -8,7 +8,8 @@ TODO: add intro about what we're gonna do here, including tutorials.
 ## Prerequisites
 
 1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-1. The `FM` number of a satellite with an SDR payload
+   1. Contact <a href="mailto:">:</a> to request one
+1. The `FM` number of a satellite with an SDR payload (see below)
 1. An AWS S3 bucket set up with Spire
 1. `curl` or similar
 1. [Development Environment Setup](./dev-env/)
