@@ -55,9 +55,9 @@ if __name__ == "__main__":
         description='Find transit times over lat,lon. Default LEMUR1 & San Francisco @ 30 degrees',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--sat', type=int,   default=40044,       help='Satellite norad id')
-    parser.add_argument('--lat', type=float, default=37.771034,   help='AIO latitude')
-    parser.add_argument('--lon', type=float, default=-122.413815, help='AIO longitude')
-    parser.add_argument('--alt', type=float, default=0,           help='AIO altitude, in meters')
+    parser.add_argument('--lat', type=float, default=37.771034,   help='AOI latitude')
+    parser.add_argument('--lon', type=float, default=-122.413815, help='AOI longitude')
+    parser.add_argument('--alt', type=float, default=0,           help='AOI altitude, in meters')
     parser.add_argument('--min', type=float, default=30,          help='Min elevation, in degrees')
     parser.add_argument('--hours', type=float, default=72,        help='Hours to search')
     exit(main(**vars(parser.parse_args())))

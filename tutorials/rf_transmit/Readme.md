@@ -112,7 +112,7 @@ Response:
 
 ## Schedule Execution
 
-Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 6 hours. 6 hours was chosen as it's the earliest time that the window will reliably sync to the satellite.
+Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen as it's the earliest time that the window will reliably sync to the satellite.
 
 ```bash
 START=$(( `date -u +'%s'` + 21600 ))

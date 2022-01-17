@@ -85,7 +85,7 @@ Since the file is a non-trivial size of around 1.7 MB, multiple contacts will li
 ### Run Script
 
 
-Add a [`PAYLOAD_SABERTOOTH`](https://developers.spire.com/tasking-api-docs/#payload_sabertooth) window to the schedule for in 24 hours. 24 hours was chosen to give the install script enough time to upload.
+Add a [`PAYLOAD_SABERTOOTH`](https://developers.spire.com/tasking-api-docs/#payload_sabertooth) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen to give the install script enough time to upload.
 
 ```bash
 START=$(( `date -u +'%s'` + 86400 ))
