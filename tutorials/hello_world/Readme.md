@@ -194,4 +194,4 @@ $ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
 ## Next Steps
 
-Next, try the [RF Collect](../rf_collect/) tutorial.
+ - [RF Collect Tutorial](../rf_collect/)

@@ -1,24 +1,24 @@
 # Execution Environment
 
-Users software runs in a persistent sandboxed execution environment on a Spire payload, which is a specific Linux computer on a satellite controlling specific hardware.  User software is uploaded to this sandbox environment through the Tasking API.  User software has access to it's own filesystem and various software libraries, the specifics of which depend on which payload the user is scheduling operations on.  The file system is persistent between contacts, files saved to the users filesystem will persist until they are deleted by the user.
+Users software runs in a persistent sandboxed execution environment on a Spire payload, which is a specific Linux computer on a satellite controlling specific hardware.  User software is uploaded to this sandbox environment through the Tasking API.  User software has access to its own filesystem and various software libraries, the specifics of which depend on which payload the user is scheduling operations on.  The file system is persistent between contacts, files saved to the users filesystem will persist until they are deleted by the user.
 
 The execution environment includes two top level directories used to manage incoming and outgoing data:
 
 * `/inbox` - Spire generated files during a payload window will be placed into this folder. 
-For example, [IQ](#iq-generator) files captures during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
+For example, [IQ](#iq-generator) files captured during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
 will vary between window types, please consult the [Tasking API documentation](https://developers.spire.com/tasking-api-docs/) 
 for details about a specific window.  Files placed in this folder should be handled by the user in the window which they are generated.
-* `/outbox` - Any files placed in this folder by the users software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 
+* `/outbox` - Any files placed in this folder by the user's software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 
 any payload window.
 
 ## Filesystem
 
-The root filesystem is writable to the user. Common Linux directories have been bind-mounted read-only, i.e. `/bin`, `/usr`, `/proc`, `/var` etc. The users home directory `~` may not be on the same path for each payload. The Tasking API executes user applications outside of a shell. For these reasons it recommended to:
+The root filesystem is writable to the user. Common Linux directories have been bind-mounted read-only, i.e. `/bin`, `/usr`, `/proc`, `/var` etc. The user's home directory `~` may not be on the same path for each payload. The Tasking API executes user applications outside of a shell. For these reasons it recommended to:
 
 1. Create a wrapper shell script to add environment variables
-1. Create and use `/persist` or similar directory name at the root of the filesystem
-1. Treat all other directories as read-only
-1. When installing, install to this directory
+1. Create and use `/persist` or similar directory name at the root of the filesystem, for files that should remain on the payload for future windows
+   1. When installing, install to this directory
+1. Treat all existing directories as read-only
 
 
 ## Wrapper Script

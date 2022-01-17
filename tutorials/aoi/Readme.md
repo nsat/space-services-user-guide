@@ -5,9 +5,11 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-A satellite is useful for it's ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
+A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
 
-This example requires the [satellites TLE](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity and which is needed to calculate transits over an AOI. It can be obtained from a range of places including [tle.spire.com](http://tle.spire.com/).
+This example requires the [satellites Two-Line-Element (TLE)](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity and which is needed to calculate transits over an AOI. It can be obtained from a range of places including [tle.spire.com](http://tle.spire.com/).
+
+The TLE requires the Norad Catalog Number (Norad Id).
 
 
 ## Prerequisites
@@ -24,14 +26,13 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 ## Norad Catalog Number
 
-The Norad Catalog Number (Norad Id) can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
+The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` and `YOUR_SAT_ID` as needed_
+_**NOTE**: Please replace `YOUR_AUTH_TOKEN` as needed_
 
 ```bash
 HOST="https://api.orb.spire.com"
 AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-SAT_ID="YOUR_SAT_ID"
 
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
@@ -98,7 +99,7 @@ $ python3 find_transit --sat 46926 --min 80 --hours 168
 ]
 ```
 
-PyPredict returns substantially more data than [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) outputs.
+PyPredict returns [substantially more data](https://github.com/nsat/pypredict#usage) than [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) outputs - it is not needed for this tutorial.
 
 
 ### Interpreting the Data
@@ -111,10 +112,12 @@ The transit's start and end times are from horizon to horizon, giving a total du
 Task the satellite to track the San Francisco location `(37.771034, -122.413815)` using `adcs_config`, and start the `SDR` and make a 10 second capture of S-BAND for down-link:
 
 
+_**NOTE**: Please replace `YOUR_START`, `YOUR_AUTH_TOKEN` and `YOUR_SAT_ID` as needed_
 
 ```bash
-START=1639709333
+START=YOUR_START
 DURATION=360
+SAT_ID="YOUR_SAT_ID"
 
 curl -X POST ${HOST}/tasking/window \
 -H "${AUTH_HEADER}" \
@@ -144,3 +147,12 @@ curl -X POST ${HOST}/tasking/window \
 }
 EOF
 ```
+
+## Review
+
+Once the window has completed and enough time has passed for the IQ file to download, it can be reviewed in AWS S3 (see [Hello World tutorial](../hello_world/#review)).
+
+
+## Next Steps
+
+ - [Inter-Payload Communications Tutorial](./tutorials/ipc/)

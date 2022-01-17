@@ -39,7 +39,7 @@ Learn the fundamentals of how it works, or jump straight into the documentation 
 
 ### How It Works
 
-[Learn about the fundamentals of Spires Space Services](./Fundamentals.md)
+[Learn about the fundamentals of Spire Space Services](./Fundamentals.md)
 
 ### Getting Started
 
@@ -47,10 +47,10 @@ Learn the fundamentals of how it works, or jump straight into the documentation 
 
 ### Documentation
 
- - [Tasking API](https://developers.spire.com/spire-linux-agent-docs/)
+ - [Tasking API](https://developers.spire.com/tasking-api-docs/)
  - [Spire Linux Agent (in-orbit)](https://developers.spire.com/spire-linux-agent-docs/)
  - [Data Pipeline API (in-orbit)](https://developers.spire.com/data-pipeline-docs/)
- - [Constellation Scheduling API)]()
+ - [Constellation Scheduling API](#)
 
 ### FAQ
 

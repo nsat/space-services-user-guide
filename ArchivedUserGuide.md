@@ -156,14 +156,14 @@ Additional documentation for the Tasking API can be found [here](https://develop
 ### Execution Environment
 
 User's software runs in a sandboxed execution environment on a Spire payload.  User software is uploaded to this sandbox environment
-through the Tasking API.  User software has access to it's own filesystem and various software libraries, the specifics of which depend on 
+through the Tasking API.  User software has access to its own filesystem and various software libraries, the specifics of which depend on 
 which payload the customer is scheduling operations on.  The file system is persistent between contacts, files saved to the user's filesystem
 will persist until they are deleted by the user.
 
 The execution environment includes two top level directories used to manage incoming and outgoing data:
 
 * `/inbox` - Spire generated files during a payload window will be placed into this folder. 
-For example, IQ files captures during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
+For example, IQ files captured during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
 will vary between window types, please consult the [Tasking API documentation](https://developers.spire.com/tasking-api-docs/index.html) 
 for details about a specific window.  Files placed in this folder should be handled during the window which they are generated.
 * `/outbox` - Any files placed in this folder by user software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 

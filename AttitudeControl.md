@@ -2,6 +2,8 @@
 
 Attitude is controlled in-orbit by the Attitude Control And Determination System (ADCS). Attitude information can be configured as part of a window, or at run-time/in-orbit with an ADCS lease. ADCS provides a way for the satellite to reorient itself, and report which way it is facing. Attitude information is always relative to an aperture. If none is provided then the X/S-BAND radio is assumed.
 
+TODO: tracking in real-time
+
 
 ## Modes
 
