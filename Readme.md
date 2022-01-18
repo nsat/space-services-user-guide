@@ -2,6 +2,8 @@
 
 # Software In Space
 
+![Overview](./images/overview.png)
+
 <table>
     <tr>
         <td>
@@ -25,12 +27,9 @@
     </tr>
 </table>
 
-
-TODO: DIAGRAM: Develop, deploy, measure, download, analyze etc.
-
 Develop and deploy code to space. Schedule time on satellite hardware. Track targets with a range of antennas and apertures. Analyze data with GPU hardware. Send and receive using Spire ground-stations or self-managed ground assets on a variety of frequencies. Leverage inter-satellite-links for complex real-time operations. Orient satellites to an area of interest.
 
-TODO: Symbols: Spectrum frequencies, camera, infrared, GPU, dish, ISL
+![Capabilities](./images/capabilities.png)
 
 
 ## Next Steps

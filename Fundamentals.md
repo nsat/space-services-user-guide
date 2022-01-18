@@ -4,6 +4,9 @@ In simple terms, applications are deployed to the satellite, time is scheduled t
 
 Everything happens as time windows on a schedule. The schedule holds all upcoming contact windows with the ground (and other satellites), and all reservation windows made by users. Users reserve specific hardware over a time window on a satellite. The schedule is synchronized with the satellite at each contact.
 
+![Overview](./images/overview-detail.png)
+
+
 ## Lifecycle
 
 1. **Develop** code to run on the satellite 

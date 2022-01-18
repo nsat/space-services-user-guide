@@ -8,12 +8,14 @@ TODO: add intro about what we're gonna do here, including tutorials.
 ## Prerequisites
 
 1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
-   1. Contact <a href="mailto:">:</a> to request one
-1. The `FM` number of a satellite with an SDR payload (see below)
-1. An AWS S3 bucket set up with Spire
+   1. Contact your program’s technical point of contact to request one
+1. The `FM` number of a satellite with an SDR payload (see [below](#satellite-ids))
+1. Your companies AWS S3 bucket that was set up with Spire
 1. `curl` or similar
 1. [Development Environment Setup](./dev-env/)
 1. [Execution Environment Setup](./ExecutionEnvironment.md)
+
+# Satellite Ids
 
 Spire provides access to 1 or more satellites and payloads with a [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication).  The API can be queried to see what assets are available:
 
