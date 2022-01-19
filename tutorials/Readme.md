@@ -1,4 +1,4 @@
-## Tutorials
+# Tutorials
 
 All tutorials require the [execution environment](../ExecutionEnvironment.md) to be set up and [prerequisites](../GettingStarted.md#prerequisites).
 
