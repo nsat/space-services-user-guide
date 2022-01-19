@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide walks through setting up the user's [development environment](./dev-env/), the satellite payload's [execution environment](./ExecutionEnvironment.md), and introduces the user to the platform through [tutorials](./Tutorials.md).
+This guide walks through setting up the user's [development environment](./dev-env/), the satellite payload's [execution environment](./ExecutionEnvironment.md), and introduces the user to the platform through [tutorials](./tutorials/).
 
 Consider reading about the [fundamentals](./Fundamentals.md) first - many of the concepts and terms are described.
 
@@ -47,4 +47,4 @@ More information on this endpoint is available [here](https://developers.spire.c
 
 ## Next Steps
 
- - [Tutorials](./Tutorials.md)
+ - [Tutorials](./tutorials/)

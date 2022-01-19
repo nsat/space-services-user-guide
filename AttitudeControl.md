@@ -34,26 +34,6 @@ The [Leasing ADCS for Realtime Control](./tutorials/adcs-lease/) demonstrates th
 
 
 
-## Modes
-
-Documentation on how to set the mode can be found [here](https://developers.spire.com/tasking-api-docs/#adcs_config).
-
-
-### Nadir
-
-Nadir means to point the chosen aperture directly below the satellite relative to the earth.
-
-
-### Target-Tracking
-
-The satellite is continually adjusted to ensure the aperture is pointed directly at the provided lat/lon on the ground as the satellite passes. This is useful for directional antennas and imaging equipment.
-
-
-### NOOP
-
-This mode defers ADCS control, allowing for another payload window, ADCS lease, ISL, solar charging, or station-keeping to take control.
-
-
 ## Next Steps
 
  - [Tools & Utilities](./Utilities.md)

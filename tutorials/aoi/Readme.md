@@ -155,4 +155,4 @@ Once the window has completed and enough time has passed for the IQ file to down
 
 ## Next Steps
 
- - [Inter-Payload Communications Tutorial](./tutorials/ipc/)
+ - [Real-Time Attitude Control Tutorial](./tutorials/adcs-lease/)
