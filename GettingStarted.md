@@ -1,16 +1,16 @@
 # Getting Started
 
-Consider reading about the [fundamentals](./Fundamentals.md) first - many of the concepts and terms are described.
+This guide walks through setting up the user's [development environment](./dev-env/), the satellite payload's [execution environment](./ExecutionEnvironment.md), and introduces the user to the platform through [tutorials](./Tutorials.md).
 
-TODO: add intro about what we're gonna do here, including tutorials.
+Consider reading about the [fundamentals](./Fundamentals.md) first - many of the concepts and terms are described.
 
 
 ## Prerequisites
 
 1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
    1. Contact your program’s technical point of contact to request one
-1. The `FM` number of a satellite with an SDR payload (see [below](#satellite-ids))
-1. Your companies AWS S3 bucket that was set up with Spire
+1. The `FM` number of a satellite (Satellite Id) with an SDR payload (see [below](#satellite-ids))
+1. Your company's AWS S3 bucket that was set up with Spire
 1. `curl` or similar
 1. [Development Environment Setup](./dev-env/)
 1. [Execution Environment Setup](./ExecutionEnvironment.md)
