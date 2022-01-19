@@ -52,7 +52,7 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 
 Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. 
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed. See the [Getting Started Guide](GettingStarted.md#execution-environment-setup)._
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
 HOST="https://api.orb.spire.com"

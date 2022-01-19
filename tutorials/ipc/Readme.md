@@ -23,7 +23,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](GettingS
 
 Create a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down.
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
 HOST="https://api.orb.spire.com"

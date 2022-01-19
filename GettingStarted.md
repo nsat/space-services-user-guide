@@ -15,9 +15,11 @@ TODO: add intro about what we're gonna do here, including tutorials.
 1. [Development Environment Setup](./dev-env/)
 1. [Execution Environment Setup](./ExecutionEnvironment.md)
 
-# Satellite Ids
+### Satellite Ids
 
 Spire provides access to 1 or more satellites and payloads with a [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication).  The API can be queried to see what assets are available:
+
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
 ```bash
 HOST="https://api.orb.spire.com"

@@ -61,7 +61,7 @@ Deployment is a 2-step process of uploading the install file and executing it on
 
 ### Upload Script
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` & `YOUR_SAT_ID` as needed_
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
 HOST="https://api.orb.spire.com"

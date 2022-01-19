@@ -28,7 +28,7 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
-_**NOTE**: Please replace `YOUR_AUTH_TOKEN` as needed_
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
 ```bash
 HOST="https://api.orb.spire.com"
@@ -112,7 +112,7 @@ The transit's start and end times are from horizon to horizon, giving a total du
 Task the satellite to track the San Francisco location `(37.771034, -122.413815)` using `adcs_config`, and start the `SDR` and make a 10 second capture of S-BAND for down-link:
 
 
-_**NOTE**: Please replace `YOUR_START`, `YOUR_AUTH_TOKEN` and `YOUR_SAT_ID` as needed_
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
 START=YOUR_START
