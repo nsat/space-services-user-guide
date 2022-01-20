@@ -112,7 +112,7 @@ The transit's start and end times are from horizon to horizon, giving a total du
 Task the satellite to track the San Francisco location `(37.771034, -122.413815)` using `adcs_config`, and start the `SDR` and make a 10 second capture of S-BAND for down-link:
 
 
-<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
+<aside class="notice">Replace [YOUR_START] with the `start` result of `find_transit`, and [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
 START=YOUR_START

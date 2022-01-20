@@ -35,7 +35,7 @@ $ python3 find_transit --sat 46926 --min 80 --hours 168
 
 ## Develop Script
 
-The script [`track_realtime`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/adcs-lease/track_realtime) queries the API for current [ADCS](https://developers.spire.com/satellite-bus-api/index.html#adcs) & [TFRS](https://developers.spire.com/satellite-bus-api/index.html#tfrs) information, then requests the satellite to reorient the imaging aperture to track a specific point on the ground. ADCS is polled every 5 seconds until slewing has completed.
+The script [`track_realtime`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/adcs-lease/track_realtime) queries the API for current [ADCS](https://developers.spire.com/satellite-bus-api/index.html#adcs) & [TFRS](https://developers.spire.com/satellite-bus-api/index.html#tfrs) information, then requests the satellite to reorient the imaging aperture to track a specific point on the ground. ADCS is polled every second until the end of the window.
 
 
 The API to command ADCS to track a target:
@@ -46,7 +46,7 @@ The API to command ADCS to track a target:
 ```
 
 
-Here the script is asserting that ADCS is still following the executed command. Since lat/lon coordinates are of type `float`, the values are compared with a margin of error, `LATLON_ERR_DEG`:
+Here the script is asserting that ADCS is still following the executed command. Since lat/lon coordinates are of type `float`, the values are compared with a margin of error of 1 degree (`LATLON_ERR_DEG`):
 
 ```python
 def assert_tracking(hk, mode, lat, lon):
@@ -56,24 +56,88 @@ def assert_tracking(hk, mode, lat, lon):
 ```
 
 
-As the satellite slews closer to the target, the `control_error_angle_deg` will decrease. When it stops decreasing then ADCS slewing has completed and the `control_error_angle_deg` can be treated as the pointing accuracy.
+Dump the ADCS telemetry to a file in the `/outbox`, in JSON format:
 
 ```python
-    # poll for the attitude until reached or it stops moving
-    while assert_tracking(adcs.hk, MODE< lat, lon) \
-        and adcs.hk.control_error_angle_deg < last_err_angle:
+    with open("/outbox/adcs_data.json", "a") as f:
+...
+        f.write(json.dumps(adcs.hk))
+```
+
+## Deploy Script
+
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
+
+```bash
+HOST="https://api.orb.spire.com"
+AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+SAT_ID="YOUR_SAT_ID"
+
+SATELLITE_ID="satellite_id=${SAT_ID}"
+PAYLOAD="payload=SDR"
+DESTINATION_PATH="destination_path=/persist/bin/track_realtime"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@track_realtime"
 ```
 
 
 ## Schedule ADCS Lease
 
+<aside class="notice">Replace [YOUR_START] & [YOUR_END] with the `start` and `end` results of `find_transit`</aside>
+
+```bash
+START=YOUR_START
+END=YOUR_END
+DURATION=$((${END} - ${START}))
+SAT_ID="YOUR_SAT_ID"
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "LEASE_ADCS",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": ${DURATION}
+}
+EOF
+```
 
 ## Schedule Payload Window
+
+```bash
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": ${DURATION},
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "/persist/bin/track_realtime",
+                "${END}",
+                "37.771034", -122.413815"
+            ]
+        }
+    }
+}
+EOF
+```
 
 
 # Review
 
-<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
+Once the windows complete and the results are downlinked to AWS S3, they can be analyzed. 
 
 
 ## Next Steps
