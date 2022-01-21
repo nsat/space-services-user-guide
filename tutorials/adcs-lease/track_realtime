@@ -5,11 +5,13 @@ import json
 from time import sleep, time
 
 from oort_sdk_client.api.sdk_api import SdkApi
-from oort_sdk_client.models import AdcsCommandRequest
+from oort_sdk_client.models import AdcsCommandRequest, AdcsHk
 
 MODE = "TRACK"
 LATLON_ERR_DEG = 1
 POLL_INTERVAL_SECS = 1
+DATA_FILE = "/outbox/adcs_data.json"
+
 
 def assert_tracking(hk, mode, lat, lon):
     if hk.acs_mode_active == mode \
@@ -18,42 +20,48 @@ def assert_tracking(hk, mode, lat, lon):
         return True
 
     raise Exception("No longer tracking target. " + 
-        "Expected: ({},{},{}), " + 
-        "Actual: ({},{},{})".format(mode, lat, lon, 
+        "Expected: ({},{},{}), Actual: ({},{},{})".format(mode, lat, lon, 
             hk.acs_mode_active, hk.latlontrack_lat, hk.latlontrack_lon))
 
 
 def main(lat, lon, window_end):
     agent = SdkApi()
 
-    print("Starting TFRS", json.dumps(agent.get_tfrs().__dict__))
-    print("Starting ADCS", json.dumps(agent.get_adcs().__dict__))
-
-    print("Requesting tracking to", lat, lon)
+    print("Starting ADCS", repr(agent.get_adcs()))
+    print("Requesting tracking to (", lat, lon, ") for", int(window_end - time()), "seconds." )
 
     cmd = AdcsCommandRequest(command="TRACK", aperture="IPI", target=(lat, lon))
     res = agent.command_adcs(cmd)
-
-    print("Result:", json.dumps(res.__dict__))
+    print("Result:", repr(res))
 
     sleep(POLL_INTERVAL_SECS)
+    last_call = time()
     adcs = agent.get_adcs()
+    output = [adcs.hk.to_dict()]
 
-    with open("/outbox/adcs_data.json", "a") as f:
-        while assert_tracking(adcs.hk, MODE< lat, lon):
-            f.write(json.dumps(adcs.hk))
-            f.write("\n")
-            if time() >= window_end:
-                break
-            sleep(POLL_INTERVAL_SECS)
-            adcs = agent.get_adcs()
+    while assert_tracking(adcs.hk, MODE, lat, lon):
+        if time() >= window_end:
+            break
+        now = time()
+        if (last_call + POLL_INTERVAL_SECS) > now:
+            sleep(last_call + POLL_INTERVAL_SECS - now)
+        last_call = now
+        adcs = agent.get_adcs()
+        output.append(adcs.hk.to_dict())
 
-    print("Window has ended")
+    print("Window has ended. Writing", len(output), "lines to", DATA_FILE)
+
+    with open(DATA_FILE, "w") as f:
+        f.seek(0)
+        f.truncate()
+        f.write(json.dumps(output, indent=4, default=lambda o: None))
+
+    print("Done.")
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('window_end', nargs='?', type=int, help='Window end time, in epoch seconds, i.e. ' + str(int(time())))
+    parser.add_argument('window_end', nargs='?', type=int, help='Window end time, in epoch seconds', default=int(time())+20)
     parser.add_argument('lat', nargs='?', type=float, help='Latitude to track', default=37.771034)
     parser.add_argument('lon', nargs='?', type=float, help='Longitude to track', default=-122.413815)
     exit(main(**vars(parser.parse_args())))

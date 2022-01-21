@@ -137,7 +137,52 @@ EOF
 
 # Review
 
-Once the windows complete and the results are downlinked to AWS S3, they can be analyzed. 
+Once the windows complete and the results are downlinked to AWS S3, they can be analyzed.
+
+For example to view the pointing error over time, download the file and then click "Choose File" below to chart the `control_error_angle_deg` over time. A sample file can be downloaded [here](adcs_data.json)
+
+
+<div style="padding:20px;">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <input type="file" id="selectFiles" value="Import" /><br />
+</div>
+<div id="chart" style="width:auto; height:300px; padding:20px;"></div>
+<script>
+
+    function loadFile() {
+        var files = document.getElementById('selectFiles').files;
+        if (files.length <= 0) {
+            return false;
+        }
+        var fr = new FileReader();
+        fr.onload = function (e) {
+            drawLineChart(JSON.parse(e.target.result));
+        }
+        fr.readAsText(files.item(0));
+    }
+    document.getElementById('selectFiles').onchange = loadFile;
+
+    function drawLineChart(data) {
+        var dt = new google.visualization.DataTable();
+        dt.addColumn('datetime', 'Time');
+        dt.addColumn('number', 'Pointing Error (Degrees)');
+
+        for (const value of data) {
+            dt.addRow([new Date(value.unix_timestamp * 1000), value.control_error_angle_deg]);
+        }
+
+        var options = {
+            title: 'ADCS Pointing Error',
+            hAxis: { format: 'HH:mm:ss' },
+            legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14 } }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        chart.draw(dt, options);
+    }
+    google.charts.load('visualization', { packages: ['corechart'] });
+</script>
+
 
 
 ## Next Steps
