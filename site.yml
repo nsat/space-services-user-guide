@@ -19,5 +19,4 @@ pages:
 images:
   - images/**/*
   - text/**/*  # A little hacky to put this under images, but works for any static file
-  - tutorials/adcs-lease/chart.html
   - tutorials/adcs-lease/adcs_data.json
