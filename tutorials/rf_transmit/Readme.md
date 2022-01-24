@@ -7,7 +7,7 @@
 
 This tutorial will demonstrate creating and sending a waveform through the S-BAND radio on the `SDR` using the [`iqgenerator`](../../Utilities.md#iq-generator) and [`rftransmit`](../../Utilities.md#rf-transmit) utilities, and finally downloading a log of the activities.
 
-*NOTE:* Receiving the transmitted waveform is beyond the scope of this tutorial. See the advanced [RF Tx/Rx Tutorial](../rf_txrx/RfTxRx.md).
+*NOTE:* Receiving the transmitted waveform is beyond the scope of this tutorial as it requires a satellite dish controlled by the user.
 
 
 ## Prerequisites

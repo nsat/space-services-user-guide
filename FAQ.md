@@ -17,7 +17,7 @@ More information can be found on [Wikipedia](https://en.wikipedia.org/wiki/In-ph
 
 ## How do I transmit and receive using the software-defined-radio (SDR)?
 
-The software-defined-radio is on the [`SDR`](./ExecutionEnvironment.html#sdr) Linux payload. The radio is operated via the command-line tools [rf_collect](./Utilities.md#rf-collect) & [rf_transmit](./Utilities.md#rf-transmit).
+The software-defined-radio is on the [`SDR`](./ExecutionEnvironment.html#sdr) Linux payload. The radio is operated via the command-line tools [rf_collect](./Utilities.md#rf-collect) & [rftransmit](./Utilities.md#rf-transmit).
 
 
 ## How do I control the orientation of the satellite?
