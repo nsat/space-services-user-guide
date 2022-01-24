@@ -187,4 +187,4 @@ For example to view the pointing error over time, download the file and then cli
 
 ## Next Steps
 
- - [Inter-Payload Communications Tutorial](./tutorials/ipc/)
+ - [Inter-Payload Communications Tutorial](../ipc/)

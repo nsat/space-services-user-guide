@@ -155,4 +155,4 @@ Once the window has completed and enough time has passed for the IQ file to down
 
 ## Next Steps
 
- - [Real-Time Attitude Control Tutorial](./tutorials/adcs-lease/)
+ - [Real-Time Attitude Control Tutorial](../adcs-lease/)

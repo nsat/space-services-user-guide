@@ -194,4 +194,4 @@ The IQ file can be further analyzed using digital signal analysis (DSP). For exa
 
 ## Next Steps
 
- - [RF Transmit Tutorial](./tutorials/rf_transmit/)
+ - [RF Transmit Tutorial](../rf_transmit/)

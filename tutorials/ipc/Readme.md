@@ -5,7 +5,7 @@
 |Payloads:|`SDR` & `SABERTOOTH`|
 |Windows:|`PAYLOAD_SDR` `PAYLOAD_SABERTOOTH`|
 
-This walk-through shows how to communicate between two payloads on a satellite using HTTP over TCP/IP through the local ethernet.
+This walk-through shows how to communicate between two payloads on a single satellite using HTTP over TCP/IP through the local ethernet.
 
 1. Start an HTTP server on the `SDR`
 1. Have `SABERTOOTH` request a file from the `SDR` using `curl`
@@ -63,8 +63,6 @@ Next, create a window on the `SABERTOOTH` for 30 seconds later to make an HTTP r
 
 
 ```bash
-HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 START=$(( $START + 30 ))
 
 curl -X POST ${HOST}/tasking/window \
@@ -106,4 +104,4 @@ $ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
 
 ## Next Steps
 
- - [Low-level Data Transfer API Tutorial](./tutorials/data_xfr/) 
+ - [Low-level Data Transfer API Tutorial](../data_xfr/) 

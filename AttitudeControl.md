@@ -28,7 +28,7 @@ The [Tracking an Area Of Interest Tutorial](./tutorials/aio/) demonstrates this.
 
 ## Setting ADCS at Run-time
 
-If the user plans to command the satellites attitude from the payload, a ['LEASE_ADCS`](https://developers.spire.com/tasking-api-docs/index.html#lease_adcs) window must be scheduled which allows a payload window to call the [Satellite Bus API](https://developers.spire.com/satellite-bus-api/) to control attitude in real-time. For example, this can be used by a user process running on a payload in-orbit that listens for ADS-B messages and directs a camera to take a photograph of the location reported within a specific ADS-B message. The location is not known at the time the window is scheduled, so the satellite must be commanded in real-time.
+If the user plans to command the satellites attitude from the payload, a [`LEASE_ADCS`](https://developers.spire.com/tasking-api-docs/index.html#lease_adcs) window must be scheduled which allows a payload window to call the [Satellite Bus API](https://developers.spire.com/satellite-bus-api/) to control attitude in real-time. For example, this can be used by a user process running on a payload in-orbit that listens for ADS-B messages and directs a camera to take a photograph of the location reported within a specific ADS-B message. The location is not known at the time the window is scheduled, so the satellite must be commanded in real-time.
 
 The [Leasing ADCS for Realtime Control](./tutorials/adcs-lease/) demonstrates this.
 

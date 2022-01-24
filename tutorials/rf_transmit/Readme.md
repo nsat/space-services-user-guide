@@ -195,4 +195,4 @@ Receiving the transmitted waveform is beyond the scope of this tutorial as it re
 
 ## Next Steps
 
- - [Tracking an Area Of Interest Tutorial](./tutorials/aoi/)
+ - [Tracking an Area Of Interest Tutorial](../aoi/)
