@@ -23,7 +23,7 @@ The root filesystem is writable to the user. Common Linux directories have been 
 
 ## Wrapper Script
 
-The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) should be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed with:
+The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) should be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed with:
 
 
 ```bash

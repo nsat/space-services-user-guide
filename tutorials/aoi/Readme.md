@@ -5,20 +5,20 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, i.e. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=46926) which provides transit information.
+A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, i.e. for observations or communications. These results can be compared with a site like [n2yo.com⤴](https://www.n2yo.com/passes/?s=46926) which provides transit information.
 
-This example requires the [satellites Two-Line-Element (TLE)](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity and which is needed to calculate transits over an AOI. It can be obtained from a range of places including [tle.spire.com](http://tle.spire.com/).
+This example requires the [satellites Two-Line-Element (TLE)⤴](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity and which is needed to calculate transits over an AOI. It can be obtained from a range of places including [tle.spire.com⤴](http://tle.spire.com/).
 
 The TLE requires the Norad Catalog Number (Norad Id).
 
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup). For this tutorial Python 3.6+ & the `pypredict` python module is used (on the ground only).
+All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). For this tutorial Python 3.6+ & the `pypredict` python module is used (on the ground only).
 
 ### pypredict
 
-Install the [`pypredict`](https://github.com/nsat/pypredict) python module:
+Install the [`pypredict`⤴](https://github.com/nsat/pypredict) python module:
 
 ```bash
 python3 -m pip install git+https://github.com/nsat/pypredict.git
@@ -26,7 +26,7 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 ## Norad Catalog Number
 
-The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, i.e. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
+The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, i.e. [n2yo.com⤴](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
@@ -54,7 +54,7 @@ The result shows that windows can be scheduled on `FM1` which has Norad Id `4692
 
 ## TLE
 
-We can take a look at the [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite at any time by visiting [`http://tle.spire.com/46926`](http://tle.spire.com/46926). Notice that the Norad Id is appended to the URL:
+We can take a look at the [TLE⤴](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite at any time by visiting [`http://tle.spire.com/46926`⤴](http://tle.spire.com/46926). Notice that the Norad Id is appended to the URL:
 
 ```bash
 $ curl http://tle.spire.com/46926
@@ -65,7 +65,7 @@ $ curl http://tle.spire.com/46926
 
 ## Finding a Transit Time
 
-This tutorial has an accompanying script called [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`](https://github.com/nsat/pypredict) python module.
+This tutorial has an accompanying script called [`find_transit`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`⤴](https://github.com/nsat/pypredict) python module.
 
 ```bash
 usage: find_transit [-h] [--sat SAT] [--lat LAT] [--lon LON] [--alt ALT]
@@ -99,7 +99,7 @@ $ python3 find_transit --sat 46926 --min 80 --hours 168
 ]
 ```
 
-PyPredict returns [substantially more data](https://github.com/nsat/pypredict#usage) than [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) outputs - it is not needed for this tutorial.
+PyPredict returns [substantially more data⤴](https://github.com/nsat/pypredict#usage) than [`find_transit`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) outputs - it is not needed for this tutorial.
 
 
 ### Interpreting the Data

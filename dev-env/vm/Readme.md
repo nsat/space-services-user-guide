@@ -4,15 +4,15 @@
 |-|-|
 |Payloads:|`SDR`, `IPI`|
 
-This method creates a VM provided by [The Yocto Project](http://www.yoctoproject.org/). It is unsupported.
+This method creates a VM provided by [The Yocto Project⤴](http://www.yoctoproject.org/). It is unsupported.
 
 The SDR & IPI payloads run on an ARM Cortex A53, with Yocto Poky 2.5 (Sumo) installed ([specs](../#payload-specifications)). The Yocto Poky sumo OS can be run in a QEMU VM.
 
 There are significant differences between the packages installed in the image published by Yocto and the packages on the `SDR` & `IPI`. Please read more on the [Execution Environment](../ExecutionEnvironment.md), especially about the [filesystem](../ExecutionEnvironment.md#filesystem) to understand where to place files. A helper script is provided in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
- * [QEMU](https://www.qemu.org/) - may be installed with a package manager, i.e. `apt` or `apk`
- * [Download Yocto Poky sumo VM images](http://downloads.yoctoproject.org/releases/yocto/yocto-2.5/machines/qemu/qemuarm64/)
+ * [QEMU⤴](https://www.qemu.org/) - may be installed with a package manager, i.e. `apt` or `apk`
+ * [Download Yocto Poky sumo VM images⤴](http://downloads.yoctoproject.org/releases/yocto/yocto-2.5/machines/qemu/qemuarm64/)
 
 Start VM:
 

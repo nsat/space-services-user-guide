@@ -5,7 +5,7 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../../Utilities.md#rf-collect) utility, and download the produced [`IQ`](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log files. The frequency can be changed to capture specific signals. 
+This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../../Utilities.md#rf-collect) utility, and download the produced [`IQ`⤴](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log files. The frequency can be changed to capture specific signals. 
 
 
 ## Prerequisites
@@ -187,7 +187,7 @@ Response:
 2021-09-06 04:32:29    4000000 2021/09/06/20210906T043229Z_rf_collect.iq
 ```
 
-The IQ file can be further analyzed using digital signal analysis (DSP). For example the file can be loaded in [Universal Radio Hacker](https://github.com/jopohl/urh) to view the spectrum:
+The IQ file can be further analyzed using digital signal analysis (DSP). For example the file can be loaded in [Universal Radio Hacker⤴](https://github.com/jopohl/urh) to view the spectrum:
 
 ![Spectrum](../../images/spectrum.png)
 

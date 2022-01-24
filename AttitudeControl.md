@@ -1,6 +1,6 @@
 # Attitude Control
 
-Attitude is controlled by the Attitude Control and Determination System (ADCS). Attitude information can be set as part of a window, or at run-time, in-orbit when there is an ADCS lease window, via the [Satellite Bus API](https://developers.spire.com/satellite-bus-api/). The ADCS provides a way for the satellite to reorient itself, and report which way it is facing. Attitude information is always relative to an aperture/antenna. If none is provided then the X/S-BAND radio is assumed.
+Attitude is controlled by the Attitude Control and Determination System (ADCS). Attitude information can be set as part of a window, or at run-time, in-orbit when there is an ADCS lease window, via the [Satellite Bus API⤴](https://developers.spire.com/satellite-bus-api/). The ADCS provides a way for the satellite to reorient itself, and report which way it is facing. Attitude information is always relative to an aperture/antenna. If none is provided then the X/S-BAND radio is assumed.
 
 
 ## Setting ADCS on windows
