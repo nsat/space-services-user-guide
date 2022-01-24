@@ -7,7 +7,7 @@
 
 This tutorial demonstrates controlling the [Attitude Control and Determination System (ADCS)](../../AttitudeControl.md) from a payload. This tutorial follows on from the [Tracking an Area Of Interest Tutorial](../aoi/).
 
-The ADCS can be controlled by user code from a payload while in orbit, using the [Satellite Bus API](https://developers.spire.com/satellite-bus-api/). This REST API is provided by the local [Spire Linux Agent](https://developers.sbox.spire.com/spire-linux-agent-docs/index.html#spire-linux-agent-introduction) (which is pre-installed on all Linux payloads), and has accompanying SDKs.
+The ADCS can be controlled by user code from a payload while in orbit, using the [Satellite Bus API⤴](https://developers.spire.com/satellite-bus-api/). This REST API is provided by the local [Spire Linux Agent⤴](https://developers.spire.com/spire-linux-agent-docs/index.html#spire-linux-agent-introduction) (which is pre-installed on all Linux payloads), and has accompanying SDKs.
 
 
 ## Prerequisites
@@ -17,7 +17,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](GettingS
 
 ## Finding a Transit Time
 
-Use the [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) script from [the last tutorial](../aoi/#finding-a-transit-time) to identify a time window where the satellite transits over an area of interest at a reasonable elevation. The example below is for satellite with Norad Id `46926` (`FM1`) and an elevation of 80 degrees, but consider reducing the elevation so that a transit can be found for between 24 and 48 hours in the future. 
+Use the [`find_transit`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) script from [the last tutorial](../aoi/#finding-a-transit-time) to identify a time window where the satellite transits over an area of interest at a reasonable elevation. The example below is for satellite with Norad Id `46926` (`FM1`) and an elevation of 80 degrees, but consider reducing the elevation so that a transit can be found for between 24 and 48 hours in the future. 
 
 ```json
 $ python3 find_transit --sat 46926 --min 80 --hours 168
@@ -35,7 +35,7 @@ $ python3 find_transit --sat 46926 --min 80 --hours 168
 
 ## Develop Script
 
-The script [`track_realtime`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/adcs-lease/track_realtime) queries the API for current [ADCS](https://developers.spire.com/satellite-bus-api/index.html#adcs) & [TFRS](https://developers.spire.com/satellite-bus-api/index.html#tfrs) information, then requests the satellite to reorient the imaging aperture to track a specific point on the ground. ADCS is polled every second until the end of the window.
+The script [`track_realtime`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/adcs-lease/track_realtime) queries the API for current [ADCS⤴](https://developers.spire.com/satellite-bus-api/index.html#adcs) & [TFRS⤴](https://developers.spire.com/satellite-bus-api/index.html#tfrs) information, then requests the satellite to reorient the imaging aperture to track a specific point on the ground. ADCS is polled every second until the end of the window.
 
 
 The API to command ADCS to track a target:

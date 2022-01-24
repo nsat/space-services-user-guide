@@ -7,7 +7,7 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
 
 ## Prerequisites
 
-1. [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication)
+1. [Tasking API Authentication Token⤴](https://developers.spire.com/tasking-api-docs/#authentication)
    1. Contact your program’s technical point of contact to request one
 1. The `FM` number of a satellite (Satellite Id) with an SDR payload (see [below](#satellite-ids))
 1. Your company's AWS S3 bucket that was set up with Spire
@@ -17,7 +17,7 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
 
 ### Satellite Ids
 
-Spire provides access to 1 or more satellites and payloads with a [Tasking API Authentication Token](https://developers.spire.com/tasking-api-docs/#authentication).  The API can be queried to see what assets are available:
+Spire provides access to 1 or more satellites and payloads with a [Tasking API Authentication Token⤴](https://developers.spire.com/tasking-api-docs/#authentication).  The API can be queried to see what assets are available:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
@@ -27,7 +27,7 @@ AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
 ```
 
-The example response below shows that the authentication token has access to [2 window types](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
+The example response below shows that the authentication token has access to [2 window types⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
 
 ```bash
 {
@@ -42,7 +42,7 @@ The example response below shows that the authentication token has access to [2 
 }
 ```
 
-More information on this endpoint is available [here](https://developers.spire.com/tasking-api-docs/#select-satellite)
+More information on this endpoint is available [here⤴](https://developers.spire.com/tasking-api-docs/#select-satellite)
 
 
 ## Next Steps

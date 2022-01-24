@@ -5,7 +5,7 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-The `/outbox` is a simple way to get data to the ground, but does not provide fine-grained prioritization and expiration. The [Data Pipeline API](https://developers.spire.com/data-pipeline-docs/) and accompanying SDKs provided by the [Spire Linux Agent](https://developers.spire.com/spire-linux-agent-docs/) expose low-level controls. 
+The `/outbox` is a simple way to get data to the ground, but does not provide fine-grained prioritization and expiration. The [Data Pipeline API⤴](https://developers.spire.com/data-pipeline-docs/) and accompanying SDKs provided by the [Spire Linux Agent⤴](https://developers.spire.com/spire-linux-agent-docs/) expose low-level controls. 
 
 A common use is to reduce the priority & time-to-live (TTL) of debug logs and sample raw data, both of which is nice to have, but shouldn't be prioritized over other data, and shouldn't sit in queues for a long time filling up the satellite bus cache.
 

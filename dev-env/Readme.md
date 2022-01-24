@@ -30,4 +30,4 @@ An example is provided for installing the `zfec` Python module which includes a 
 
 # SABERTOOTH
 
-The `SABERTOOTH` payload is an NVIDIA Tegra TX2i, which runs an ARM Cortex A57, and has [Jetpack 4.2.2](https://developer.nvidia.com/jetpack-422-archive) installed ([specs](https://developers.spire.com/space-services-user-guide/index.html#payload-specifications)). Developers may choose to purchase this (or the Nano 2) to perform development, compilation, or integration testing.
+The `SABERTOOTH` payload is an NVIDIA Tegra TX2i, which runs an ARM Cortex A57, and has [Jetpack 4.2.2⤴](https://developer.nvidia.com/jetpack-422-archive) installed ([specs⤴](https://developers.spire.com/space-services-user-guide/index.html#payload-specifications)). Developers may choose to purchase this (or the Nano 2) to perform development, compilation, or integration testing.

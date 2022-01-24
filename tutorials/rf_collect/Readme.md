@@ -47,7 +47,7 @@ rfcollect error: 127
 
 ## Deploy
 
-Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite:
+Upload the script via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
@@ -104,7 +104,7 @@ Response:
 
 ## Schedule Execution
 
-Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen as it's the earliest time that the window is likely run.
+Add a [`PAYLOAD_SDR`⤴](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen as it's the earliest time that the window is likely run.
 
 ```bash
 START=$(( `date -u +'%s'` + 21600 ))

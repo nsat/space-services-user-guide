@@ -16,7 +16,7 @@ Everything happens as time windows on a schedule. The schedule holds all upcomin
 1. **Analyze** received data
 
 ## Execution Environment
-The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. 
+The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. [Read on..](./ExecutionEnvironment.md)
 
 
 ## Satellite Bus
@@ -32,7 +32,11 @@ A contact is a type of window created by Spire, and is a one or two-way radio tr
 
 
 ### Payload Windows
-Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API]().
+Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
+
+
+### Lease Windows
+A lease is the reservation of a system over the time window. `LEASE_ISL` creates an inter-satellite-link between 2 satellites for the excusive use of the user. `LEASE_ADCS` passes attitude control to user code running on the payloads.
 
 
 ## Satellite Schedule
@@ -44,15 +48,15 @@ A window is inserted into the schedule with the [Tasking API](). The window type
 
 
 ## Uploading Files
-The Tasking API provides an [`upload`]() endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be [flight-flashed](#flight-flash) to the payload while on the ground, before launch.
+The Tasking API provides an [`upload`⤴](https://developers.spire.com/tasking-api-docs/index.html#post-upload) endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be [flight-flashed](#flight-flash) to the payload prior to launch.
 
 
 ### Flight Flash
-Flight-flash is the process of creating and installing file system images into the payloads on the ground before launch.  This is often a good time for large user applications to be installed, i.e. machine learning models or frameworks like Python or TensorFlow. 
+Flight-flash is the process of creating and applying file system images onto the payloads prior to launch.  This is often a good time for large user applications to be installed, i.e. machine learning models or frameworks like Python or TensorFlow. 
 
 
 ## Downloading Files
-Any files found in the `/outbox` directory on a payload at the end of a window will be transferred off the payload by the satellite bus and queued for download to AWS S3. 
+Any files found in the [`/outbox`](./ExecutionEnvironment.md) directory on a payload at the end of a window will be transferred off the payload by the satellite bus and queued for download to AWS S3. 
 
 
 ## Sharing Files
@@ -82,7 +86,7 @@ The Imaging Payload Interface (IPI) payload provides user with access to one or 
 
 
 ## Attitude Control
-The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](https://developers.spire.com/tasking-api-docs/#adcs_config).
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking⤴](https://developers.spire.com/tasking-api-docs/#adcs_config).
 
 
 ### Ground Based

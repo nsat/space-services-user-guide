@@ -4,6 +4,9 @@ $(function() {
 var anchors = document.getElementsByTagName("a");
 
 for (var i = 0; i < anchors.length; i++) {
+    if (anchors[i].innerHTML.includes("⤴")){
+        anchors[i].setAttribute("target", "_tab");
+    }
     var href = anchors[i].getAttribute("href");
     if ((href.startsWith("http") || href.startsWith("//")) || !(href.endsWith(".md") || href.includes(".md#"))){
         continue;
