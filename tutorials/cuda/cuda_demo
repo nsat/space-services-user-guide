@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -xe
+
+# verify CUDA env
+/usr/local/cuda/bin/nvcc -V
+
+# copy samples to writable dir
+cp -a /usr/local/cuda/samples ~/
+trap "rm -rf ~/samples" EXIT
+
+# build and run some samples
+(   cd ~/samples/1_Utilities/deviceQuery &&
+    make &&
+    ./deviceQuery
+)
+(   cd ~/samples/1_Utilities/bandwidthTest &&
+    make &&
+    ./bandwidthTest
+)
+(   cd ~/samples/6_Advanced/transpose &&
+    make &&
+    ./transpose
+)
