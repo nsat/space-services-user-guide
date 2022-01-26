@@ -9,6 +9,7 @@ pages:
   - tutorials/adcs-lease/index
   - tutorials/aoi/index
   - tutorials/cuda/index
+  - tutorials/cudnn/index
   - tutorials/data_xfr/index
   - tutorials/hello_world/index
   - tutorials/index

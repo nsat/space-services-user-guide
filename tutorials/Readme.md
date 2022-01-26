@@ -10,6 +10,8 @@ All tutorials require the [execution environment](../ExecutionEnvironment.md) to
  - [Inter-Payload Communications](./ipc/)
  - [Inter-Satellite Links (ISL)](./isl/)
  - [Low-level Data Transfer API](./data_xfr/) 
+ - [Sabertooth CUDA](./cuda/) 
+ - [Sabertooth cuDNN](./cudnn/) 
 
 ## Next Steps
 
