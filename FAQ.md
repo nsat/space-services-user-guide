@@ -3,9 +3,14 @@
 
 ## What is ECEF?
 
-Earth-centered, Earth-fixed coordinate system.
+Earth-centered, Earth-fixed coordinate system. ECEF data is provided with TFRS from the [Satellite Bus API⤴](https://developers.spire.com/satellite-bus-api/).
 
 More information can be found on [Wikipedia⤴](https://en.wikipedia.org/wiki/Earth-centered,_Earth-fixed_coordinate_system).
+
+
+## What is TFRS
+
+Time-Frequency Reference System. Provides a highly accurate clock and position reading. TFRS data is provided from the [Satellite Bus API⤴](https://developers.spire.com/satellite-bus-api/).
 
 
 ## What is an IQ File?
