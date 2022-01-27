@@ -23,41 +23,13 @@ The root filesystem is writable to the user. Common Linux directories have been 
 
 ## Wrapper Script
 
-The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) should be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed with:
+The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) can be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed to a payload by running [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/deploy) in the [`dev-env`](https://github.com/nsat/space-services-user-guide/tree/main/dev-env) directory:
 
 
-```bash
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-SATELLITE_ID="satellite_id=YOUR_SAT_ID"
-
-curl -o entry.sh "https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh"
-HOST="https://api.orb.spire.com"
-DESTINATION_PATH="destination_path=/persist/bin/entry.sh"
-EXECUTABLE="executable=true"
-```
+<aside class="notice">Replace [YOUR_AUTH_TOKEN]& [YOUR_SAT_ID] needed. [YOUR_PAYLOAD] can be one of `IPI`, `SDR` or `SABERTOOTH`.</aside>
 
 ```bash
-PAYLOAD="payload=SDR"
-QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
-curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
--H "${AUTH_HEADER}"  \
--F "file=@entry.sh"
-```
-
-```bash
-PAYLOAD="payload=SABERTOOTH"
-QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
-curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
--H "${AUTH_HEADER}"  \
--F "file=@entry.sh"
-```
-
-```bash
-PAYLOAD="payload=IPI"
-QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
-curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
--H "${AUTH_HEADER}"  \
--F "file=@entry.sh"
+$ dev-env/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_PAYLOAD]
 ```
 
 ## Payload Specifications

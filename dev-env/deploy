@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy the entry.sh wrapper script
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID> <PAYLOAD>
+#
+# Example:
+#   deploy "abc/123+k" FM1 SDR
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SATELLITE_ID="satellite_id=$2"
+PAYLOAD="payload=$3"
+
+HOST="https://api.orb.spire.com"
+DESTINATION_PATH="destination_path=/persist/bin/entry.sh"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@entry.sh"
+
+echo "Done."

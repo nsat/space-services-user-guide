@@ -1,6 +1,6 @@
 # Tutorials
 
-All tutorials require the [execution environment](../ExecutionEnvironment.md) to be set up and [prerequisite steps](../GettingStarted.md#prerequisites) completed.
+All tutorials require the [wrapper script](../ExecutionEnvironment.md#wrapper-script) to be deployed. Consider completing the prerequisites in the [Getting Started Guide](../GettingStarted.md).
 
  - [Hello World](./hello_world/)
  - [RF Collect](./rf_collect/)
