@@ -1,0 +1,107 @@
+#!/bin/bash
+set -xe
+
+# ISL Example
+#
+# - Uploads send and receive scripts
+# - Schedules an ISL link between 2 satellites
+# - Schedules a payload window on each satellite to send or receive
+#
+# Usage:
+#    deploy <AUTH_TOKEN> <SAT_ID_TX> <SAT_ID_RX>
+
+
+HOST="https://api.orb.spire.com"
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID_TX="$2"
+SAT_ID_RX="$3"
+START=$(( `date -u +'%s'` + 86400 ))
+
+
+###########
+# TX upload
+SATELLITE_ID="satellite_id=${SAT_ID_TX}"
+PAYLOAD="payload=SDR"
+DESTINATION_PATH="destination_path=/persist/bin/isl_tx_demo"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@isl_tx_demo"
+
+
+###########
+# RX upload
+SATELLITE_ID="satellite_id=${SAT_ID_RX}"
+DESTINATION_PATH="destination_path=/persist/bin/isl_rx_demo"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@isl_rx_demo"
+
+
+###########
+# ISL lease
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "LEASE_ISL",
+    "satellite_id": "${SAT_ID_TX}",
+    "start": ${START},
+    "duration": 300,
+    "parameters": {
+        "user_isl_receive_satellite_id": "${SAT_ID_RX}"
+    }
+}
+EOF
+
+
+###########
+# TX lease
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID_TX}",
+    "start": ${START},
+    "duration": 300,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "/persist/bin/isl_tx_demo"
+            ]
+        }
+    }
+}
+EOF
+```
+
+###########
+# RX lease
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID_RX}",
+    "start": ${START},
+    "duration": 300,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "/persist/bin/isl_rx_demo"
+            ]
+        }
+    }
+}
+EOF
+```

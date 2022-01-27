@@ -12,17 +12,30 @@ Inter-Satellite Links (ISL) are enabled for some satellites. ISL links can be ma
 To simplify calculating when to schedule the windows, for this example we will be assuming that the satellites are in synchronous orbit.
 
 
-1. Schedule an ISL between 2 satellites
-1. Upload listener and client scripts to the respective satellites
-1. Schedule the `SDR` on the transmitting satellite to send data
-1. Schedule the `SABERTOOTH` on the receiving satellite to listen for & downlink data
-1. Review
-
-
 ## Prerequisites
 
 All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup). Additionally the `zfec` python module must be installed on the payload. See the [In-Orbit Python Environment Setup
 ](../../dev-env/in-orbit/) instructions for more information.
+
+
+## Scripts
+
+1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
+1. [`isl_tx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
+1. [`isl_rx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
+
+
+## Upload & Deploy
+
+The deploy script is run by the user and performs the following steps:
+
+1. Uploads `isl_tx_demo` & `isl_rx_demo` scripts to the respective satellites
+1. Schedules an ISL between 2 satellites in 24 hours
+1. Schedules a `PAYLOAD_SDR` window to run on the transmitting satellite to send data
+1. Schedule a `PAYLOAD_SDR` window to run on the receiving satellite to listen for & downlink data
+
+Run [`deploy <AUTH_TOKEN> <SAT_ID_TX> <SAT_ID_RX>`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) substituting `<AUTH_TOKEN>`, `<SAT_ID_TX>` and `<SAT_ID_RX>` per the [getting started guide](../../GettingStarted.md). 
+
 
 
 ## Schedule LEASE_ISL
@@ -56,11 +69,13 @@ EOF
 ```
 
 
-## Upload Listener & Client
 
 
 
-TODO
+## Review
+
+Once the window has completed and enough time has passed for the log to download, it can be reviewed in AWS S3 (see [Hello World tutorial](../hello_world/#review)).
+
 
 
 ## Next Steps
