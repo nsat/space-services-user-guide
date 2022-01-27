@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+########################################
+#
+# Query Tasking API for available satellites
+#
+# Usage:
+#
+#    get_sats <AUTH_TOKEN>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+HOST="https://api.orb.spire.com"
+
+curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
+
+echo "Done."

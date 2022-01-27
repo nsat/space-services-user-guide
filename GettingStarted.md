@@ -9,23 +9,28 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
 
 1. [Tasking API Authentication Token⤴](https://developers.spire.com/tasking-api-docs/#authentication)
    1. Contact your program’s technical point of contact to request one
-1. The `FM` number of a satellite (Satellite Id) with an SDR payload (see [below](#satellite-ids))
 1. Your company's AWS S3 bucket that was set up with Spire
-1. `curl` or similar
+1. The `FM` number of a satellite (Satellite Id) with an SDR payload (read on)
+1. `bash`, `curl` & `git`
 1. [Development Environment Setup](./dev-env/)
 1. [Execution Environment Setup](./ExecutionEnvironment.md)
 
-### Satellite Ids
 
-Spire provides access to 1 or more satellites and payloads with a [Tasking API Authentication Token⤴](https://developers.spire.com/tasking-api-docs/#authentication).  The API can be queried to see what assets are available:
+This site includes the scripts described in the tutorials. Start by grabbing the code:
+
+```bash
+$ git clone --depth=1 https://github.com/nsat/space-services-user-guide.git
+```
+
+The next step is to query the Tasking API for which satellites & windows the [Authentication Token⤴](https://developers.spire.com/tasking-api-docs/#authentication) grants access to. The script [`get_sats`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/get_stats) in the [`tutorials`](https://github.com/nsat/space-services-user-guide/tree/main/tutorials) directory demonstrates this:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
+
 ```bash
-HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-curl -X GET -H "${AUTH_HEADER}" "${HOST}/tasking/satellites"
+$ tutorials/get_sats "[YOUR_AUTH_TOKEN]"
 ```
+
 
 The example response below shows that the authentication token has access to [2 window types⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) on 1 satellite with id `FM1`:
 
@@ -47,4 +52,5 @@ More information on this endpoint is available [here⤴](https://developers.spir
 
 ## Next Steps
 
- - [Tutorials](./tutorials/)
+ - Ensure the [Execution Environment](./ExecutionEnvironment.md) has been set up
+ - Start on the [Tutorials](./tutorials/)
