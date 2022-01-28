@@ -47,7 +47,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
 | IP Address   | 10.2.1.8                            |
-| Package List | [List](./text/sdr_package_list.txt) |
+| Package List | [List⤴](./text/sdr_package_list.txt) |
 | Utilities    | - [RF Collect](./Utilities.md#rf-collect)<br> - [RF Transmit](./Utilities.md#rf-transmit)<br> - [IQ Generator](./Utilities.md#iq-generator) |
 | Windows      | [`PAYLOAD_SDR`⤴](https://developers.spire.com/tasking-api-docs/#payload_sdr-v2) |
 
@@ -63,7 +63,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
 | IP Address   | 10.2.1.16                            |
-| Package List | [List](./text/ipi_package_list.txt) |
+| Package List | [List⤴](./text/ipi_package_list.txt) |
 | Windows      | [`PAYLOAD_IPI`⤴](https://developers.spire.com/tasking-api-docs/#payload_ipi) |
 
 
@@ -78,7 +78,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
 | IP Address   | 10.2.1.10                           |
-| Package List | [List](./text/sabertooth_package_list.txt) |
+| Package List | [List⤴](./text/sabertooth_package_list.txt) |
 | Windows      | [`PAYLOAD_SABERTOOTH`⤴](https://developers.spire.com/tasking-api-docs/#compute-boards) |
 
 
@@ -93,7 +93,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
 | IP Address   | 10.2.1.9                            |
-| Package List | [List](./text/dexter_package_list.txt) |
+| Package List | [List⤴](./text/dexter_package_list.txt) |
 | Windows      | [`PAYLOAD_DEXTER`⤴](https://developers.spire.com/tasking-api-docs/#payload_dexter) |
 
 

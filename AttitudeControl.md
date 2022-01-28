@@ -23,7 +23,7 @@ If the user knows ahead of time what the are of interest is (i.e. tracking a poi
 }
 ```
 
-The [Tracking an Area Of Interest Tutorial](./tutorials/aio/) demonstrates this.
+The [Tracking an Area Of Interest Tutorial](./tutorials/aoi/) demonstrates this.
 
 
 ## Setting ADCS at Run-time
