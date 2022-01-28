@@ -6,23 +6,23 @@
 |Windows:|`PAYLOAD_SABERTOOTH`|
 
 
-This tutorial demonstrates CUDA v10.0 by running [the samples that come shipped with NVIDIA CUDA v10.0](https://docs.nvidia.com/cuda/archive/10.0/cuda-installation-guide-linux/index.html#compiling-examples).
+This tutorial demonstrates CUDA v10.0 by running [the samples that come shipped with NVIDIA CUDA v10.0⤴](https://docs.nvidia.com/cuda/archive/10.0/cuda-installation-guide-linux/index.html#compiling-examples).
 
 ## Overview
 
 The tutorial comes with 2 scripts:
 
-1. [`cuda_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - runs in-orbit on the Sabertooth to demonstrate CUDA running
-1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - run by the user on the ground to upload `cuda_demo` and schedule it to execute in a `PAYLOAD_SABERTOOTH` window
+1. [`cuda_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - runs in-orbit on the Sabertooth to demonstrate CUDA running
+1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - run by the user on the ground to upload `cuda_demo` and schedule it to execute in a `PAYLOAD_SABERTOOTH` window
 
 
 ## cuda_demo Script
 
-[`cuda_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) builds & runs 3 of the CUDA samples:
+[`cuda_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) builds & runs 3 of the CUDA samples:
 
-1. [`deviceQuery`](https://docs.nvidia.com/cuda/archive/10.0/demo-suite/index.html#deviceQuery)
-1. [`bandwidthTest`](https://docs.nvidia.com/cuda/archive/10.0/demo-suite/index.html#bandwidthTest)
-1. [`transpose`](https://docs.nvidia.com/cuda/archive/10.0/cuda-samples/index.html#matrix-transpose)
+1. [`deviceQuery`⤴](https://docs.nvidia.com/cuda/archive/10.0/demo-suite/index.html#deviceQuery)
+1. [`bandwidthTest`⤴](https://docs.nvidia.com/cuda/archive/10.0/demo-suite/index.html#bandwidthTest)
+1. [`transpose`⤴](https://docs.nvidia.com/cuda/archive/10.0/cuda-samples/index.html#matrix-transpose)
 
 
 First, the CUDA compiler is checked for availability:
@@ -107,7 +107,7 @@ Result = PASS
 
 ## Upload & Deploy
 
-Run [`deploy <AUTH_TOKEN> <SAT_ID>`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) substituting `<AUTH_TOKEN>` and `<SAT_ID>` per the [getting started guide](../../GettingStarted.md). The script uploads `cuda_demo` and schedules it's execution in 24 hours.
+Run [`deploy <AUTH_TOKEN> <SAT_ID>`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) substituting `<AUTH_TOKEN>` and `<SAT_ID>` per the [getting started guide](../../GettingStarted.md). The script uploads `cuda_demo` and schedules it's execution in 24 hours.
 
 ## Review
 

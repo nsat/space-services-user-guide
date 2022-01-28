@@ -11,7 +11,7 @@ Consider reading about the [fundamentals](./Fundamentals.md) first - many of the
    1. Contact your program’s technical point of contact to request one
 1. Your company's AWS S3 bucket that was set up with Spire
 1. The `FM` number of a satellite (Satellite Id) with an SDR payload (read on)
-1. `bash`, `curl` & `git`
+1. `bash`, `curl`, `git`, `python3` & [`jq`⤴](https://stedolan.github.io/jq/)
 1. [Development Environment Setup](./dev-env/)
 1. [Execution Environment Setup](./ExecutionEnvironment.md)
 

@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy aoi tutoial
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID> <START>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+START=$3
+
+DURATION=360
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": ${DURATION},
+    "parameters": {
+        "adcs_config": {
+            "mode": "TRACKING",
+            "aperture": "SBAND_SDR",
+            "target_latitude_north": 37.771034,
+            "target_longitude_east": -122.413815
+        },        
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "rfcollect",
+                "-w", "/outbox/rf_collect.iq",
+                "-o", "-l", "0"
+            ]
+        }
+    }
+}
+EOF
+
+echo "Done."

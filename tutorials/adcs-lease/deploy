@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy adcs-lease tutoial
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID> <START>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+START=$3
+END=$4
+
+HOST="https://api.orb.spire.com"
+DURATION=$((${END} - ${START}))
+
+SATELLITE_ID="satellite_id=${SAT_ID}"
+PAYLOAD="payload=SDR"
+DESTINATION_PATH="destination_path=/persist/bin/adcs_lease_demo"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@adcs_lease_demo"
+
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "LEASE_ADCS",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": ${DURATION}
+}
+EOF
+
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": ${DURATION},
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "/persist/bin/adcs_lease_demo",
+                "${END}",
+                "37.771034", -122.413815"
+            ]
+        }
+    }
+}
+EOF
+
+
+echo "Done."
