@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy and run ipc demo
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+
+
+HOST="https://api.orb.spire.com"
+AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
+START=$(( `date -u +'%s'` + 86400 ))
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": 60,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "python3", 
+                "-m", 
+                "http.server", 
+                "10101", 
+                "--bind", 
+                "0.0.0.0"
+            ]
+        }
+    }
+}
+EOF
+
+
+START=$(( $START + 30 ))
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SABERTOOTH",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": 60,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "curl", 
+                "http://10.2.1.8:10101/var/log/syslog", "-o", 
+                "/outbox/sdr_syslog"
+            ]
+        }
+    }
+}
+EOF
+
+
+echo "Done."

@@ -11,7 +11,7 @@ This walk-through shows how to communicate between two payloads on a single sate
 1. Have `SABERTOOTH` request a file from the `SDR` using `curl`
 1. Review
 
-Only ports 10000 and above are available to connect to. Only payloads with an overlapping window are reachable. 
+Only ports 10000 and above are available to connect & bind to. Only payloads with an overlapping window are reachable. 
 
 
 ## Prerequisites
@@ -19,73 +19,28 @@ Only ports 10000 and above are available to connect to. Only payloads with an ov
 All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
 
 
+## Deploy Script
+
+The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) contains the following steps:
+
+1. Schedules a `PAYLOAD_SDR` window to run a web server
+1. Schedules a `PAYLOAD_SABERTOOTH` window to download a file from the SDR webserver
+
+
 ## Schedule PAYLOAD_SDR Window
 
-Create a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down.
+The deploy script creates a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down. Run the accompanying [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) script:
+
+
+## Schedule a PAYLOAD_SABERTOOTH Window
+
+Next, the script creates a window on the `SABERTOOTH` for 30 seconds later to make an HTTP request to download `/var/log/syslog` from the `SDR` to the `/outbox`. The IP address of the SDR is [`10.2.1.8`](../../ExecutionEnvironment.md#payload-specifications).
+
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-SAT_ID="YOUR_SAT_ID"
-START=$(( `date -u +'%s'` + 21600 ))
-
-curl -X POST ${HOST}/tasking/window \
--H "${AUTH_HEADER}" \
--H "Content-Type: application/json" \
--d @- << EOF
-{
-    "type": "PAYLOAD_SDR",
-    "satellite_id": "${SAT_ID}",
-    "start": ${START},
-    "duration": 60,
-    "parameters": {
-        "user_command": {
-            "executable": "/persist/bin/entry.sh",
-            "executable_arguments": [
-                "python3", 
-                "-m", 
-                "http.server", 
-                "10101", 
-                "--bind", 
-                "0.0.0.0"
-            ]
-        }
-    }
-}
-EOF
-```
-
-## Schedule a PAYLOAD_SABERTOOTH Window
-
-Next, create a window on the `SABERTOOTH` for 30 seconds later to make an HTTP request to download `/var/log/syslog` from the `SDR` to the `/outbox`. The IP address of the SDR is [`10.2.1.8`](../../ExecutionEnvironment.md#payload-specifications).
-
-
-```bash
-START=$(( $START + 30 ))
-
-curl -X POST ${HOST}/tasking/window \
--H "${AUTH_HEADER}" \
--H "Content-Type: application/json" \
--d @- << EOF
-{
-    "type": "PAYLOAD_SABERTOOTH",
-    "satellite_id": "${SAT_ID}",
-    "start": ${START},
-    "duration": 60,
-    "parameters": {
-        "user_command": {
-            "executable": "/persist/bin/entry.sh",
-            "executable_arguments": [
-                "curl", 
-                "http://10.2.1.8:10101/var/log/syslog", "-o", 
-                "/outbox/sdr_syslog"
-            ]
-        }
-    }
-}
-EOF
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 
 

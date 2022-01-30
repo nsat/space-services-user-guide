@@ -110,7 +110,7 @@ Task the satellite to track the San Francisco location `(37.771034, -122.413815)
 <aside class="notice">Replace [YOUR_START] with the calculated result of `find_transit`, and [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-$ aoi/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
 ```
 
 ## Review
