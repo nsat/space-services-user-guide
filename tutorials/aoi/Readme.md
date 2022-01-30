@@ -11,7 +11,7 @@ This example requires the [satellites Two-Line-Element (TLE)⤴](https://en.wiki
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). For this tutorial Python 3.6+ & the `pypredict` python module is used (on the ground only).
+All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). For this tutorial Python 3.6+ & the `pypredict` python module are used (on the ground only).
 
 ### pypredict
 

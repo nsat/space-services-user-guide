@@ -14,51 +14,24 @@ This tutorial demonstrates queueing low-priority data for download, with a short
 
 ## Prerequisites
 
-1. The same [Hello World tutorial prerequisites](../hello_world/)
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md#execution-environment-setup). 
 
 
 ## Schedule Execution
 
-Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the file `/var/log/syslog` to the ground on the `demo` topic. If the file is not downloaded within 24 hours, it can be discarded. 
+Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the file `/var/log/syslog` to the ground on the `demo` topic. If the file is not downloaded within 24 hours, it will be discarded. Take a look at [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy):
+
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-SAT_ID="YOUR_SAT_ID"
-
-START=$(( `date -u +'%s'` + 86400 ))
-DATA='{\"destination\":\"ground\",\"filepath\":\"/var/log/syslog\",\"topic\":\"demo\",\"options\":{\"reliable\":true,\"TTLParams\":{\"urgent\":0,\"bulk\":0,\"surplus\":86400}}}'
-
-curl -X POST ${HOST}/tasking/window \
--H "${AUTH_HEADER}" \
--H "Content-Type: application/json" \
--d @- << EOF
-{
-    "type": "PAYLOAD_SDR",
-    "satellite_id": "${SAT_ID}",
-    "start": ${START},
-    "duration": 60,
-    "parameters": {
-        "user_command": {
-            "executable": "/persist/bin/entry.sh",
-            "executable_arguments": [
-                "curl", "-XPOST", "-v",
-                "-H", "Content-type: application/json",
-                "-d", "${DATA}",
-                "http://localhost:2005/sdk/v1/send_file"
-            ]
-        }
-    }
-}
-EOF
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
 ```
 
 
 ## Review
 
-After the windows completes and enough time is given for download, the file can be found in the user AWS S3 bucket (see [Hello World tutorial](../hello_world/#review)).
+After the windows completes and enough time is given for download, the file can be found in the user's AWS S3 bucket (see [Hello World tutorial](../hello_world/#review)).
 
 
 ## Next Steps

@@ -8,6 +8,11 @@
 
 This tutorial demonstrates [CuDNN v7.5.0](https://developer.nvidia.com/rdp/cudnn-archive) by running [the samples that come shipped with it](https://github.com/mmmn143/cudnn_samples_v7).
 
+## Prerequisites
+
+All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). 
+
+
 ## Overview
 
 The tutorial comes with 2 scripts:

@@ -8,6 +8,12 @@
 
 This tutorial demonstrates CUDA v10.0 by running [the samples that come shipped with NVIDIA CUDA v10.0⤴](https://docs.nvidia.com/cuda/archive/10.0/cuda-installation-guide-linux/index.html#compiling-examples).
 
+
+## Prerequisites
+
+All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). 
+
+
 ## Overview
 
 The tutorial comes with 2 scripts:
