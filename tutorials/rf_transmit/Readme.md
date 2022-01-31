@@ -53,7 +53,7 @@ The `rf_transmit_demo` script is uploaded and scheduled to run by using the [`de
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 
 Response:

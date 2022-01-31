@@ -22,10 +22,10 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the file `/var/log/syslog` to the ground on the `demo` topic. If the file is not downloaded within 24 hours, it will be discarded. Take a look at [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy):
 
 
-<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
+<aside class="notice">Replace [YOUR_AUTH_TOKEN], [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 
 

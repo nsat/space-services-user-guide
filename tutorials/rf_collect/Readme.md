@@ -49,7 +49,7 @@ The `rf_collect_demo` script is uploaded and scheduled to run by using the [`dep
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
 ```bash
-$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 
 Response:
