@@ -9,7 +9,7 @@ All payloads include the software and libraries to compile C & C++ applications.
 
 Developers should consider using the [cross compiler](../cross-compiling/) if possible.
 
-The [ISL tutorial](../tutorials/isl/) requires the python module `zfec`. This module has a native C library that is built at installation time by `setuptools`. The ``SABERTOOTH`, `SDR`, `IPI` payloads require further setup if the developer plans to deploy python modules that have a C/C++ native build step. This walkthrough can be adapted for any Linux distro package or python module.
+The [ISL tutorial](../../tutorials/isl/) requires the python module `zfec`. This module has a native C library that is built at installation time by `setuptools`. The ``SABERTOOTH`, `SDR`, `IPI` payloads require further setup if the developer plans to deploy python modules that have a C/C++ native build step. This walkthrough can be adapted for any Linux distro package or python module.
 
 
 ## Packages

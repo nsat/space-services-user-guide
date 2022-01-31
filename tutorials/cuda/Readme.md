@@ -113,7 +113,13 @@ Result = PASS
 
 ## Upload & Deploy
 
-Run [`deploy <AUTH_TOKEN> <SAT_ID>`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) substituting `<AUTH_TOKEN>` and `<SAT_ID>` per the [getting started guide](../../GettingStarted.md). The script uploads `cuda_demo` and schedules it's execution in 24 hours.
+Run [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy). The script uploads `cuda_demo` and schedules it's execution in 24 hours.
+
+<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
+
+```bash
+$ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
+```
 
 
 ## Review
