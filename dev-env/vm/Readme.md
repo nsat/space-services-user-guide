@@ -11,7 +11,7 @@ The SDR & IPI payloads run on an ARM Cortex A53, with Yocto Poky 2.5 (Sumo) inst
 There are significant differences between the packages installed in the image published by Yocto and the packages on the `SDR` & `IPI`. Please read more on the [Execution Environment](../../ExecutionEnvironment.md), especially about the [filesystem](../../ExecutionEnvironment.md#filesystem) to understand where to place files. A helper script is provided in the [Getting Started Guide](../../GettingStarted.md).
 
 
- * [QEMU⤴](https://www.qemu.org/) - may be installed with a package manager, i.e. `apt` or `apk`
+ * [QEMU⤴](https://www.qemu.org/) - may be installed with a package manager, e.g. `apt` or `apk`
  * [Download Yocto Poky sumo VM images⤴](http://downloads.yoctoproject.org/releases/yocto/yocto-2.5/machines/qemu/qemuarm64/)
 
 Start VM:

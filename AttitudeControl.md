@@ -2,10 +2,12 @@
 
 Attitude is controlled by the Attitude Control and Determination System (ADCS). Attitude information can be set as part of a window, or at run-time, in-orbit when there is an ADCS lease window, via the [Satellite Bus API⤴](https://developers.spire.com/satellite-bus-api/). The ADCS provides a way for the satellite to reorient itself, and report which way it is facing. Attitude information is always relative to an aperture/antenna. If none is provided then the X/S-BAND radio is assumed.
 
+No other controls (e.g. thrusters or orbit changes) are available to users. [Orbital station keeping](https://en.wikipedia.org/wiki/Orbital_station-keeping) is performed by Spire.
+
 
 ## Setting ADCS on windows
 
-If the user knows ahead of time what the are of interest is (i.e. tracking a point on earth or facing a fixed direction) then this information can be provided in [`adcs_config`⤴](https://developers.spire.com/tasking-api-docs/#adcs_config) on the  payload window. For example, to take a photo of a location on earth, the user would schedule an [`PAYLOAD_IPI`⤴](https://developers.spire.com/tasking-api-docs/#payload_ipi) window to have the the `IPI` aperture track that location:
+If the user knows ahead of time what the are of interest is (e.g. tracking a point on earth or facing a fixed direction) then this information can be provided in [`adcs_config`⤴](https://developers.spire.com/tasking-api-docs/#adcs_config) on the  payload window. For example, to take a photo of a location on earth, the user would schedule an [`PAYLOAD_IPI`⤴](https://developers.spire.com/tasking-api-docs/#payload_ipi) window to have the the `IPI` aperture track that location:
 
 ```json
 {

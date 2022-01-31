@@ -16,7 +16,7 @@ Everything happens as time windows on a schedule. The schedule holds all upcomin
 1. **Analyze** received data
 
 ## Execution Environment
-The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (i.e. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (i.e. for telemetry or attitude control), as well as an SDK. [Read on..](./ExecutionEnvironment.md)
+The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (e.g. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (e.g. for telemetry or attitude control), as well as an SDK. [Read on..](./ExecutionEnvironment.md)
 
 
 ## Satellite Bus
@@ -24,7 +24,7 @@ The satellite bus is a broad name given to the many systems on the satellite tha
 
 
 ## Windows
-A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exclusive access to different things, i.e. attitude control. User reservations are represented as types of windows too.
+A window is a reserved period of time on a specific satellite for an activity. Windows are placed in the schedule. Different window types reserve different hardware and require exclusive access to different things, e.g. attitude control. User reservations are represented as types of windows too.
 
 
 ### Contact Windows
@@ -32,7 +32,7 @@ A contact is a type of window created by Spire, and is a one or two-way radio tr
 
 
 ### Payload Windows
-Each payload type (i.e. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
+Each payload type (e.g. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
 
 
 ### Lease Windows
@@ -52,7 +52,7 @@ The Tasking API provides an [`upload`⤴](https://developers.spire.com/tasking-a
 
 
 ### Flight Flash
-Flight-flash is the process of creating and applying file system images onto the payloads prior to launch.  This is often a good time for large user applications to be installed, i.e. machine learning models or frameworks like Python or TensorFlow. 
+Flight-flash is the process of creating and applying file system images onto the payloads prior to launch.  This is often a good time for large user applications to be installed, e.g. machine learning models or frameworks like Python or TensorFlow. 
 
 
 ## Downloading Files
@@ -64,7 +64,7 @@ Payload window definitions provide the ability to have the satellite bus copy fi
 
 
 ## Inter-payload Networking
-When windows on a satellite overlap, ethernet is provided for IP networking, Ping and UDP & TCP ports 10,000+ are enabled. This allows application code to communicate, i.e. listen on a port for requests from a different payload.
+When windows on a satellite overlap, ethernet is provided for IP networking, Ping and UDP & TCP ports 10,000+ are enabled. This allows application code to communicate, e.g. listen on a port for requests from a different payload.
 
 
 ## Inter-satellite Networking

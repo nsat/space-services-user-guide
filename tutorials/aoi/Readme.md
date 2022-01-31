@@ -5,7 +5,7 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, i.e. for observations or communications. These results can be compared with a site like [n2yo.com⤴](https://www.n2yo.com/passes/?s=51099) which provides transit information.
+A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, e.g. for observations or communications. These results can be compared with a site like [n2yo.com⤴](https://www.n2yo.com/passes/?s=51099) which provides transit information.
 
 This example requires the [satellites Two-Line-Element (TLE)⤴](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity, which is needed to calculate each transit over an AOI. The TLE can be obtained from a range of places including [tle.spire.com⤴](http://tle.spire.com/), and requires the satellites Norad Catalog Number (Norad Id).
 
@@ -23,7 +23,7 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 ## Norad Catalog Number
 
-The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, i.e. [n2yo.com⤴](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
+The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, e.g. [n2yo.com⤴](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 

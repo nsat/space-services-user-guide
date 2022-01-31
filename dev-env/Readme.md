@@ -1,6 +1,6 @@
 # Development Environments
 
-Native applications, including scripted languages with native components (i.e. NumPy) must be compiled to the ARM 8 architecture. A Linux cross-compiler is provided for this purpose.
+Native applications, including scripted languages with native components (e.g. NumPy) must be compiled to the ARM 8 architecture. A Linux cross-compiler is provided for this purpose.
 
 
 # C/C++ Cross Compiling
