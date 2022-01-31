@@ -14,7 +14,7 @@ For compilations with few external package dependencies, cross-compiling may be 
 
 The SDR & IPI payloads run on an ARM Cortex A53, with Yocto Poky 2.5 (Sumo) installed ([specs](../#payload-specifications)). The Yocto Poky sumo OS can be run in a QEMU VM.
 
- * [QUEMU Setup](./virtual-machine/)
+ * [QUEMU Setup](./vm/)
 
 
 # In-Orbit Compiling
