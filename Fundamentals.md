@@ -32,7 +32,7 @@ A contact is a type of window created by Spire, and is a one or two-way radio tr
 
 
 ### Payload Windows
-Each payload type (i.e. `SDR`, `Sabertooth` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
+Each payload type (i.e. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
 
 
 ### Lease Windows

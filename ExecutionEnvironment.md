@@ -21,7 +21,7 @@ The root filesystem is writable to the user. Common Linux directories have been 
 1. Treat all existing directories as read-only
 
 
-## Wrapper Script
+### Wrapper Script
 
 The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) can be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed to a payload by running [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/deploy) in the [`dev-env`](https://github.com/nsat/space-services-user-guide/tree/main/dev-env) directory:
 
@@ -31,6 +31,27 @@ The Tasking API is used to deploy apps to payloads and execute them. It is helpf
 ```bash
 $ dev-env/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_PAYLOAD]
 ```
+
+
+## Networking
+
+Payloads have direct IP network access via ethernet to listen on ports above 10000, as well as make connections to those ports. TCP & UDP are supported. Payload modules with overlapping windows have IP routes available between them for the duration of the overlap. Users are expected to setup server and client on each module to facilitate communication.
+
+
+### Inter-Satellite Links (ISL)
+
+Inter-satellite data transfer is possible using ISL. In order to utilize inter-satellite data transfer, A `LEASE_ISL` windows must be scheduled concurrently with a `PAYLOAD_*` on each side satellite. One satellite is selected as a transmitter and the other as a receiver. A network gateway/route is available on the SABERTOOTH, LEMSDR & IPI payloads that routes IPv4 traffic via the ISL radio for SIMPLEX transmission to a receiving satellite. **UDP** transmission is possible over the SIMPLEX link.  The ISL network uses standard IP networking. Using NAT, the remote payloads are addressable on the
+`172.16.0.x` subnet (The subnet `10.2.1.x` is replaced with `172.16.0.x` by the NAT router).
+
+
+### IP Table
+
+| Payload | Local IP Address | Remote (ISL) IP Address |
+| - | - | - |
+| SDR | 10.2.1.8 | 172.16.0.8 |
+| SABERTOOTH | 10.2.1.10 | 172.16.0.10 |
+| IPI | 10.2.1.16 | 172.16.0.16 |
+
 
 ## Payload Specifications
 
@@ -67,7 +88,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Windows      | [`PAYLOAD_IPI`⤴](https://developers.spire.com/tasking-api-docs/#payload_ipi) |
 
 
-## Sabertooth
+## SABERTOOTH
 
 | Attribute    | Value                               |
 | ------------ | ------------------------------------|

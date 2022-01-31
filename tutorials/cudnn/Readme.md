@@ -1,4 +1,4 @@
-# Sabertooth cuDNN Tutorial
+# SABERTOOTH cuDNN Tutorial
 
 |Complexity:|Low|
 |-|-|
@@ -17,7 +17,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 The tutorial comes with 2 scripts:
 
-1. [`cudnn_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - runs in-orbit on the Sabertooth to demonstrate cuDNN running
+1. [`cudnn_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - runs in-orbit on the SABERTOOTH to demonstrate cuDNN running
 1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy) - run by the user on the ground to upload `cudnn_demo` and schedule it to execute in a `PAYLOAD_SABERTOOTH` window
 
 

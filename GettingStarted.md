@@ -38,7 +38,7 @@ The example response below shows that the authentication token has access to [2 
 {
   "data": [{
     "id": "FM1",
-    "norad_id": "46926",
+    "norad_id": "51099",
     "supported_windows": [
       "PAYLOAD_SDR",
       "PAYLOAD_SABERTOOTH"

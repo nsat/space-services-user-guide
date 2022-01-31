@@ -13,8 +13,8 @@ The tutorials all follows a similar format. Each has it's own directory that con
  - [Inter-Payload Communications](./ipc/)
  - [Inter-Satellite Links (ISL)](./isl/)
  - [Low-level Data Transfer API](./data_xfr/) 
- - [Sabertooth CUDA](./cuda/) 
- - [Sabertooth cuDNN](./cudnn/) 
+ - [SABERTOOTH CUDA](./cuda/) 
+ - [SABERTOOTH cuDNN](./cudnn/) 
 
 ## Next Steps
 
