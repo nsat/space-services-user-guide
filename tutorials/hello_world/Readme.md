@@ -17,7 +17,7 @@ This walk-through shows how to upload and run a script on a satellite. This exam
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md).
 
 
 ## Develop Script
@@ -130,7 +130,7 @@ curl -X POST ${HOST}/tasking/window \
 EOF
 ```
 
-It's important to note here the use of `/persist/bin/entry.sh` as a wrapper script. It is an optional script uploaded and maintained by the user to set up the environment. More information can be found in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+It's important to note here the use of `/persist/bin/entry.sh` as a wrapper script. It is an optional script uploaded and maintained by the user to set up the environment. More information can be found in the [Getting Started Guide](../../GettingStarted.md).
 
 
 Response:
@@ -142,9 +142,9 @@ Response:
 
 ## Wait for Results
 
-_Consider moving on to the [next tutorial](#next-steps) while waiting for this to run._
-
 Schedule synchronization can be polled by querying for upcoming windows. `state` will change from `PENDING_SYNC` to `SYNCED`.
+
+_Consider moving on to the [next tutorial](#next-steps) while waiting for this to change._
 
 ```bash
 SATELLITE_ID="satellite_id=FM1"

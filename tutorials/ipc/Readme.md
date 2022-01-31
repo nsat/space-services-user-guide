@@ -16,7 +16,7 @@ Only ports 10000 and above are available to connect & bind to. Only payloads wit
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md).
 
 
 ## Deploy Script

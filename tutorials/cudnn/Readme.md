@@ -10,7 +10,7 @@ This tutorial demonstrates [CuDNN v7.5.0](https://developer.nvidia.com/rdp/cudnn
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). 
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md). 
 
 
 ## Overview

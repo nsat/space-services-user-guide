@@ -14,7 +14,7 @@ This tutorial demonstrates queueing low-priority data for download, with a short
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md#execution-environment-setup). 
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md). 
 
 
 ## Schedule Execution

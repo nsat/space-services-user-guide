@@ -12,7 +12,7 @@ The ADCS can be controlled by user code from a payload while in orbit, using the
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md#execution-environment-setup). This tutorial should be completed after the [Tracking an Area Of Interest Tutorial](../aoi/#finding-a-transit-time).
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md). This tutorial should be completed after the [Tracking an Area Of Interest Tutorial](../aoi/#finding-a-transit-time).
 
 
 ## Finding a Transit Time

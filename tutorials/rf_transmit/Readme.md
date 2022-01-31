@@ -12,20 +12,20 @@ This tutorial will demonstrate creating and sending a waveform through the S-BAN
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md).
 
 
 ## Overview
 
 The tutorial comes with 2 scripts:
 
-1. [`rf_transmit_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo) - runs in-orbit on the SDR to demonstrate `rfcollect` running
+1. [`rf_transmit_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo) - runs in-orbit on the SDR to demonstrate `rftransmit` running
 1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/deploy) - run by the user on the ground to upload `rf_transmit_demo` and schedule it to execute in a `PAYLOAD_SDR` window
 
 
 ## In-Orbit Script
 
-A script has been created to run on the `SDR` Linux payload called `rf_transmit_demo`. The script will generate an IQ file using the `iqgenerator` utility, then transmit it with the `rftransmit` utility.
+A script has been created to run on the `SDR` Linux payload called [`rf_transmit_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo). The script will generate an IQ file using the `iqgenerator` utility, then transmit it with the `rftransmit` utility.
 
 Mark it executable and test it. An error message is expected as the utilities are not available on the ground.
 
@@ -48,7 +48,7 @@ rftransmit error: 127
 
 ## Deploy
 
-The `rf_collect_demo` script is uploaded and scheduled to run by using the [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_collect/deploy) script:
+The `rf_transmit_demo` script is uploaded and scheduled to run by using the [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit_demo/deploy) script:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
@@ -59,9 +59,11 @@ $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
 Response:
 
 ```json
+...
 {"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
-
+...
 {"data": {"id": "3020553"}}
+...
 ```
 
 At this point the file has been queued for upload at the next possible contact, and a window scheduled to run it in 24 hours.  After `rf_transmit_demo` has run on the `SDR` the file file will be picked up by the satellite bus and queued for downlink to AWS S3.

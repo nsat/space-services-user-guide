@@ -11,7 +11,7 @@ This tutorial demonstrates CUDA v10.0 by running [the samples that come shipped 
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](../GettingStarted.md#execution-environment-setup). 
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md). 
 
 
 ## Overview

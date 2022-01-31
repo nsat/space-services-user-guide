@@ -5,12 +5,12 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../../Utilities.md#rf-collect) utility, and download the produced [`IQ`⤴](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components) and log files. The frequency can be changed to capture specific signals. 
+This tutorial will demonstrate receiving signals from the S-BAND radio on the `SDR` using the [`rfcollect`](../../Utilities.md#rf-collect) utility, and download the produced [`IQ`⤴](../../FAQ.md#what_is_an_iq_file_) and log files. The frequency can be changed to capture specific signals. 
 
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup).
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md).
 
 ## Overview
 
@@ -22,7 +22,7 @@ The tutorial comes with 2 scripts:
 
 ## In-Orbit Script
 
-A script has been created to run on the `SDR` Linux payload called `rf_collect_demo`. The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file (16bit in-phase + 16bit quadrature (4 bytes per sample) @ 1MHz).
+A script has been created to run on the `SDR` Linux payload called [`rf_collect_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_collect/rf_collect_demo). The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file (16bit in-phase + 16bit quadrature (4 bytes per sample) @ 1MHz).
 
 
 Mark it executable and test it. An error message is expected because `rfcollect` is likely not available.
@@ -44,7 +44,7 @@ rfcollect error: 127
 
 ## Deploy
 
-The `rf_collect_demo` script is uploaded and scheduled to run by using the [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_collect/deploy) script:
+The `rf_collect_demo` script is uploaded and scheduled to run by using the [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_collect/deploy) script:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
@@ -55,7 +55,9 @@ $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START]
 Response:
 
 ```json
+...
 {"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
+...
 ```
 
 At this point the file has been queued for upload at the next possible contact, and a window scheduled to run it in 24 hours. 

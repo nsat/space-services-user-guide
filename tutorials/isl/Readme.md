@@ -14,7 +14,7 @@ To simplify calculating when to schedule the windows, for this example we will b
 
 ## Prerequisites
 
-All tutorials require the steps outlined in the [Getting Started Guide](GettingStarted.md#execution-environment-setup). Additionally the `zfec` python module must be installed on the payload. See the [In-Orbit Python Environment Setup
+All tutorials require the steps outlined in the [Getting Started Guide](../../GettingStarted.md). Additionally the `zfec` python module must be installed on the payload. See the [In-Orbit Python Environment Setup
 ](../../dev-env/in-orbit/) instructions for more information.
 
 
