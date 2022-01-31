@@ -20,22 +20,26 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ## Scripts
 
-1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
-1. [`isl_tx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
-1. [`isl_rx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
+1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
+1. [`isl_tx_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
+1. [`isl_rx_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
 
 
 ## Upload & Deploy
 
-The deploy script is run by the user and performs the following steps:
+The [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) script is run by the user and performs the following steps:
 
 1. Uploads `isl_tx_demo` & `isl_rx_demo` scripts to the respective satellites
 1. Schedules an ISL between 2 satellites in 24 hours
 1. Schedules a `PAYLOAD_SDR` window to run on the transmitting satellite to send data
 1. Schedule a `PAYLOAD_SDR` window to run on the receiving satellite to listen for & downlink data
 
-Run [`deploy <AUTH_TOKEN> <SAT_ID_TX> <SAT_ID_RX>`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) substituting `<AUTH_TOKEN>`, `<SAT_ID_TX>` and `<SAT_ID_RX>` per the [getting started guide](../../GettingStarted.md). 
 
+<aside class="notice">Replace [YOUR_AUTH_TOKEN], [SAT_ID_TX] & [SAT_ID_RX] as needed.</aside>
+
+```bash
+$ ./deploy "[AUTH_TOKEN]" [SAT_ID_TX] [SAT_ID_RX]
+```
 
 
 ## Schedule LEASE_ISL
@@ -43,33 +47,6 @@ Run [`deploy <AUTH_TOKEN> <SAT_ID_TX> <SAT_ID_RX>`](https://github.com/nsat/spac
 The `LEASE_ISL` is used to configure a one-way ISL using the S-BAND radio, providing a simplex IP link between the satellites. In this example UDP is used for data transfer as the protocol has no return acknowledgment and ideal for simplex links.
 
 A single call to the Tasking API creates a `LEASE_ISL` in both satellites. For this example satellites `FM1` and `FM2` are scheduled for 5 minutes. Everything is scheduled 24 hours out when there are no conflicts with existing down-link contact windows.
-
-<aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
-
-```bash
-HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
-SAT_ID="YOUR_SAT_ID"
-START=$(( `date -u +'%s'` + 86400 ))
-
-curl -X POST ${HOST}/tasking/window \
--H "${AUTH_HEADER}" \
--H "Content-Type: application/json" \
--d @- << EOF
-{
-    "type": "LEASE_ISL",
-    "satellite_id": "${SAT_ID}",
-    "start": ${START},
-    "duration": 300,
-    "parameters": {
-        "user_isl_receive_satellite_id": "FM2"
-    }
-}
-EOF
-```
-
-
-
 
 
 ## Review
@@ -80,3 +57,4 @@ Once the window has completed and enough time has passed for the log to download
 
 ## Next Steps
 
+ - [SABERTOOTH CUDA Tutorial](../cuda/) 

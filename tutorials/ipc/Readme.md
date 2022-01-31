@@ -21,7 +21,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ## Deploy Script
 
-The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) contains the following steps:
+The [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) contains the following steps:
 
 1. Schedules a `PAYLOAD_SDR` window to run a web server
 1. Schedules a `PAYLOAD_SABERTOOTH` window to download a file from the SDR webserver
