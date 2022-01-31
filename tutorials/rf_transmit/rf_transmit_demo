@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -xe
+
+date
+uname -a
+iqgenerator -f rf_transmit.iq -o -l 0 || echo "iqgenerator error: $?"
+rftransmit -w rf_transmit.iq -o -l 0 || echo "rftransmit error: $?"
+rm  rf_transmit.iq

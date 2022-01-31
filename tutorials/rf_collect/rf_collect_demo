@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
+set -xe
 
-date > /outbox/rf_collect.log
-uname -a >> /outbox/rf_collect.log
-(rfcollect -w /outbox/rf_collect.iq -o -l 0 2>&1 || echo "rfcollect error: $?") >> /outbox/rf_collect.log
-
+date
+uname -a
+(rfcollect -w /outbox/rf_collect.iq -o -l 0 2>&1 || echo "rfcollect error: $?")

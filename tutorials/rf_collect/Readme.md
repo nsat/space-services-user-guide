@@ -22,7 +22,7 @@ The tutorial comes with 2 scripts:
 
 ## In-Orbit Script
 
-A script has been created that will run on the `SDR` Linux payload called `rf_collect_demo`. The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file (16bit in-phase + 16bit quadrature (4 bytes per sample) @ 1MHz).
+A script has been created to run on the `SDR` Linux payload called `rf_collect_demo`. The default options of `rfcollect` make a 10 second 1MHz wide sample of the 2.0225 GHz S-BAND spectrum with a sample rate of 1MHz. This produces a 4MB IQ file (16bit in-phase + 16bit quadrature (4 bytes per sample) @ 1MHz).
 
 
 Mark it executable and test it. An error message is expected because `rfcollect` is likely not available.
@@ -44,7 +44,7 @@ rfcollect error: 127
 
 ## Deploy
 
-The script can be uploaded and scheduled to run by using the [`deploy`]() script:
+The `rf_collect_demo` script is uploaded and scheduled to run by using the [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_collect/deploy) script:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
@@ -58,13 +58,12 @@ Response:
 {"data": {"id": "d25c7a43-b70d-4f57-81d5-ff5177b26158"}}
 ```
 
-At this point the file has been queued for upload at the next possible contact. 
-
+At this point the file has been queued for upload at the next possible contact, and a window scheduled to run it in 24 hours. 
 
 
 ## Review
 
-The files can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the files:
+After the windows completes and enough time is given for download, the files can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the files:
 
 ```bash
 aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
