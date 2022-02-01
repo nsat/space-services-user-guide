@@ -4,9 +4,9 @@ In this trivial example, we will create a PAYLOAD_SDR window to capture a signal
 file to our S3 bucket.  We will be using XZ Utils for compression.
 
 The full specification for PAYLOAD_SDR windows (along with other window types) can be found in the Tasking API
-documentation [here⤴](https://developers.spire.com/tasking-api-docs/#supported-windows)
+documentation [here](https://developers.spire.com/tasking-api-docs/#supported-windows)
 
-You can learn more about IQ components [here⤴](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components#IQ_phase_convention)
+You can learn more about IQ components [here](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components#IQ_phase_convention)
 
 ## Assumptions
 
@@ -21,7 +21,7 @@ You can learn more about IQ components [here⤴](https://en.wikipedia.org/wiki/I
 **Language: Bash**
 
 Bash script responsible for uploading our `compress.py` script to our payload and creating a payload 
-window using curl commands to the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
+window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/).
 
 ### compress.py
 

@@ -5,9 +5,9 @@
 |Payloads:|`SDR`|
 |Windows:|`PAYLOAD_SDR`|
 
-A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, e.g. for observations or communications. These results can be compared with a site like [n2yo.com⤴](https://www.n2yo.com/passes/?s=51099) which provides transit information.
+A satellite is useful for its ability to be over a specific area of interest (AOI). This tutorial will demonstrate how to determine at what time a window needs to be scheduled to be over an AOI, e.g. for observations or communications. These results can be compared with a site like [n2yo.com](https://www.n2yo.com/passes/?s=51099) which provides transit information.
 
-This example requires the [satellites Two-Line-Element (TLE)⤴](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity, which is needed to calculate each transit over an AOI. The TLE can be obtained from a range of places including [tle.spire.com⤴](http://tle.spire.com/), and requires the satellites Norad Catalog Number (Norad Id).
+This example requires the [satellites Two-Line-Element (TLE)](https://en.wikipedia.org/wiki/Two-line_element_set), which provides the satellite's location and velocity, which is needed to calculate each transit over an AOI. The TLE can be obtained from a range of places including [tle.spire.com](http://tle.spire.com/), and requires the satellites Norad Catalog Number (Norad Id).
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ### pypredict
 
-Install the [`pypredict`⤴](https://github.com/nsat/pypredict) python module:
+Install the [`pypredict`](https://github.com/nsat/pypredict) python module:
 
 ```bash
 python3 -m pip install git+https://github.com/nsat/pypredict.git
@@ -23,7 +23,7 @@ python3 -m pip install git+https://github.com/nsat/pypredict.git
 
 ## Norad Catalog Number
 
-The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, e.g. [n2yo.com⤴](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
+The Norad Catalog Number (Norad Id) is needed to to look up the TLE. It can be looked up from a range of websites, e.g. [n2yo.com](https://www.n2yo.com/). Spire also provides this information - the Tasking API returns the Norad Id of satellites available to the user:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] as needed.</aside>
 
@@ -51,7 +51,7 @@ The result shows that windows can be scheduled on `FM1` which has Norad Id `5109
 
 ## TLE
 
-The [TLE⤴](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite can be fetched at any time by visiting [`http://tle.spire.com/51099`⤴](http://tle.spire.com/51099). Notice that the Norad Id was appended to the URL:
+The [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite can be fetched at any time by visiting [`http://tle.spire.com/51099`](http://tle.spire.com/51099). Notice that the Norad Id was appended to the URL:
 
 ```bash
 $ curl http://tle.spire.com/51099
@@ -62,7 +62,7 @@ $ curl http://tle.spire.com/51099
 
 ## Finding a Transit Time
 
-This tutorial has an accompanying script called [`find_transit`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`⤴](https://github.com/nsat/pypredict) python module installed previously.
+This tutorial has an accompanying script called [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`](https://github.com/nsat/pypredict) python module installed previously.
 
 ```bash
 usage: find_transit [-h] [--sat SAT] [--lat LAT] [--lon LON] [--alt ALT]
@@ -104,7 +104,7 @@ The transit's start and end times are from horizon to horizon, giving a total du
 
 ## Scheduling a Window
 
-Task the satellite to track the San Francisco location `(37.771034, -122.413815)` by specifying this location in the `adcs_config` section of the JSON in the API request, and start the `SDR` and make a 10 second capture of S-BAND for down-link. Take a look at [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy)
+Task the satellite to track the San Francisco location `(37.771034, -122.413815)` by specifying this location in the `adcs_config` section of the JSON in the API request, and start the `SDR` and make a 10 second capture of S-BAND for down-link. Take a look at [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy)
 
 
 <aside class="notice">Replace [YOUR_START] with the calculated result of `find_transit`, and [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>

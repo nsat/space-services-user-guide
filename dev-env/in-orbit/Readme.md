@@ -14,11 +14,11 @@ The [ISL tutorial](../../tutorials/isl/) requires the python module `zfec`. This
 
 ## Packages
 
-  - [Python 3.6.9 headers⤴](http://ports.ubuntu.com/ubuntu-ports/pool/main/p/python3.6/libpython3.6-dev_3.6.9-1~18.04ubuntu1.6_arm64.deb) (43 MB)
-  - [Python3 pip v20.3.4⤴](https://pypi.org/project/pip/) (1.7 MB)
-  - [Python3 setuptools v59.6.0⤴](https://pypi.org/project/setuptools/) (952 KB)
-  - [pyutil 3.3.0 Python module⤴](https://pypi.org/project/pyutil/) (292 KB)
-  - [zfec 1.5.1 Python module⤴](https://pypi.org/project/zfec/) (70 KB)
+  - [Python 3.6.9 headers](http://ports.ubuntu.com/ubuntu-ports/pool/main/p/python3.6/libpython3.6-dev_3.6.9-1~18.04ubuntu1.6_arm64.deb) (43 MB)
+  - [Python3 pip v20.3.4](https://pypi.org/project/pip/) (1.7 MB)
+  - [Python3 setuptools v59.6.0](https://pypi.org/project/setuptools/) (952 KB)
+  - [pyutil 3.3.0 Python module](https://pypi.org/project/pyutil/) (292 KB)
+  - [zfec 1.5.1 Python module](https://pypi.org/project/zfec/) (70 KB)
 
 Uploading each package would take quite a while. To reduce the time required to upload the packages the following steps are taken:
 
@@ -37,7 +37,7 @@ Steps:
 1. Move include files to `/persist/usr/include`
 1. `pip install` modules
 
-See the [`install.in`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/install.in) input script in [github⤴](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
+See the [`install.in`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/install.in) input script in [github](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
 
 
 ## Create Deploy Package
@@ -51,7 +51,7 @@ Steps:
 1. Append the tarball to a `bash` install script
 
 
-See the [`create_package`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/create_package) script in [github⤴](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
+See the [`create_package`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/in-orbit/create_package) script in [github](https://github.com/nsat/space-services-user-guide/tree/main/dev-env/in-orbit/).
 
 
 ## Deploy Script
@@ -85,7 +85,7 @@ Since the file is a non-trivial size of around 1.7 MB, multiple contacts will li
 ### Run Script
 
 
-Add a [`PAYLOAD_SABERTOOTH`⤴](https://developers.spire.com/tasking-api-docs/#payload_sabertooth) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen to give the install script enough time to upload.
+Add a [`PAYLOAD_SABERTOOTH`](https://developers.spire.com/tasking-api-docs/#payload_sabertooth) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen to give the install script enough time to upload.
 
 ```bash
 START=$(( `date -u +'%s'` + 86400 ))

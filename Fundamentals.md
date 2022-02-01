@@ -32,7 +32,7 @@ A contact is a type of window created by Spire, and is a one or two-way radio tr
 
 
 ### Payload Windows
-Each payload type (e.g. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding window⤴](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/).
+Each payload type (e.g. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding window](https://developers.spire.com/tasking-api-docs/#supported-windows) to execute applications in. Users schedule payload windows via the [Tasking API](https://developers.spire.com/tasking-api-docs/).
 
 
 ### Lease Windows
@@ -48,7 +48,7 @@ A window is inserted into the schedule with the [Tasking API](). The window type
 
 
 ## Uploading Files
-The Tasking API provides an [`upload`⤴](https://developers.spire.com/tasking-api-docs/index.html#post-upload) endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be [flight-flashed](#flight-flash) to the payload prior to launch.
+The Tasking API provides an [`upload`](https://developers.spire.com/tasking-api-docs/index.html#post-upload) endpoint for up-linking files to a specific satellite payload. Files are cached on the ground and queued for upload at subsequent contacts, managed by Spire. Uplink bandwidth is limited. For larger files and installations Spire recommends the files be [flight-flashed](#flight-flash) to the payload prior to launch.
 
 
 ### Flight Flash
@@ -86,7 +86,7 @@ The Imaging Payload Interface (IPI) payload provides user with access to one or 
 
 
 ## Attitude Control
-The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking⤴](https://developers.spire.com/tasking-api-docs/#adcs_config).
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](https://developers.spire.com/tasking-api-docs/#adcs_config).
 
 
 ### Ground Based

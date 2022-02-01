@@ -19,13 +19,13 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 The tutorial comes with 2 scripts:
 
-1. [`rf_transmit_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo) - runs in-orbit on the SDR to demonstrate `rftransmit` running
-1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/deploy) - run by the user on the ground to upload `rf_transmit_demo` and schedule it to execute in a `PAYLOAD_SDR` window
+1. [`rf_transmit_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo) - runs in-orbit on the SDR to demonstrate `rftransmit` running
+1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/deploy) - run by the user on the ground to upload `rf_transmit_demo` and schedule it to execute in a `PAYLOAD_SDR` window
 
 
 ## In-Orbit Script
 
-A script has been created to run on the `SDR` Linux payload called [`rf_transmit_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo). The script will generate an IQ file using the `iqgenerator` utility, then transmit it with the `rftransmit` utility.
+A script has been created to run on the `SDR` Linux payload called [`rf_transmit_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit/rf_transmit_demo). The script will generate an IQ file using the `iqgenerator` utility, then transmit it with the `rftransmit` utility.
 
 Mark it executable and test it. An error message is expected as the utilities are not available on the ground.
 
@@ -48,7 +48,7 @@ rftransmit error: 127
 
 ## Deploy
 
-The `rf_transmit_demo` script is uploaded and scheduled to run by using the [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit_demo/deploy) script:
+The `rf_transmit_demo` script is uploaded and scheduled to run by using the [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/rf_transmit_demo/deploy) script:
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 

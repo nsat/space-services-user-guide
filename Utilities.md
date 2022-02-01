@@ -1,6 +1,6 @@
 # Tools & Utilities
 
-The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for users to run directly or indirectly within a payload windows [`user_command`⤴](https://developers.spire.com/tasking-api-docs/#user_command) parameter.
+The following tools and utilities are developed and supported by Spire, and provided on the applicable payload(s) for users to run directly or indirectly within a payload windows [`user_command`](https://developers.spire.com/tasking-api-docs/#user_command) parameter.
 
 
 ## RF Collect
@@ -32,7 +32,7 @@ The command returns when the capture is finished and the IQ samples are written 
 
 The IQ can be recorded from UHF or SBAND (`-m`).
 
-More information can be found about IQ [here⤴](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components).
+More information can be found about IQ [here](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components).
 
 
 ## RF Transmit
@@ -79,7 +79,7 @@ The command returns after playing the IQ file the indicated number of times or w
 
 The IQ can be transmitted to UHF or SBAND (`-m`).
 
-More information can be found about IQ [here⤴](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components).
+More information can be found about IQ [here](https://en.wikipedia.org/wiki/In-phase_and_quadrature_components).
 
 
 ## IQ generator

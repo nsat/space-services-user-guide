@@ -21,7 +21,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ## Deploy Script
 
-The [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) contains the following steps:
+The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) contains the following steps:
 
 1. Schedules a `PAYLOAD_SDR` window to run a web server
 1. Schedules a `PAYLOAD_SABERTOOTH` window to download a file from the SDR webserver
@@ -29,7 +29,7 @@ The [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tu
 
 ## Schedule PAYLOAD_SDR Window
 
-The deploy script creates a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down. Run the accompanying [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) script:
+The deploy script creates a window on the `SDR` to start the built-in `python` `HTTP Server` on port `10101` sharing the entire filesystem (since the command is run from `/`). Nothing needs to be uploaded since this already exists in `python`. The server is stopped at the end of the window before the payload shuts down. Run the accompanying [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/ipc/deploy) script:
 
 
 ## Schedule a PAYLOAD_SABERTOOTH Window

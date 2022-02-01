@@ -50,7 +50,7 @@ Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 U
 
 ## Deploy Script
 
-Upload the script via the [Tasking API⤴](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. 
+Upload the script via the [Tasking API](https://developers.spire.com/tasking-api-docs/#post-upload) to the `SDR` on the satellite. 
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
@@ -106,7 +106,7 @@ Response:
 
 ## Schedule Script Execution
 
-Add a [`PAYLOAD_SDR`⤴](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen as it's the earliest time that the window is likely run.
+Add a [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr) window to the schedule for in 24 hours (86400 seconds). 24 hours was chosen as it's the earliest time that the window is likely run.
 
 ```bash
 START=$(( `date -u +'%s'` + 86400 ))

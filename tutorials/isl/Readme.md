@@ -20,14 +20,14 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ## Scripts
 
-1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
-1. [`isl_tx_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
-1. [`isl_rx_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
+1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
+1. [`isl_tx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
+1. [`isl_rx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
 
 
 ## Upload & Deploy
 
-The [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) script is run by the user and performs the following steps:
+The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) script is run by the user and performs the following steps:
 
 1. Uploads `isl_tx_demo` & `isl_rx_demo` scripts to the respective satellites
 1. Schedules an ISL between 2 satellites in 24 hours

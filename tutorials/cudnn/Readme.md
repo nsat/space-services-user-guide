@@ -6,7 +6,7 @@
 |Windows:|`PAYLOAD_SABERTOOTH`|
 
 
-This tutorial demonstrates [CuDNN v7.5.0⤴](https://developer.nvidia.com/rdp/cudnn-archive) by running [the samples that come shipped with it⤴](https://github.com/mmmn143/cudnn_samples_v7).
+This tutorial demonstrates [CuDNN v7.5.0](https://developer.nvidia.com/rdp/cudnn-archive) by running [the samples that come shipped with it](https://github.com/mmmn143/cudnn_samples_v7).
 
 ## Prerequisites
 
@@ -17,15 +17,15 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 The tutorial comes with 2 scripts:
 
-1. [`cudnn_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) - runs in-orbit on the SABERTOOTH to demonstrate cuDNN running
-1. [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) - run by the user on the ground to upload `cudnn_demo` and schedule it to execute in a `PAYLOAD_SABERTOOTH` window
+1. [`cudnn_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) - runs in-orbit on the SABERTOOTH to demonstrate cuDNN running
+1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) - run by the user on the ground to upload `cudnn_demo` and schedule it to execute in a `PAYLOAD_SABERTOOTH` window
 
 
 ## cudnn_demo Script
 
-[`cudnn_demo`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) builds & runs the following cuDNN samples:
+[`cudnn_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy) builds & runs the following cuDNN samples:
 
-1. [`mnistCUDNN`⤴](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify)
+1. [`mnistCUDNN`](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#verify)
 1. `RNN`
 
 
@@ -131,7 +131,7 @@ Test passed!
 ## Upload & Deploy
 
 
-Run [`deploy`⤴](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy). The script uploads `cudnn_demo` and schedules it's execution in 24 hours.
+Run [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cudnn/deploy). The script uploads `cudnn_demo` and schedules it's execution in 24 hours.
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 

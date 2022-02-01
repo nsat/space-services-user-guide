@@ -8,7 +8,7 @@ The execution environment includes two top level directories used to manage inco
 
 * `/inbox` - Spire generated files during a payload window will be placed into this folder. 
 For example, [IQ](#iq-generator) files captured during a PAYLOAD_SDR window will appear in this folder.  File names and types placed in this folder
-will vary between window types, please consult the [Tasking API documentation⤴](https://developers.spire.com/tasking-api-docs/) 
+will vary between window types, please consult the [Tasking API documentation](https://developers.spire.com/tasking-api-docs/) 
 for details about a specific window.  Files placed in this folder should be handled by the user in the window which they are generated.
 * `/outbox` - Any files placed in this folder by the user's software will be queued for downlink.  Files placed here will be removed by the Spire Linux Agent after 
 any payload window.
@@ -23,7 +23,7 @@ The root filesystem is writable to the user. Common Linux directories have been 
 
 ### Wrapper Script
 
-The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`⤴](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) can be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed to a payload by running [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/deploy) in the [`dev-env`](https://github.com/nsat/space-services-user-guide/tree/main/dev-env) directory:
+The Tasking API is used to deploy apps to payloads and execute them. It is helpful to use a wrapper script to provide a consistent environment between payloads, to set common environment variables and capture `stdout` and `stderr` to a log file for download at the end of the window. The wrapper script, named [`entry.sh`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/entry.sh) can be deployed to each payload at `/persist/bin/entry.sh` and used for all execution commands. All tutorials require `entry.sh` to be deployed. The script can be deployed to a payload by running [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/dev-env/deploy) in the [`dev-env`](https://github.com/nsat/space-services-user-guide/tree/main/dev-env) directory:
 
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN]& [YOUR_SAT_ID] needed. [YOUR_PAYLOAD] can be one of `IPI`, `SDR` or `SABERTOOTH`.</aside>
@@ -68,9 +68,9 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
 | IP Address   | 10.2.1.8                            |
-| Package List | [List⤴](./text/sdr_package_list.txt) |
+| Package List | [List](./text/sdr_package_list.txt) |
 | Utilities    | - [RF Collect](./Utilities.md#rf-collect)<br> - [RF Transmit](./Utilities.md#rf-transmit)<br> - [IQ Generator](./Utilities.md#iq-generator) |
-| Windows      | [`PAYLOAD_SDR`⤴](https://developers.spire.com/tasking-api-docs/#payload_sdr-v2) |
+| Windows      | [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr-v2) |
 
 
 ## IPI
@@ -84,8 +84,8 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.14.0                        |
 | IP Address   | 10.2.1.16                            |
-| Package List | [List⤴](./text/ipi_package_list.txt) |
-| Windows      | [`PAYLOAD_IPI`⤴](https://developers.spire.com/tasking-api-docs/#payload_ipi) |
+| Package List | [List](./text/ipi_package_list.txt) |
+| Windows      | [`PAYLOAD_IPI`](https://developers.spire.com/tasking-api-docs/#payload_ipi) |
 
 
 ## SABERTOOTH
@@ -95,12 +95,12 @@ Below are the list of specifications for each payload type accessible to Softwar
 | SoC          | NVIDIA Tegra TX2i                   |
 | CPU          | 4x ARM Cortex A57 @ 2GHz (+ 2x Denver 2 @ 2Ghz) |
 | Memory       | 8GB                                 |
-| OS           | Ubuntu 18.04.2 ([Jetpack 4.2.2⤴](https://developer.nvidia.com/jetpack-422-archive)) |
+| OS           | Ubuntu 18.04.2 ([Jetpack 4.2.2](https://developer.nvidia.com/jetpack-422-archive)) |
 | Arch         | 64-bit armv8-hardfp	             |
 | Kernel       | Linux 4.9.140                       |
 | IP Address   | 10.2.1.10                           |
-| Package List | [List⤴](./text/sabertooth_package_list.txt) |
-| Windows      | [`PAYLOAD_SABERTOOTH`⤴](https://developers.spire.com/tasking-api-docs/#compute-boards) |
+| Package List | [List](./text/sabertooth_package_list.txt) |
+| Windows      | [`PAYLOAD_SABERTOOTH`](https://developers.spire.com/tasking-api-docs/#compute-boards) |
 
 
 ## Dexter
@@ -114,8 +114,8 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Arch         | 32-bit armv7-hardfp	             |
 | Kernel       | Linux 4.6.0-2016_R2                 |
 | IP Address   | 10.2.1.9                            |
-| Package List | [List⤴](./text/dexter_package_list.txt) |
-| Windows      | [`PAYLOAD_DEXTER`⤴](https://developers.spire.com/tasking-api-docs/#payload_dexter) |
+| Package List | [List](./text/dexter_package_list.txt) |
+| Windows      | [`PAYLOAD_DEXTER`](https://developers.spire.com/tasking-api-docs/#payload_dexter) |
 
 
 ## Next Steps
