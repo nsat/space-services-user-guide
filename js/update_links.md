@@ -1,6 +1,6 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-<!-- updates slatedocs internal links from .md to .html -->
+<!-- updates slatedocs internal links from .md to .html, and tags external links -->
 <script>
 $(function() {
     var anchors = document.getElementsByTagName("a");
