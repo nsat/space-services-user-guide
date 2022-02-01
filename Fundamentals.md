@@ -36,15 +36,15 @@ Each payload type (e.g. `SDR`, `SABERTOOTH` or `IPI`) has a [corresponding windo
 
 
 ### Lease Windows
-A lease is the reservation of a system over the time window. `LEASE_ISL` creates an inter-satellite-link between 2 satellites for the excusive use of the user. `LEASE_ADCS` passes attitude control to user code running on the payloads.
+A lease is the reservation of a system over the time window. [`LEASE_ISL`](https://developers.spire.com/tasking-api-docs/#lease_isl) creates an inter-satellite-link between 2 satellites for the excusive use of the user's payloads. [`LEASE_ADCS`](https://developers.spire.com/tasking-api-docs/#lease_adcs) passes attitude control to user code running on the payloads.
 
 
 ## Satellite Schedule
-The list of windows for each satellite is held in a schedule. The schedule contains all windows, both for contacts created by Spire and for user activities. The schedule is synchronized with the satellite at each contact. 
+The list of windows for each satellite is held in a schedule. The schedule contains all windows, both for contacts created by Spire and for user activities. The schedule is synchronized with the satellite at each contact. The schedule can be queried with the [`GET /windows`](https://developers.spire.com/tasking-api-docs/index.html#get-windows) API endpoint.
 
 
 ## Scheduling Time on a Payload
-A window is inserted into the schedule with the [Tasking API](). The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, apertures, cameras etc. 
+A window is inserted into the schedule with the [Tasking API](https://developers.spire.com/tasking-api-docs/index.html#post-window). The window type controls what payload is reserved. A window accepts attitude control information to enable directional control of antennas, apertures, cameras etc. 
 
 
 ## Uploading Files
@@ -52,7 +52,7 @@ The Tasking API provides an [`upload`](https://developers.spire.com/tasking-api-
 
 
 ### Flight Flash
-Flight-flash is the process of creating and applying file system images onto the payloads prior to launch.  This is often a good time for large user applications to be installed, e.g. machine learning models or frameworks like Python or TensorFlow. 
+Flight-flash is the process of creating and flashing disk images onto the payloads file systems prior to launch.  This is often a good time for large user applications to be installed, e.g. machine learning models or frameworks like Python or TensorFlow. 
 
 
 ## Downloading Files
@@ -60,7 +60,11 @@ Any files found in the [`/outbox`](./ExecutionEnvironment.md) directory on a pay
 
 
 ## Sharing Files
-Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows overlap.  More on that in the next 2 sections...
+Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows overlap.  More on that in the next 3 sections...
+
+
+## Window Copy Function
+A window definition may contain a section to copy a file from a different payload on the satellite to this payload's `/inbox`. This supports a simplified workflow where each payload produces data for a subsequent payload on the same satellite to consume. An example would be to capture an image on the `IPI` and analyze the image on the `SABERTOOTH`. The satellite bus performs the copy operation between the two payloads.
 
 
 ## Inter-payload Networking
