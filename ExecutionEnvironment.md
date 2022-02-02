@@ -62,7 +62,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Attribute    | Value                               |
 | ------------ | ------------------------------------|
 | SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
-| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz [**](#note))	|
 | Memory       | 2GB                                 |
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
@@ -78,7 +78,7 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Attribute    | Value                               |
 | ------------ | ------------------------------------|
 | SoC          | Xilinx Zynq UltraScale+ ZU4CG       |
-| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz)	|
+| CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz [**](#note))	|
 | Memory       | 2GB                                 |
 | OS           | Yocto Poky 2.5 (Sumo)               |
 | Arch         | 64-bit armv8-hardfp	             |
@@ -117,6 +117,9 @@ Below are the list of specifications for each payload type accessible to Softwar
 | Package List | [List](./text/dexter_package_list.txt) |
 | Windows      | [`PAYLOAD_DEXTER`](https://developers.spire.com/tasking-api-docs/#payload_dexter) |
 
+### NOTE
+
+The ARM Cortex R5F real-time processors (RPUs) are only available with [Payload In Space](./PayloadInSpace.md) service.
 
 ## Next Steps
 
