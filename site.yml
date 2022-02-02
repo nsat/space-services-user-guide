@@ -6,6 +6,7 @@ pages:
   - AttitudeControl
   - Utilities
   - FAQ
+  - PayloadInSpace
   - tutorials/adcs-lease/index
   - tutorials/aoi/index
   - tutorials/cuda/index
