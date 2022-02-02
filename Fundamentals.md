@@ -76,7 +76,7 @@ Inter-satellite-links (ISL) lease windows can be scheduled for user use. They ar
 
 
 ## Spire Linux Agent
-Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control. Additional information can be found [here](/spire-linux-agent-docs/).
+Each Linux payload runs a local agent to provide a RESTful interface to interact with the satellite bus. The services provided by the daemon are numerous, and include file up-link/down-link, telemetry, and attitude control. Additional information can be found [here](https://developers.spire.com/spire-linux-agent-docs/).
 
 
 ## Power
@@ -90,7 +90,7 @@ The Imaging Payload Interface (IPI) payload provides user with access to one or 
 
 
 ## Attitude Control
-The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](https://developers.spire.com/tasking-api-docs/#adcs_config).
+The orientation (attitude) of the satellite is controlled by an Attitude Determination and Control System (ADCS). Attitude control supports a range of modes including [nadir and target tracking](https://developers.spire.com/tasking-api-docs/#adcs_config). Additional information can be found [here](./AttitudeControl.md).
 
 
 ### Ground Based

@@ -28,3 +28,8 @@ The software-defined-radio is on the [`SDR`](./ExecutionEnvironment.html#sdr) Li
 ## How do I control the orientation of the satellite?
 
 The satellites orientation (attitude) can be controlled from the ground by including [`adcs_config`](https://developers.spire.com/tasking-api-docs/#adcs_config) in the payload window, or while in orbit using an [`LEASE_ADCS`](https://developers.spire.com/tasking-api-docs/index.html#lease_adcs) and the [Satellite Bus API](https://developers.spire.com/satellite-bus-api/).
+
+
+## Payload In Space, Software In Space - What's the difference?
+
+With Payload In Space the customer owns the payload computer/hardware and has root access, regardless of whether Spire or the customer provided the hardware. Software In Space customers do not own the hardware; For this case the customer has the flexibility of different payload types and satellites available. Payload In Space is a specific case of Software In Space, where all the same APIs are available to the customer, along with the [Signaling API](https://developers.spire.com/payload-signaling-api-docs/) which is only for Payload In Space customers, and is required to allow Spire to notify the customer's payload of various events.
