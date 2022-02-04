@@ -108,6 +108,6 @@ enough contact time to download each data file, the file will be persisted to th
 
 ## Examples
 
-[Download a File from Space](./examples/payload_in_space/download_file/README.md) - A trivial example showing 
+[Download a File from Space](./tutorials/payload_in_space/download_file/) - A trivial example showing 
 the code necessary to create and download a file from a payload.
 

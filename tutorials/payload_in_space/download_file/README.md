@@ -1,16 +1,13 @@
-# Example: Create and Download a File in Space
+# Create and Download a File
 
-In this trivial example, we will be creating a file onboard our payload and downloading it to our S3 bucket.
-The filename will be specified during window creation and the file will simply contain the id of the window used for
-execution.
+In this trivial example, we create a file onboard our payload and downloading it to our S3 bucket. The filename will be specified during window creation and the file will simply contain the id of the window used for execution.
 
-The scripts for running this example are provided in this folder.  For production usage of the Payload in Space offering,
-it is the responsibility of the user to author these scripts (notably `payload_exec`).
+The scripts for running this example are provided in this folder.  For production usage of the Payload in Space offering, it is the responsibility of the user to author these scripts (notably `payload_exec`).
 
 ## Assumptions
 
-1. [payload_exec](./payload_exec) was installed during flight flash of the payload.
-1. A Python3 interpreter was installed during flight flash of the payload
+1. [`payload_exec`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/payload_exec) was installed during flight flash of the payload.
+1. A `Python3` interpreter was installed during flight flash of the payload
 1. An S3 bucket was provisioned for user data, we'll be using the bucket name `example` for this exercise
 
 ## Software
@@ -49,8 +46,7 @@ This script takes two parameters
 **Execution Environment: Ground**
 **Language: Bash**
 
-Bash script responsible for uploading our [download_file.py](./download_file.py) script to our payload and creating a payload 
-window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/).
+Bash script responsible for uploading our [`download_file.py`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/download_file.py) script to our payload and creating a payload window using curl commands to the [Tasking API](https://developers.spire.com/tasking-api-docs/).
 
 ## Workflow
 
@@ -150,7 +146,7 @@ Note: In this example we will use `123` as the ID of our window, but in producti
 
 Prior to the start of the window, the satellite bus will power on our payload and do the following operations
 
-1. Place our [download_file.py](./download_file.py) on the payload at path `/signaling/inbox/download_file.py`, assuming the file
+1. Place our [`download_file.py`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/download_file.py) on the payload at path `/signaling/inbox/download_file.py`, assuming the file
 was successfully uploaded before the window start time.
 
 1. Place a window configuration file at path `/signaling/window_configs/123.json`.  The contents of the file are shown below.
@@ -167,7 +163,7 @@ was successfully uploaded before the window start time.
     }
     ```
 
-1. Call [payload_exec](./payload_exec), located on our payload, with the argument `-e` (the configure flag). 
+1. Call [`payload_exec`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/payload_exec), located on our payload, with the argument `-e` (the configure flag). 
 
    `nohup /usr/bin/payload_exec -u john -e -w 123 &> /dev/null &`.
 
@@ -175,18 +171,18 @@ was successfully uploaded before the window start time.
 
 **3. During payload window execution**
 
-At window start time the satellite bus will issue another signaling command to [payload_exec](./payload_exec), 
+At window start time the satellite bus will issue another signaling command to [`payload_exec`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/payload_exec), 
 this time without the configure flag.
 
 ```
 nohup /usr/bin/payload_exec -u john -w 123 -t 1611718292 &> /dev/null &`
 ```
 
-[payload_exec](./payload_exec) will then executing the following operations:
+[`payload_exec`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/payload_exec) will then executing the following operations:
 
-1. Copy [download_file.py](./download_file.py) from the Signaling API inbox to a top level directory (`/user_exec`).
+1. Copy [`download_file.py`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/download_file.py) from the Signaling API inbox to a top level directory (`/user_exec`).
 1. Load the window configuration JSON for the contact
-1. Execute our [download_file.py](./download_file.py) script (now located at `/user_exec/download_file.py`) 
+1. Execute our [`download_file.py`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/download_file.py) script (now located at `/user_exec/download_file.py`) 
 with arguments taken from the window configuration JSON.
 
 `download_file.py` will:
