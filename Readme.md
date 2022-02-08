@@ -7,21 +7,21 @@
 <table>
     <tr>
         <td>
-            <h3>Run Code In Space</h3>
+            <h3 id="run-code-in-space">Run Code In Space</h3>
             <p> Develop and run code and scripts in a Linux environment on the Satellite.</p>
         </td>
         <td>
-            <h3>Perform Experiments &amp; Gather Data</h3>
+            <h3 id="perform-experiments--amp--gather-data">Perform Experiments &amp; Gather Data</h3>
             <p> Persistent execution environment for apps and data. </p>
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Control Satellite Systems</h3>
+            <h3 id="control-satellite-systems">Control Satellite Systems</h3>
             <p> Programmatic and command line access to transceivers and satellite orientation. </p>
         </td>
         <td>
-            <h3>Contact Ground &amp; Space Assets</h3>
+            <h3 id="contact-ground--amp--space-assets">Contact Ground &amp; Space Assets</h3>
             <p> Let Spire handle the transfer of data, or go direct with inter-satellite and satellite bus networking. </p>
         </td>
     </tr>
