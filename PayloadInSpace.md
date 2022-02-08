@@ -23,7 +23,7 @@ Additionally, the Tasking API can be used to upload software or any other arbitr
 
 Additional documentation for the Tasking API can be found [here](https://developers.spire.com/tasking-api-docs/).
 
-#### Spire Linux Agent
+### Spire Linux Agent
 
 The Spire Linux Agent (formally OORT Agent) is a daemon that Payload in Space customers install and run on their payload.  The daemon provides access to the Data Pipeline APIs.
 
@@ -32,7 +32,7 @@ The agent binaries (for supported architectures) and source code can be found in
 
 To interface with the Spire Linux Agent, Spire provides a [C SDK](https://github.com/nsat/oort-sdk-c) and a [Python SDK](https://github.com/nsat/oort-sdk-python).
 
-<aside class="notice">Access to the github source code and binaries requires approval by the Spire Space Services sales team.</aside>
+<aside class="notice">Access to some Github source code and binaries requires approval by the Spire Space Services sales team.</aside>
 
 
 For other programming languages, users’s can make HTTP REST requests directly to the agent.
@@ -84,12 +84,12 @@ Spire provides the user with:
 After the satellite has launched and passed Checkout & Commissioning, the user can then begin to upload additional software if necessary and start tasking their payload.
 
 
-#### Ground Operations
+### Ground Operations
 
 To task a payload, the [`POST /window`](https://developers.spire.com/tasking-api-docs/#post-window) endpoint in the Tasking API is used.  To upload new software or arbitrary files to the payload, the [`POST /upload`](https://developers.spire.com/tasking-api-docs/#post-upload) endpoint is used.
 
 
-#### Satellite Window Execution
+### Satellite Window Execution
 
 Prior to the start of the window, the satellite bus is responsible for powering on the payload and transferring any files uploaded through the Tasking API to the payload.  The satellite bus will also send a `configure` signal by calling `/usr/bin/payload_exec` located on the payload.
 
@@ -100,14 +100,12 @@ The `payload_exec` script is responsible for orchestrating additional payload op
 At any time during window execution software on the payload can use the Data Pipeline API to downlink files to the ground. 
 
 
-#### After Window Execution
+### After Window Execution
 
-After the window is executed any data sent to the Data Pipeline API is queued for download.  After the spacecraft has received
-enough contact time to download each data file, the file will be persisted to the user's S3 bucket.
+After the window is executed any data sent to the Data Pipeline API is queued for download.  After the spacecraft has received enough contact time to download each data file, the file will be persisted to the user's S3 bucket.
 
 
 ## Examples
 
-[Download a File from Space](./tutorials/payload_in_space/download_file/) - A trivial example showing 
-the code necessary to create and download a file from a payload.
+ - [Download a File from Space](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/) - A trivial example showing the code necessary to create and download a file from a payload.
 
