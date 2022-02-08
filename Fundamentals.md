@@ -74,7 +74,7 @@ When windows on a satellite overlap, ethernet is provided for IP networking, Pin
 
 
 ## Inter-satellite Networking
-Inter-satellite-links (ISL) lease windows can be scheduled for user use. They are requested with the [Tasking API]() and create a Tx window on one satellite and Rx window on the other, as the link is simplex/one-way. ISL leases require a satellite pair in synchronous orbit.  An ISL lease window opens up a route to payloads on the remote/Rx satellite. To make use of the ISL network, a window would normally be created on both satellites for the same time so that the user can send data from their applications on one satellite to their applications on the other. Destination ports of 10,000+ are routed across the link. The simplex link means that TCP can not be "acknowledged" - UDP is supported.
+Inter-satellite-links (ISL) lease windows can be scheduled for user use. They are requested with the [Tasking API](https://developers.spire.com/tasking-api-docs/) and create a Tx window on one satellite and Rx window on the other, as the link is simplex/one-way. ISL leases require a satellite pair in synchronous orbit.  An ISL lease window opens up a route to payloads on the remote/Rx satellite. To make use of the ISL network, a window would normally be created on both satellites for the same time so that the user can send data from their applications on one satellite to their applications on the other. Destination ports of 10,000+ are routed across the link. The simplex link means that TCP can not be "acknowledged" - UDP is supported.
 
 ![ISL](./images/isl.png)
 
