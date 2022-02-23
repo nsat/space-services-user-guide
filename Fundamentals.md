@@ -62,7 +62,7 @@ Any files found in the [`/outbox`](./ExecutionEnvironment.md) directory on a pay
 
 
 ## Sharing Files
-Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows overlap.  More on that in the next 3 sections...
+Payload window definitions provide the ability to have the satellite bus copy files from another payload before start. Alternatively IP networking is available between payloads when windows [overlap](https://developers.spire.com/tasking-api-docs/#overlapping-windows).  More on that in the next 3 sections...
 
 
 ## Window Copy Function
@@ -70,7 +70,7 @@ A window definition may contain a section to copy a file from a different payloa
 
 
 ## Inter-payload Networking
-When windows on a satellite overlap, ethernet is provided for IP networking, Ping and UDP & TCP ports 10,000+ are enabled. This allows application code to communicate, e.g. listen on a port for requests from a different payload.
+When windows on a satellite [overlap](https://developers.spire.com/tasking-api-docs/#overlapping-windows), ethernet is provided for IP networking, Ping and UDP & TCP ports 10,000+ are enabled. This allows application code to communicate, e.g. listen on a port for requests from a different payload.
 
 
 ## Inter-satellite Networking

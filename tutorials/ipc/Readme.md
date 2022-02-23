@@ -11,7 +11,7 @@ This walk-through shows how to communicate between two payloads on a single sate
 1. Have `SABERTOOTH` request a file from the `SDR` using `curl`
 1. Review
 
-Only ports 10000 and above are available to connect & bind to. Only payloads with an overlapping window are reachable. 
+Only ports 10000 and above are available to connect & bind to. Only payloads with an [overlapping window](https://developers.spire.com/tasking-api-docs/#overlapping-windows) are reachable. 
 
 
 ## Prerequisites

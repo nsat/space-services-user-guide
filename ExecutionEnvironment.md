@@ -35,7 +35,7 @@ $ dev-env/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_PAYLOAD]
 
 ## Networking
 
-Payloads have direct IP network access via ethernet to listen on ports above 10000, as well as make connections to those ports. TCP & UDP are supported. Payload modules with overlapping windows have IP routes available between them for the duration of the overlap. Users are expected to setup server and client on each module to facilitate communication.
+Payloads have direct IP network access via ethernet to listen on ports above 10000, as well as make connections to those ports. TCP & UDP are supported. Payload modules with [overlapping windows](https://developers.spire.com/tasking-api-docs/#overlapping-windows) have IP routes available between them for the duration of the overlap. Users are expected to setup server and client on each module to facilitate communication.
 
 
 ### Inter-Satellite Links (ISL)
