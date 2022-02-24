@@ -182,7 +182,7 @@ After `hello_world.sh` has run on the `SDR` the output file will be picked up by
 The file can be found in the pre-arranged AWS S3 bucket with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the file:
 
 ```bash
-$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
+$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/

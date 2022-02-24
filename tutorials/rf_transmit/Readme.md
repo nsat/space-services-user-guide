@@ -74,7 +74,7 @@ At this point the file has been queued for upload at the next possible contact, 
 After the windows completes and enough time is given for download, the the log file can be found in S3 with the timestamp appended to guarantee uniqueness:
 
 ```bash
-aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
+aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/

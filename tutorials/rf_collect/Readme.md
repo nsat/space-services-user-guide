@@ -68,7 +68,7 @@ At this point the file has been queued for upload at the next possible contact, 
 After the windows completes and enough time is given for download, the files can be found in S3 with the timestamp appended to guarantee uniqueness. The `awscli` can be used with the `--recursive` option to see the files:
 
 ```bash
-aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
+aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
 ```
 
 Response:

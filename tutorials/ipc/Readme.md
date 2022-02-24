@@ -49,7 +49,7 @@ $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 Once the windows have completed and enough time has passed for the file to download, we can review it in AWS S3:
 
 ```bash
-$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/FM1/downlink/
+$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
 
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
