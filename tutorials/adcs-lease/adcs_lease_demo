@@ -62,6 +62,6 @@ def main(lat, lon, window_end):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('window_end', nargs='?', type=int, help='Window end time, in epoch seconds', default=int(time())+20)
-    parser.add_argument('lat', nargs='?', type=float, help='Latitude to track', default=37.771034)
-    parser.add_argument('lon', nargs='?', type=float, help='Longitude to track', default=-122.413815)
+    parser.add_argument('lat', nargs='?', type=float, help='Latitude to track', default=40.0)
+    parser.add_argument('lon', nargs='?', type=float, help='Longitude to track', default=-176.0)
     exit(main(**vars(parser.parse_args())))

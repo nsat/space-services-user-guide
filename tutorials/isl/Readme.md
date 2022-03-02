@@ -44,7 +44,7 @@ $ ./deploy "[AUTH_TOKEN]" [SAT_ID_TX] [SAT_ID_RX]
 
 ## Schedule LEASE_ISL
 
-The `LEASE_ISL` is used to configure a one-way ISL using the S-BAND radio, providing a simplex IP link between the satellites. In this example UDP is used for data transfer as the protocol has no return acknowledgment and ideal for simplex links.
+The `LEASE_ISL` is used to configure a one-way Inter-Satellite-Link using the S-BAND radio, providing a simplex IP link between the satellites. In this example UDP is used for data transfer as the protocol has no return acknowledgment and ideal for simplex links.
 
 A single call to the Tasking API creates a `LEASE_ISL` in both satellites. For this example satellites `FM1` and `FM2` are scheduled for 5 minutes. Everything is scheduled 24 hours out when there are no conflicts with existing down-link contact windows.
 

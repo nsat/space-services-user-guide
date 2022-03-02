@@ -30,8 +30,8 @@ curl -X POST ${HOST}/tasking/window \
         "adcs_config": {
             "mode": "TRACKING",
             "aperture": "SBAND_SDR",
-            "target_latitude_north": 37.771034,
-            "target_longitude_east": -122.413815
+            "target_latitude_north": 40.0,
+            "target_longitude_east": -176.0
         },        
         "user_command": {
             "executable": "/persist/bin/entry.sh",

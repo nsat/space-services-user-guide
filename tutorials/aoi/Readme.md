@@ -68,30 +68,33 @@ This tutorial has an accompanying script called [`find_transit`](https://github.
 usage: find_transit [-h] [--sat SAT] [--lat LAT] [--lon LON] [--alt ALT]
                     [--min MIN] [--hours HOURS]
 
-Find transit times over lat,lon. Default LEMUR1 & San Francisco @ 30
-degrees
+Find transit times over lat,lon. Default LEMUR1 over North Pacific Ocean and 30 degrees
 
 optional arguments:
   -h, --help     show this help message and exit
   --sat SAT      Satellite norad id (default: 40044)
-  --lat LAT      AOI latitude (default: 37.771034)
-  --lon LON      AOI longitude (non-negative) (default: -122.413815)
+  --lat LAT      AOI latitude (default: 40.0)
+  --lon LON      AOI longitude (non-negative) (default: -176.0)
   --alt ALT      AOI altitude, in meters (default: 0)
   --min MIN      Min elevation, in degrees (default: 30)
   --hours HOURS  Hours to search (default: 48)
   ```
 
-Any non-json output is written to `stderr` and can be discarded with `2>/dev/null` if needed. The exit code (`$?`) is non-zero if no transits are found. Searching for an 80+ degree overhead transit of San Francisco (the default) in the next week would look like:
+[North Pacific Ocean: (40.0, -176.0)](https://www.google.com/maps/place/40%C2%B000'00.0%22N+176%C2%B000'00.0%22W)
+
+
+
+Any non-json output is written to `stderr` and can be discarded with `2>/dev/null` if needed. The exit code (`$?`) is non-zero if no transits are found. Searching for an 80+ degree overhead transit of the North Pacific Ocean (the default) in the next week would look like:
 
 ```json
 $ python3 aoi/find_transit --sat 51099 --min 80 --hours 168
-2021-12-22 14:12:36.630581      773.389237      89.663970
+2022-03-02 23:56:25.492111	722.555646	85.360401
 [
     {
-        "end": 1640183130.019818,
-        "peak_elevation": 89.66397045560218,
-        "peak_time": 1639709513.3850813,
-        "start": 1640182356.6305811
+        "end": 1646266108.0477574,
+        "peak_elevation": 85.36040128316404,
+        "peak_time": 1646265745.711503,
+        "start": 1646265385.4921112
     }
 ]
 ```
@@ -99,12 +102,12 @@ $ python3 aoi/find_transit --sat 51099 --min 80 --hours 168
 
 ### Interpreting the Data
 
-The transit's start and end times are from horizon to horizon, giving a total duration of 773 seconds for this result. Often the most useful part of the transit is at higher elevation where there is less atmosphere and the satellite is closer to the AOI. For this tutorial a 360 second window will be used, with the peak in the middle, 180s before peak elevation: `1639709333` epoch seconds.
+The transit's start and end times are from horizon to horizon, giving a total duration of 723 seconds for this result. Often the most useful part of the transit is at higher elevation where there is less atmosphere and the satellite is closer to the AOI. For this tutorial a 360 second window will be used, with the peak in the middle, 180s before peak elevation: `1646265383` epoch seconds.
 
 
 ## Scheduling a Window
 
-Task the satellite to track the San Francisco location `(37.771034, -122.413815)` by specifying this location in the `adcs_config` section of the JSON in the API request, and start the `SDR` and make a 10 second capture of S-BAND for down-link. Take a look at [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy)
+Task the satellite to track a North Pacific Ocean location `(40.0, -176.0)` by specifying this location in the `adcs_config` section of the JSON in the API request, and start the `SDR` and make a 10 second capture of S-BAND for down-link. Take a look at [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/cuda/deploy)
 
 
 <aside class="notice">Replace [YOUR_START] with the calculated result of `find_transit`, and [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>

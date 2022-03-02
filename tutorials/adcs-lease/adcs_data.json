@@ -1,8 +1,8 @@
 [
-{"control_error_angle_deg": 1.10 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646854},
-{"control_error_angle_deg": 1.11 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646855},
-{"control_error_angle_deg": 1.12 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646856},
-{"control_error_angle_deg": 1.11 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646857},
-{"control_error_angle_deg": 1.10 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646858},
-{"control_error_angle_deg": 1.11 ,"lat_deg": 37.771034,"lon_deg": -122.413815,"latlontrack_lat": 37.771034,"latlontrack_lon": -122.413815,"unix_timestamp": 1642646859}
+{"control_error_angle_deg": 1.10 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646854},
+{"control_error_angle_deg": 1.11 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646855},
+{"control_error_angle_deg": 1.12 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646856},
+{"control_error_angle_deg": 1.11 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646857},
+{"control_error_angle_deg": 1.10 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646858},
+{"control_error_angle_deg": 1.11 ,"lat_deg": 40.0,"lon_deg": -176.0,"latlontrack_lat": 40.0,"latlontrack_lon": -176.0,"unix_timestamp": 1642646859}
 ]
