@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+########################################################################
+#####
+##### UDP blasts a FEC encoded file one packet at a time
+#####
+##### The file is tarred so that the file name can be recovered
+##### The tarfile is gzipped for bandwidth saving and CRC-32
+##### checking for file corruption
+#####
+##### Dependencies: zfec, tar, bc, sleep, stat, mktemp, writable /tmp dir
+#####
+#######################################################################
+
+set -euo pipefail
+
+fec_ratio=2.0
+source_ip="0.0.0.0"
+ip=127.0.0.1
+port=10000
+file=
+packetsize=1468
+bandwidth=72000
+
+help() {
+    basename "$0"
+    echo "UDP blasts a file to a host running 'udp_receive'."
+    echo "File must be smaller than (256*<pkt size>)/<oversend ratio> - 300. Default max 187,604 bytes"
+    echo " -i <ip address> Default 127.0.0.1"
+    echo " -l <source ip address> Default $source_ip"
+    echo " -p <port> Default 10000 - Range 10000 - 65535"
+    echo " -f <file>"
+    echo " -r <oversend ratio> Default $fec_ratio"
+    echo " -s <packet size> Default $packetsize - Max 65k (IP limit)"
+    echo " -b <bandwidth bps> Default $bandwidth"
+    echo " -h help"
+    exit -1
+}
+
+while getopts l:i:p:r:f:s:b:h flag
+do
+    case "${flag}" in
+        l) source_ip=${OPTARG};;
+        i) ip=${OPTARG};;
+        f) file=${OPTARG};;
+        p) port=${OPTARG};;
+        r) fec_ratio=${OPTARG};;
+        s) packetsize=${OPTARG};;
+        b) bandwidth=${OPTARG};;
+        h) help;;
+    esac
+done
+
+# netcat traditional (-w) or openbsd (-q) ?
+if $(echo "ok" | nc -w0 -u 127.0.0.1 10000 2>/dev/null) ; then
+  nc_opt="-w0"
+else
+  nc_opt="-q0"
+fi
+
+tmpdir=$(mktemp -d -p /tmp)
+trap "rm -rf $tmpdir" EXIT
+
+crc=$(crc32 $file)
+filedir=$(dirname $file)
+filename=$(basename $file)
+# move into the dir to create the tar, so that directories are removed
+cd $filedir && tar --owner=0 --group=0 -czf $tmpdir/xfr.tgz $filename
+
+filesize=$(stat -c%s "$tmpdir/xfr.tgz")
+k=$(( ($filesize + $packetsize - 1)/$packetsize ))
+m=`bc <<< "($k * $fec_ratio)/1"`
+# 4 byte crc appended. 8 bits per byte etc.
+sleep_for=`bc -l <<< "scale=6; (($packetsize+4)*8)/$bandwidth"`
+
+echo "Sending $file (CRC:$crc) ($filesize bytes compressed), session: $crc to udp://$ip:$port as $k/$m $packetsize-byte pkts @ $bandwidth bps = $sleep_for secs between pkts:"
+
+zfec -d $tmpdir -m $m -k $k -p out $tmpdir/xfr.tgz
+
+for pkt in $tmpdir/out.*.fec; do
+    echo -n "."
+    # append the crc as a session identifier
+    echo "$crc" | xxd -r -ps >> $pkt
+    # occasional netcat SIGPIPE error when blasting to fast
+    < "$pkt" nc -u $nc_opt -s $source_ip $ip $port || echo -n "x"
+    sleep $sleep_for
+done
+
+echo "."
+echo "Done."

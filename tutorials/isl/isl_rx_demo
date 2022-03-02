@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+"""
+//////////////////////////////////////////////////////////////////////////
+///
+/// Captures the UDP blasts from `isl_tx_demo` and recovers the original file
+///
+/// Dependencies: python3, zfec 1.4.4+, tar, crc32, writable /tmp dir
+///
+//////////////////////////////////////////////////////////////////////////
+"""
+import argparse
+import os
+import socket
+import subprocess
+import sys
+import tempfile
+
+# [str(crc):Tuple(int(bytes), bool(in progress))]
+sessions = {}
+
+
+def run_cmd(cmd):
+    print(subprocess.check_output(cmd, stderr=subprocess.STDOUT, timeout=20, shell=True).decode().strip())
+
+
+def deliver_files(crc, session_dir, target_dir):
+    # this will fail until there are enough chunks to recover the file
+    run_cmd("zunfec --force -v -o %s/xfr.tgz %s/fec.*.out" % (session_dir, session_dir))
+    run_cmd("crc32 %s/`set -x && tar -xzvf %s/xfr.tgz -C %s`" % (target_dir, session_dir, target_dir))
+    run_cmd("rm -r %s" % session_dir)
+    sessions[crc] = False
+    print("\nSession %s complete" % crc)
+
+
+def main(args):
+    with tempfile.TemporaryDirectory(dir="/tmp") as tmpdir:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+        sock.bind(('0.0.0.0', args.port))
+        try:
+            while True:
+                pkt, address = sock.recvfrom(65536)
+                # crc prefix is used as the session identifier
+                crc = hex(int.from_bytes(pkt[-4:], "big"))[2:]
+                session_dir = os.path.join(tmpdir, crc)
+
+                if sessions.get(crc, None) is None:
+                    print("\nStarting new session %s" % crc)
+                    os.makedirs(session_dir, exist_ok=True)
+
+                if isinstance(sessions.setdefault(crc, 0), bool):
+                    # redundant data can be discarded as the session is done
+                    print("_", end="", flush=True)
+                    continue
+
+                sessions[crc] += len(pkt) - 4  # chop off the crc prefix
+                fd, file_path = tempfile.mkstemp(prefix="fec.", suffix=".out", dir=session_dir, text=False)
+                with os.fdopen(fd, 'wb') as f:
+                    f.write(pkt[:-4])
+
+                print(".", end="", flush=True)
+                try:
+                    # keep trying until file recovery succeeds
+                    deliver_files(crc, session_dir, args.target_dir)
+
+                except subprocess.CalledProcessError as ex:
+                    output = ex.output.decode()
+                    if "Insufficient share files" not in output:
+                        if "At least two sharefiles are required" not in output:
+                            print("ERROR", output)
+                            os.remove(file_path)
+
+        except subprocess.CalledProcessError as ex:
+            print("ERROR", repr(ex), ex.output.decode())
+            return -1
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", default=10000, type=int)
+    parser.add_argument("-d", "--target-dir", default=os.getcwd())
+    sys.exit(main(parser.parse_args()))

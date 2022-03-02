@@ -7,7 +7,7 @@
 
 This tutorial demonstrates how to schedule the transfer a file from one payload to another on a satellite. It makes use of the [`copy_from`](https://developers.spire.com/tasking-api-docs/#copy_from) parameter on the [`window`](https://developers.spire.com/tasking-api-docs/#supported-windows) object for the file copy remote source and local destination. This tutorial has no accompanying code - all commands are provided in the windows definition below.
 
-<aside class="notice">This is not the only way to transfer a file. Users may also use IP networking (see <a href="../ipc/">Inter-Payload Communication Tutorial</a>) or the Spire Linux Agent (see <a href="../data_xfr/">Low-level Data Transfer API Tutorial</a>).</aside>
+<aside class="notice">This is not the only way to transfer a file. Users may also use IP networking (see <a href="../ipc/">Inter-Payload Communication Tutorial</a>).</aside>
 
 
 ## Prerequisites
