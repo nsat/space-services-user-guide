@@ -34,7 +34,8 @@ curl -X POST ${HOST}/tasking/window \
     "duration": 600,
     "parameters": {
         "executable": "download_file.py",
-        "filename": "foo.txt"
+        "filename": "foo.txt",
+        "downlink_budget": 1
     }
 }
 EOF

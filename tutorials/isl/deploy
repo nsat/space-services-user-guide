@@ -77,7 +77,8 @@ curl -X POST ${HOST}/tasking/window \
             "executable_arguments": [
                 "/persist/bin/isl_tx_demo"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF
@@ -100,7 +101,8 @@ curl -X POST ${HOST}/tasking/window \
             "executable_arguments": [
                 "/persist/bin/isl_rx_demo"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF

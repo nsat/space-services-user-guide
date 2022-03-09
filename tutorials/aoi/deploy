@@ -40,7 +40,8 @@ curl -X POST ${HOST}/tasking/window \
                 "-w", "/outbox/rf_collect.iq",
                 "-o", "-l", "0"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF

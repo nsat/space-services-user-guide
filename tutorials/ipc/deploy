@@ -39,7 +39,8 @@ curl -X POST ${HOST}/tasking/window \
                 "--bind", 
                 "0.0.0.0"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF
@@ -64,7 +65,8 @@ curl -X POST ${HOST}/tasking/window \
                 "http://10.2.1.8:10101/var/log/syslog", "-o", 
                 "/outbox/sdr_syslog"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF

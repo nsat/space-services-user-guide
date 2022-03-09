@@ -37,7 +37,8 @@ curl -X POST ${HOST}/tasking/window \
                 "-d", "${DATA}",
                 "http://localhost:2005/sdk/v1/send_file"
             ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF

@@ -42,7 +42,8 @@ curl -X POST ${HOST}/tasking/window \
         "user_command": {
             "executable": "/persist/bin/entry.sh",
             "executable_arguments": ["/persist/bin/rf_transmit_demo"]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF
