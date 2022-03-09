@@ -63,4 +63,3 @@ Learn the fundamentals of how it works, or jump straight into the documentation 
 ### FAQ
 
 [Check out the FAQ for an ever-growing list of helpful answers to common questions](./FAQ.md)
-

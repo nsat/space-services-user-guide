@@ -3,4 +3,3 @@
 |Complexity:|High|
 |-|-|
 |Payloads:|`SABERTOOTH`, `SDR`, `IPI`|
-
