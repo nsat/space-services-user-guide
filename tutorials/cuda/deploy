@@ -17,7 +17,7 @@ SAT_ID="$2"
 
 HOST="https://api.orb.spire.com"
 SATELLITE_ID="satellite_id=${SAT_ID}"
-PAYLOAD="payload=SDR"
+PAYLOAD="payload=SABERTOOTH"
 DESTINATION_PATH="destination_path=/persist/bin/cuda_demo"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
