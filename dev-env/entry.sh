@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -xe
 
+
 BASEDIR=/persist
+
+export HOME=$BASEDIR/home
+mkdir -p ~
 
 export PYTHONUSERBASE=$BASEDIR
 mkdir -p "$BASEDIR/var/log" 
