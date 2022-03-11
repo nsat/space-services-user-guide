@@ -16,7 +16,6 @@ SAT_ID="$2"
 
 
 HOST="https://api.orb.spire.com"
-AUTH_HEADER="Authorization: Bearer YOUR_AUTH_TOKEN"
 START=$(( `date -u +'%s'` + 86400 ))
 
 curl -X POST ${HOST}/tasking/window \

@@ -16,7 +16,7 @@ SAT_ID="$2"
 START=$(( `date -u +'%s'` + 86400 ))
 
 
-HOST="http://localhost:5555"
+HOST="https://api.orb.spire.com"
 
 SATELLITE_ID="satellite_id=${SAT_ID}"
 PAYLOAD="payload=SDR"

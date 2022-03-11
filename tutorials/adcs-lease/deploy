@@ -7,7 +7,7 @@ set -xe
 #
 # Usage:
 #
-#    deploy <AUTH_TOKEN> <SAT_ID> <START>
+#    deploy <AUTH_TOKEN> <SAT_ID> <START> <END>
 #
 ########################################
 
@@ -39,7 +39,8 @@ curl -X POST ${HOST}/tasking/window \
     "type": "LEASE_ADCS",
     "satellite_id": "${SAT_ID}",
     "start": ${START},
-    "duration": ${DURATION}
+    "duration": ${DURATION},
+    "parameters": {}
 }
 EOF
 
@@ -59,7 +60,8 @@ curl -X POST ${HOST}/tasking/window \
             "executable_arguments": [
                 "/persist/bin/adcs_lease_demo",
                 "${END}",
-                "40.0", -176.0"
+                "40.0",
+                "-176.0"
             ]
         },
         "downlink_budget": 1
