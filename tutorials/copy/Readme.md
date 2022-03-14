@@ -65,7 +65,8 @@ curl -X POST ${HOST}/tasking/window \
             "executable_arguments": [
                 "mv", "/tmp/syslog", "/outbox/sdr_syslog"
                 ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF
