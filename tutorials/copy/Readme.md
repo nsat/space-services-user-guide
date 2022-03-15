@@ -22,12 +22,12 @@ The scheduled window will:
 1. Before window start:
    1. Power up the `SDR` payload
    1. Power up the `SABERTOOTH` payload
-   1. Copy `SDR:/var/log/syslog` to `SABERTOOTH:/tmp/syslog`
+   1. Copy `SDR:/persist/bin/entry.sh` to `SABERTOOTH:/sdr_file`
    1. Power down the `SDR` payload
 1. At window start:
    1. Run `/persist/bin/entry.sh`
    1. `/persist/bin/entry.sh` runs:
-      1. `mv /tmp/syslog /outbox/sdr_syslog` for download to AWS S3
+      1. `mv /syslog /outbox/sdr_syslog` for download to AWS S3
 1. At window end 60 seconds later:
    1. Power down the `SABERTOOTH` payload
 
@@ -56,16 +56,17 @@ curl -X POST ${HOST}/tasking/window \
         "copy_from": [
             {
                 "src_payload": "SDR",
-                "src_path": "/var/log/syslog",
-                "dst_path": "/tmp/syslog"
+                "src_path": "/persist/bin/entry.sh",
+                "dst_path": "/sdr_file"
             }
         ],
         "user_command": {
             "executable": "/persist/bin/entry.sh",
             "executable_arguments": [
-                "mv", "/tmp/syslog", "/outbox/sdr_syslog"
+                "mv", "/sdr_file", "/outbox/sdr_file"
                 ]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF
