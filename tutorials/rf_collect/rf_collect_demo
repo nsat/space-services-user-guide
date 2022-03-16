@@ -3,4 +3,4 @@ set -xe
 
 date
 uname -a
-(rfcollect -w /outbox/rf_collect.iq -o -l 0 2>&1 || echo "rfcollect error: $?")
+(rfcollect -w /outbox/rf_collect.iq -S 0 -o -l 0 2>&1 || echo "rfcollect error: $?")

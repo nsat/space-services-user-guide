@@ -37,7 +37,7 @@ curl -X POST ${HOST}/tasking/window \
     "type": "PAYLOAD_SABERTOOTH",
     "satellite_id": "${SAT_ID}",
     "start": ${START},
-    "duration": 60,
+    "duration": 180,
     "parameters": {
         "user_command": {
             "executable": "/persist/bin/entry.sh",

@@ -3,22 +3,28 @@
 set -xe
 
 # verify CUDA env
-/usr/local/cuda/bin/nvcc -V
+/usr/local/cuda-10.0/bin/nvcc -V
 
-# copy samples to writable dir
-cp -a /usr/local/cuda/samples ~/
-trap "rm -rf ~/samples" EXIT
+mkdir -p /persist/samples/
+
+/usr/local/cuda-10.0/bin/cuda-install-samples-10.0.sh /persist/samples/
+
+ls -la /persist/*
+
+SAMPLES_ROOT=/persist/samples/NVIDIA_CUDA-10.0_Samples
+
+trap "rm -rf $SAMPLES_ROOT" EXIT
 
 # build and run some samples
-(   cd ~/samples/1_Utilities/deviceQuery &&
-    make &&
+(   cd $SAMPLES_ROOT/1_Utilities/deviceQuery &&
+    make -j 4 &&
     ./deviceQuery
 )
-(   cd ~/samples/1_Utilities/bandwidthTest &&
-    make &&
+(   cd $SAMPLES_ROOT/1_Utilities/bandwidthTest &&
+    make -j 4 &&
     ./bandwidthTest
 )
-(   cd ~/samples/6_Advanced/transpose &&
-    make &&
+(   cd $SAMPLES_ROOT/6_Advanced/transpose &&
+    make -j 4 &&
     ./transpose
 )
