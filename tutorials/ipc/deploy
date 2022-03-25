@@ -61,7 +61,7 @@ curl -X POST ${HOST}/tasking/window \
             "executable": "/persist/bin/entry.sh",
             "executable_arguments": [
                 "wget", 
-                "http://10.2.1.8:10101/var/log/syslog", "-o", 
+                "http://10.2.1.12:10101/var/log/syslog", "-o", 
                 "/outbox/sdr_syslog"
             ]
         },

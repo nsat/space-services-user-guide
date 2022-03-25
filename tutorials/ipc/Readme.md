@@ -34,7 +34,7 @@ The deploy script creates a window on the `SDR` to start the built-in `python` `
 
 ## Schedule a PAYLOAD_SABERTOOTH Window
 
-Next, the script creates a window on the `SABERTOOTH` for 30 seconds later to make an HTTP request to download `/var/log/syslog` from the `SDR` to the `/outbox`. The IP address of the SDR is [`10.2.1.8`](../../ExecutionEnvironment.md#payload-specifications).
+Next, the script creates a window on the `SABERTOOTH` for 30 seconds later to make an HTTP request to download `/var/log/syslog` from the `SDR` to the `/outbox`. The IP address of the SDR is [`10.2.1.12`](../../ExecutionEnvironment.md#payload-specifications).
 
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>

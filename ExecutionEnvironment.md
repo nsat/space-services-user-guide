@@ -48,7 +48,7 @@ Inter-satellite data transfer is possible using ISL. In order to utilize inter-s
 
 | Payload | Local IP Address | Remote (ISL) IP Address |
 | - | - | - |
-| SDR | 10.2.1.8 | 172.16.0.8 |
+| SDR | 10.2.1.12 | 172.16.0.8 |
 | SABERTOOTH | 10.2.1.10 | 172.16.0.10 |
 | IPI | 10.2.1.16 | 172.16.0.16 |
 
@@ -65,9 +65,9 @@ Below are the list of specifications for each payload type accessible to Softwar
 | CPU          | 2x ARM Cortex A53 @ 1.3GHz (+ 2x ARM Cortex R5F @ 533Mhz [**](#note))	|
 | Memory       | 2GB                                 |
 | OS           | Yocto Poky 2.5 (Sumo)               |
-| Arch         | 64-bit armv8-hardfp	             |
+| Arch         | 64-bit armv8-hardfp	              |
 | Kernel       | Linux 4.14.0                        |
-| IP Address   | 10.2.1.8                            |
+| IP Address   | 10.2.1.12                           |
 | Package List | [List](./text/sdr_package_list.txt) |
 | Utilities    | - [RF Collect](./Utilities.md#rf-collect)<br> - [RF Transmit](./Utilities.md#rf-transmit)<br> - [IQ Generator](./Utilities.md#iq-generator) |
 | Windows      | [`PAYLOAD_SDR`](https://developers.spire.com/tasking-api-docs/#payload_sdr-v2) |
