@@ -48,7 +48,7 @@ Inter-satellite data transfer is possible using ISL. In order to utilize inter-s
 
 | Payload | Local IP Address | Remote (ISL) IP Address |
 | - | - | - |
-| SDR | 10.2.1.12 | 172.16.0.8 |
+| SDR | 10.2.1.12 | 172.16.0.12 |
 | SABERTOOTH | 10.2.1.10 | 172.16.0.10 |
 | IPI | 10.2.1.16 | 172.16.0.16 |
 
