@@ -4,7 +4,7 @@
 ///
 /// Captures the UDP blasts from `isl_tx_demo` and recovers the original file
 ///
-/// Dependencies: python3, zfec 1.4.4+, tar, crc32, writable /tmp dir
+/// Dependencies: python3, zfec 1.4.4+, tar, crc32, writable $TMPDIR dir
 ///
 //////////////////////////////////////////////////////////////////////////
 """
@@ -33,7 +33,7 @@ def deliver_files(crc, session_dir, target_dir):
 
 
 def main(args):
-    with tempfile.TemporaryDirectory(dir="/tmp") as tmpdir:
+    with tempfile.TemporaryDirectory(dir="/outbox") as tmpdir:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
         sock.bind(('0.0.0.0', args.port))
         try:

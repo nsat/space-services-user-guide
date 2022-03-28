@@ -15,7 +15,7 @@ OORT_TOPIC = 'example'
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    file_path = f'/tmp/{args.file_name}'
+    file_path = f'$TMPDIR/{args.file_name}'
 
     with open(file_path, 'wb') as f:
         f.write(args.window_id)

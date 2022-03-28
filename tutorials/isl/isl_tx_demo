@@ -8,7 +8,7 @@
 ##### The tarfile is gzipped for bandwidth saving and CRC-32
 ##### checking for file corruption
 #####
-##### Dependencies: zfec, tar, bc, sleep, stat, mktemp, writable /tmp dir
+##### Dependencies: zfec, tar, bc, sleep, stat, mktemp, writable $TMPDIR dir
 #####
 #######################################################################
 
@@ -58,7 +58,7 @@ else
   nc_opt="-q0"
 fi
 
-tmpdir=$(mktemp -d -p /tmp)
+tmpdir=$(mktemp -d -p $TMPDIR)
 trap "rm -rf $tmpdir" EXIT
 
 crc=$(crc32 $file)

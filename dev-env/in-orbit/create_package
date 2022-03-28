@@ -9,7 +9,7 @@ SETUPTOOLS="setuptools-59.6.0-py3-none-any.whl"
 PYUTIL="pyutil-3.3.0.tar.gz"
 ZFEC="zfec-1.5.1.tar.gz"
 
-tmpdir="/tmp/$PACKAGE"
+tmpdir="$TMPDIR/$PACKAGE"
 mkdir -p "$tmpdir"
 #trap "rm -rf $tmpdir" EXIT
 
