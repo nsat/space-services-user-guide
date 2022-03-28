@@ -124,7 +124,8 @@ curl -X POST ${HOST}/tasking/window \
         "user_command": {
             "executable": "/persist/bin/entry.sh",
             "executable_arguments": ["/persist/bin/hello_world.sh"]
-        }
+        },
+        "downlink_budget": 1
     }
 }
 EOF

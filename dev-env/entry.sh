@@ -7,6 +7,10 @@ BASEDIR=/persist
 export HOME=$BASEDIR/home
 mkdir -p ~
 
+export TMP=$BASEDIR/tmp
+mkdir -p $TMP
+export TEMP=$TMP
+
 export PYTHONUSERBASE=$BASEDIR
 mkdir -p "$BASEDIR/var/log" 
 
