@@ -5,7 +5,7 @@ import json
 from time import sleep, time
 
 from oort_sdk_client.api.sdk_api import SdkApi
-from oort_sdk_client.models import AdcsCommandRequest, AdcsHk
+from oort_sdk_client.models import AdcsCommandRequest, AdcsHk, AdcsTarget
 
 MODE = "TRACK"
 LATLON_ERR_DEG = 1
@@ -30,7 +30,7 @@ def main(lat, lon, window_end):
     print("Starting ADCS", repr(agent.get_adcs()))
     print("Requesting tracking to (", lat, lon, ") for", int(window_end - time()), "seconds." )
 
-    cmd = AdcsCommandRequest(command="TRACK", aperture="IPI", target=(lat, lon))
+    cmd = AdcsCommandRequest(command="TRACK", aperture="IPI", target=AdcsTarget(lat, lon))
     res = agent.command_adcs(cmd)
     print("Result:", repr(res))
 
