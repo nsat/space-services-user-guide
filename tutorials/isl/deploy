@@ -54,7 +54,7 @@ curl -X POST ${HOST}/tasking/window \
     "start": ${START},
     "duration": 300,
     "parameters": {
-        "user_isl_receive_satellite_id": "${SAT_ID_RX}"
+        "isl_receive_satellite_id": "${SAT_ID_RX}"
     }
 }
 EOF
@@ -82,7 +82,7 @@ curl -X POST ${HOST}/tasking/window \
     }
 }
 EOF
-```
+
 
 ###########
 # RX lease
@@ -106,4 +106,3 @@ curl -X POST ${HOST}/tasking/window \
     }
 }
 EOF
-```
