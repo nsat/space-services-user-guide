@@ -17,7 +17,7 @@ export PYTHONUSERBASE=$BASEDIR
 mkdir -p "$BASEDIR/var/log" 
 
 export CPATH="$BASEDIR/usr/include/python3.6m/:$BASEDIR/usr/include"
-export PATH="$BASEDIR/bin:$PATH"
+export PATH="$BASEDIR/bin:/usr/bin:/bin:$PATH"
 
 LOGFILE="session-$(date +"%Y_%m_%d_%H_%M_%S").log"
 
@@ -31,7 +31,9 @@ fi
 
     date
     $@
+    echo "EXIT CODE: $?"
     date
+    tar -Jcf $LOGFILE.tar.xz /var/log/*log || true
 
 ) 2>&1 ) | tee "$LOGFILE"
 

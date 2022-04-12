@@ -51,6 +51,12 @@ do
     esac
 done
 
+# if no file, generate one:
+if [ "$file" == "" ]; then
+  file=$TMPDIR/isl_data.bin
+  dd if=/dev/urandom of=$file bs=128k count=1
+fi
+
 # netcat traditional (-w) or openbsd (-q) ?
 if $(echo "ok" | nc -w0 -u 127.0.0.1 10000 2>/dev/null) ; then
   nc_opt="-w0"
@@ -61,7 +67,8 @@ fi
 tmpdir=$(mktemp -d -p $TMPDIR)
 trap "rm -rf $tmpdir" EXIT
 
-crc=$(crc32 $file)
+# core utils CRC32 alternitive
+crc=$(gzip -1 -c $file | tail -c8 | od -t x4 -N 4 -A n | xargs)
 filedir=$(dirname $file)
 filename=$(basename $file)
 # move into the dir to create the tar, so that directories are removed

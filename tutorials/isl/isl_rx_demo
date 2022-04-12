@@ -26,7 +26,7 @@ def run_cmd(cmd):
 def deliver_files(crc, session_dir, target_dir):
     # this will fail until there are enough chunks to recover the file
     run_cmd("zunfec --force -v -o %s/xfr.tgz %s/fec.*.out" % (session_dir, session_dir))
-    run_cmd("crc32 %s/`set -x && tar -xzvf %s/xfr.tgz -C %s`" % (target_dir, session_dir, target_dir))
+    run_cmd("tar -xzvf %s/xfr.tgz -C %s" % (session_dir, target_dir))
     run_cmd("rm -r %s" % session_dir)
     sessions[crc] = False
     print("\nSession %s complete" % crc)
