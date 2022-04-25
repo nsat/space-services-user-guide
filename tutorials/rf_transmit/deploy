@@ -7,13 +7,13 @@ set -xe
 #
 # Usage:
 #
-#    deploy <AUTH_TOKEN> <SAT_ID>
+#    deploy <AUTH_TOKEN> <SAT_ID> <START>
 #
 ########################################
 
 AUTH_HEADER="Authorization: Bearer $1"
 SAT_ID="$2"
-START=$(( `date -u +'%s'` + 86400 ))
+START=$3
 
 
 HOST="https://api.orb.spire.com"

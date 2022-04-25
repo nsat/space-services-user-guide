@@ -21,7 +21,7 @@ START=$(( `date -u +'%s'` + 86400 ))
 ###########
 # TX upload
 SATELLITE_ID="satellite_id=${SAT_ID_TX}"
-PAYLOAD="payload=SDR"
+PAYLOAD="payload=SABERTOOTH"
 DESTINATION_PATH="destination_path=/persist/bin/isl_tx_demo"
 EXECUTABLE="executable=true"
 QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
@@ -67,7 +67,7 @@ curl -X POST ${HOST}/tasking/window \
 -H "Content-Type: application/json" \
 -d @- << EOF
 {
-    "type": "PAYLOAD_SDR",
+    "type": "PAYLOAD_SABERTOOTH",
     "satellite_id": "${SAT_ID_TX}",
     "start": ${START},
     "duration": 300,
@@ -91,7 +91,7 @@ curl -X POST ${HOST}/tasking/window \
 -H "Content-Type: application/json" \
 -d @- << EOF
 {
-    "type": "PAYLOAD_SDR",
+    "type": "PAYLOAD_SABERTOOTH",
     "satellite_id": "${SAT_ID_RX}",
     "start": ${START},
     "duration": 300,

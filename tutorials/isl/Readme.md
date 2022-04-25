@@ -2,8 +2,8 @@
 
 |Complexity:|High|
 |-|-|
-|Payloads:|2 satellites with ISL: `SDR` & `SABERTOOTH`|
-|Windows:|`LEASE_ISL`, `PAYLOAD_SDR` & `PAYLOAD_SABERTOOTH`|
+|Payloads:|2 satellites with ISL & `SABERTOOTH`|
+|Windows:|`LEASE_ISL` & `PAYLOAD_SABERTOOTH`|
 
 
 Inter-Satellite Links (ISL) are enabled for some satellites. ISL links can be made between a single pair of satellites following the same orbit so that they can be in contact at any time, where there is little relative motion between them. Satellites that are in intermittent contact (i.e. when their orbits overlap) may also be used for ISL contacts, so long as their direction is similar enough for meaningful contact time as well as low doppler-shift.
@@ -20,7 +20,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 ## Scripts
 
-1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SDR` window
+1. [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/deploy) - run by the user on the ground to upload `isl_tx_demo` & `isl_rx_demo`, and schedule them to execute in a `PAYLOAD_SABERTOOTH` window
 1. [`isl_tx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_tx_demo) - Runs on the transmitting payload/satellite to send data
 1. [`isl_rx_demo`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/isl/isl_rx_demo) - Runs on the receiving payload/satellite to receive data
 
@@ -31,8 +31,8 @@ The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutor
 
 1. Uploads `isl_tx_demo` & `isl_rx_demo` scripts to the respective satellites
 1. Schedules an ISL between 2 satellites in 24 hours
-1. Schedules a `PAYLOAD_SDR` window to run on the transmitting satellite to send data
-1. Schedule a `PAYLOAD_SDR` window to run on the receiving satellite to listen for & downlink data
+1. Schedules a `PAYLOAD_SABERTOOTH` window to run on the transmitting satellite to send data
+1. Schedule a `PAYLOAD_SABERTOOTH` window to run on the receiving satellite to listen for & downlink data
 
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN], [SAT_ID_TX] & [SAT_ID_RX] as needed.</aside>
