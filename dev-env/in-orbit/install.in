@@ -64,7 +64,7 @@ fi
         --global-option=build_ext \
         sabertooth-py-setup/zfec/zfec-1.5.1/
 
-    echo "$(date) Done"
+    echo "$(date -u) Done"
 
 ) 2>&1) | tee "$LOGFILE"
 

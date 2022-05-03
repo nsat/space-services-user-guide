@@ -19,7 +19,7 @@ mkdir -p "$BASEDIR/var/log"
 export CPATH="$BASEDIR/usr/include/python3.6m/:$BASEDIR/usr/include"
 export PATH="$BASEDIR/bin:/usr/bin:/bin:$PATH"
 
-LOGFILE="session-$(date +"%Y_%m_%d_%H_%M_%S").log"
+LOGFILE="session-$(date -u +"%Y_%m_%d_%H_%M_%S").log"
 
 if mkdir -p /outbox 2>/dev/null; then
     LOGFILE="/outbox/$LOGFILE"
@@ -29,10 +29,10 @@ fi
 
 ((
 
-    date
+    date -u
     $@
     echo "EXIT CODE: $?"
-    date
+    date -u
     tar -Jcf $LOGFILE.tar.xz /var/log/*log || true
 
 ) 2>&1 ) | tee "$LOGFILE"
