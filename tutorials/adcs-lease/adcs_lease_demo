@@ -3,20 +3,35 @@
 import argparse
 import json
 from time import sleep, time
+from datetime import datetime
+import logging
+import sys
+
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s\t%(name)s\t%(levelname)s\t%(message)s')
+handler.setFormatter(formatter)
+log.addHandler(handler)
 
 from oort_sdk_client.api.sdk_api import SdkApi
 from oort_sdk_client.models import AdcsCommandRequest, AdcsHk, AdcsTarget
 
 MODE = "TRACK"
 LATLON_ERR_DEG = 1
+COMMAND_WAIT_INTERVAL_SECS = 5
 POLL_INTERVAL_SECS = 1
 DATA_FILE = "/outbox/adcs_data.json"
 
 
 def assert_tracking(hk, mode, lat, lon):
+    log.info("ADCS: %s", repr(hk))
     if hk.acs_mode_active == mode \
         and abs(hk.latlontrack_lat - lat) < LATLON_ERR_DEG \
         and abs(hk.latlontrack_lon - lon) < LATLON_ERR_DEG:
+        log.info("Tracking... %d %d %d", hk.latlontrack_lat, hk.latlontrack_lon, hk.control_error_angle_deg)
         return True
 
     raise Exception("No longer tracking target. " + 
@@ -27,19 +42,19 @@ def assert_tracking(hk, mode, lat, lon):
 def main(lat, lon, window_end):
     agent = SdkApi()
 
-    print("Starting ADCS", repr(agent.get_adcs()))
-    print("Requesting tracking to (", lat, lon, ") for", int(window_end - time()), "seconds." )
+    log.info("Starting ADCS %s", repr(agent.get_adcs()))
+    log.info("Requesting tracking to ( %d , %d) for %d seconds.", lat, lon, int(window_end - time()))
 
     cmd = AdcsCommandRequest(command="TRACK", aperture="IPI", target=AdcsTarget(lat, lon))
     res = agent.command_adcs(cmd)
-    print("Result:", repr(res))
+    log.info("Result: %s", repr(res))
 
-    sleep(POLL_INTERVAL_SECS)
+    sleep(COMMAND_WAIT_INTERVAL_SECS)
     last_call = time()
     adcs = agent.get_adcs()
     output = [adcs.hk.to_dict()]
 
-    while assert_tracking(adcs.hk, MODE, lat, lon):
+    while assert_tracking(adcs.hk, MODE, lat, lon):        
         if time() >= window_end:
             break
         now = time()
@@ -49,14 +64,14 @@ def main(lat, lon, window_end):
         adcs = agent.get_adcs()
         output.append(adcs.hk.to_dict())
 
-    print("Window has ended. Writing", len(output), "lines to", DATA_FILE)
+    log.info("Window has ended. Writing %d lines to %s", len(output), DATA_FILE)
 
     with open(DATA_FILE, "w") as f:
         f.seek(0)
         f.truncate()
         f.write(json.dumps(output, indent=4, default=lambda o: None))
 
-    print("Done.")
+    log.info("Done.")
 
 
 if __name__ == '__main__':
