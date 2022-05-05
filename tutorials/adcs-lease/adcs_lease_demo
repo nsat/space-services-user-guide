@@ -32,7 +32,7 @@ def assert_tracking(hk, mode, lat, lon):
         and abs(hk.latlontrack_lat - lat) < LATLON_ERR_DEG \
         and abs(hk.latlontrack_lon - lon) < LATLON_ERR_DEG:
         log.info("Tracking... %d %d %d", hk.latlontrack_lat, hk.latlontrack_lon, hk.control_error_angle_deg)
-        return True
+    return True
 
     raise Exception("No longer tracking target. " + 
         "Expected: ({},{},{}), Actual: ({},{},{})".format(mode, lat, lon, 
@@ -54,16 +54,21 @@ def main(lat, lon, window_end):
     adcs = agent.get_adcs()
     output = [adcs.hk.to_dict()]
 
-    while assert_tracking(adcs.hk, MODE, lat, lon):        
-        if time() >= window_end:
-            break
-        now = time()
-        if (last_call + POLL_INTERVAL_SECS) > now:
-            sleep(last_call + POLL_INTERVAL_SECS - now)
-        last_call = now
-        adcs = agent.get_adcs()
-        output.append(adcs.hk.to_dict())
-
+    try:
+        while assert_tracking(adcs.hk, MODE, lat, lon):        
+            if time() >= window_end:
+                break
+            now = time()
+            if (last_call + POLL_INTERVAL_SECS) > now:
+                sleep(last_call + POLL_INTERVAL_SECS - now)
+            last_call = now
+            adcs = agent.get_adcs()
+            output.append(adcs.hk.to_dict())
+    except (KeyboardInterrupt, SystemExit) as ex:
+        log.info("Exit Requested")
+    except Exception as ex:
+        log.exception("Unhandled Error"
+        
     log.info("Window has ended. Writing %d lines to %s", len(output), DATA_FILE)
 
     with open(DATA_FILE, "w") as f:
