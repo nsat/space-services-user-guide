@@ -67,7 +67,7 @@ def main(lat, lon, window_end):
     except (KeyboardInterrupt, SystemExit) as ex:
         log.info("Exit Requested")
     except Exception as ex:
-        log.exception("Unhandled Error"
+        log.exception("Unhandled Error")
         
     log.info("Window has ended. Writing %d lines to %s", len(output), DATA_FILE)
 

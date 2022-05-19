@@ -9,18 +9,28 @@
 //////////////////////////////////////////////////////////////////////////
 """
 import argparse
+import logging
 import os
 import socket
 import subprocess
 import sys
 import tempfile
 
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s\t%(name)s\t%(levelname)s\t%(message)s')
+handler.setFormatter(formatter)
+log.addHandler(handler)
+
 # [str(crc):Tuple(int(bytes), bool(in progress))]
 sessions = {}
 
 
 def run_cmd(cmd):
-    print(subprocess.check_output(cmd, stderr=subprocess.STDOUT, timeout=20, shell=True).decode().strip())
+    log.info(subprocess.check_output(cmd, stderr=subprocess.STDOUT, timeout=20, shell=True).decode().strip())
 
 
 def deliver_files(crc, session_dir, target_dir):
@@ -29,50 +39,56 @@ def deliver_files(crc, session_dir, target_dir):
     run_cmd("tar -xzvf %s/xfr.tgz -C %s" % (session_dir, target_dir))
     run_cmd("rm -r %s" % session_dir)
     sessions[crc] = False
-    print("\nSession %s complete" % crc)
+    log.info("Session %s complete" % crc)
 
 
 def main(args):
-    with tempfile.TemporaryDirectory(dir="/outbox") as tmpdir:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
-        sock.bind(('0.0.0.0', args.port))
-        try:
-            while True:
-                pkt, address = sock.recvfrom(65536)
-                # crc prefix is used as the session identifier
-                crc = hex(int.from_bytes(pkt[-4:], "big"))[2:]
-                session_dir = os.path.join(tmpdir, crc)
+    log.info("Starting with args %s" % repr(args))
+    try:
+        with tempfile.TemporaryDirectory(dir="/outbox") as tmpdir:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+            sock.bind(('0.0.0.0', args.port))
+            try:
+                while True:
+                    pkt, address = sock.recvfrom(65536)
+                    # crc prefix is used as the session identifier
+                    crc = hex(int.from_bytes(pkt[-4:], "big"))[2:]
+                    session_dir = os.path.join(tmpdir, crc)
 
-                if sessions.get(crc, None) is None:
-                    print("\nStarting new session %s" % crc)
-                    os.makedirs(session_dir, exist_ok=True)
+                    if sessions.get(crc, None) is None:
+                        log.info("Starting new session %s" % crc)
+                        os.makedirs(session_dir, exist_ok=True)
 
-                if isinstance(sessions.setdefault(crc, 0), bool):
-                    # redundant data can be discarded as the session is done
-                    print("_", end="", flush=True)
-                    continue
+                    if isinstance(sessions.setdefault(crc, 0), bool):
+                        # redundant data can be discarded as the session is done
+                        log.info("_")
+                        continue
 
-                sessions[crc] += len(pkt) - 4  # chop off the crc prefix
-                fd, file_path = tempfile.mkstemp(prefix="fec.", suffix=".out", dir=session_dir, text=False)
-                with os.fdopen(fd, 'wb') as f:
-                    f.write(pkt[:-4])
+                    sessions[crc] += len(pkt) - 4  # chop off the crc prefix
+                    fd, file_path = tempfile.mkstemp(prefix="fec.", suffix=".out", dir=session_dir, text=False)
+                    with os.fdopen(fd, 'wb') as f:
+                        f.write(pkt[:-4])
 
-                print(".", end="", flush=True)
-                try:
-                    # keep trying until file recovery succeeds
-                    deliver_files(crc, session_dir, args.target_dir)
+                    log.info(".")
+                    try:
+                        # keep trying until file recovery succeeds
+                        deliver_files(crc, session_dir, args.target_dir)
 
-                except subprocess.CalledProcessError as ex:
-                    output = ex.output.decode()
-                    if "Insufficient share files" not in output:
-                        if "At least two sharefiles are required" not in output:
-                            print("ERROR", output)
-                            os.remove(file_path)
+                    except subprocess.CalledProcessError as ex:
+                        output = ex.output.decode()
+                        if "Insufficient share files" not in output:
+                            if "At least two sharefiles are required" not in output:
+                                log.error(output)
+                                os.remove(file_path)
 
-        except subprocess.CalledProcessError as ex:
-            print("ERROR", repr(ex), ex.output.decode())
-            return -1
-
+            except subprocess.CalledProcessError as ex:
+                log.exception(ex.output.decode())
+                return -1
+    except (KeyboardInterrupt, SystemExit) as ex:
+        log.info("Exit Requested")
+    except Exception as ex:
+        log.exception("Unhandled Error")
+    log.info("Done")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
