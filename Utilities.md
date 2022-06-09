@@ -8,7 +8,7 @@ The following tools and utilities are developed and supported by Spire, and prov
 |Payloads|`SDR`|
 |-|-|
 
-```shell
+```
 rfcollect
   -w <file>        IQ file to receive
   -S <start>       Start UTC time of the capture in s, 0 will directly starts (default=0s)
@@ -40,7 +40,7 @@ More information can be found about IQ [here](https://en.wikipedia.org/wiki/In-p
 |Payloads|`SDR`|
 |-|-|
 
-```shell
+```
 rftransmit 
   -w <file>        IQ file to transmit
   -r <period>      Period in second at which the file is repeated (default=0s).
@@ -87,7 +87,7 @@ More information can be found about IQ [here](https://en.wikipedia.org/wiki/In-p
 |Payloads|`IPI`|
 |-|-|
 
-```shell
+```
 iqgenerator 
   -f <iqfile>               IQ filename
   -S <samples-per-symbol>   Samples Per Symbol [default=2]

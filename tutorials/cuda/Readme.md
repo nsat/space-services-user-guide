@@ -46,8 +46,8 @@ cp -a /usr/local/cuda/samples ~/
 Finally some of the CUDA samples are built & run. Here are the commands for building & running `deviceQuery`:
 
 ```bash
-cd ~/samples/1_Utilities/deviceQuery &&
-make &&
+cd ~/samples/1_Utilities/deviceQuery
+make
 ./deviceQuery
 ```
 
@@ -117,7 +117,7 @@ Run [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutor
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
-```bash
+```
 $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 

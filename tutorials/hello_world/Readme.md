@@ -42,7 +42,7 @@ cat /outbox/hello_world.txt
 
 Output:
 
-```bash
+```
 hello world
 Linux 47d8b6948190 5.10.16.3-microsoft-standard-WSL2 #1 SMP Fri Apr 2 22:23:49 UTC 2021 x86_64 Linux
 ```

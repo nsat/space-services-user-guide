@@ -53,7 +53,7 @@ The result shows that windows can be scheduled on `FM1` which has Norad Id `5109
 
 The [TLE](https://en.wikipedia.org/wiki/Two-line_element_set) of this satellite can be fetched at any time by visiting [`http://tle.spire.com/51099`](http://tle.spire.com/51099). Notice that the Norad Id was appended to the URL:
 
-```bash
+```
 $ curl http://tle.spire.com/51099
 0 LEMUR 2 KRYWE
 1 51099U 98067RW  21349.43520370  .00268022  00000-0  88734-3 0  9993
@@ -64,7 +64,7 @@ $ curl http://tle.spire.com/51099
 
 This tutorial has an accompanying script called [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit). It relies on the [`pypredict`](https://github.com/nsat/pypredict) python module installed previously.
 
-```bash
+```
 usage: find_transit [-h] [--sat SAT] [--lat LAT] [--lon LON] [--alt ALT]
                     [--min MIN] [--hours HOURS]
 
@@ -86,7 +86,7 @@ optional arguments:
 
 Any non-json output is written to `stderr` and can be discarded with `2>/dev/null` if needed. The exit code (`$?`) is non-zero if no transits are found. Searching for an 80+ degree overhead transit of the North Pacific Ocean (the default) in the next week would look like:
 
-```json
+```
 $ python3 aoi/find_transit --sat 51099 --min 80 --hours 168
 2022-03-02 23:56:25.492111	722.555646	85.360401
 [

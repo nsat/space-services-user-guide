@@ -28,7 +28,7 @@ The Tasking API is used to deploy apps to payloads and execute them. It is helpf
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN]& [YOUR_SAT_ID] needed. [YOUR_PAYLOAD] can be one of `IPI`, `SDR` or `SABERTOOTH`.</aside>
 
-```bash
+```
 $ dev-env/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_PAYLOAD]
 ```
 

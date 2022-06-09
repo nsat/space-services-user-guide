@@ -44,8 +44,8 @@ cp -a /usr/src/cudnn_samples_v7 ~/
 Finally some of the CUDA samples are built & run. Here are the commands for building & running `mnistCUDNN`:
 
 ```bash
-cd ~/cudnn_samples_v7/mnistCUDNN &&
-make &&
+cd ~/cudnn_samples_v7/mnistCUDNN
+make
 ./mnistCUDNN
 ```
 

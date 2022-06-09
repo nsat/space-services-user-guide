@@ -55,8 +55,8 @@ window to run the script on our payload.**
 
 At this point, we can call the `GET /tasking/windows` to check the status of our window.
 
-```bash
-curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?satellite_id=FM200
+```
+$ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/windows?satellite_id=FM200
 ```
 
 Our response will look something like:
@@ -80,8 +80,8 @@ Our response will look something like:
 
 Additionally, we can also check the status of our upload by calling `GET /tasking/uploads`.
 
-```bash
-curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
+```
+$ curl -X GET -H "${AUTH_HEADER}" ${HOST}/tasking/uploads
 ```
 
 Our response will look like:
@@ -175,7 +175,7 @@ At window start time the satellite bus will issue another signaling command to [
 this time without the configure flag.
 
 ```
-nohup /usr/bin/payload_exec -u john -w 123 -t 1611718292 &> /dev/null &`
+$ nohup /usr/bin/payload_exec -u john -w 123 -t 1611718292 &> /dev/null &`
 ```
 
 [`payload_exec`](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/payload_exec) will then executing the following operations:
@@ -197,4 +197,6 @@ after the end of the window.  Additionally, larger files can take multiple conta
 
 Once the file is successfully downloaded to the ground, it will be placed in our S3 bucket and can be retrieved using:
 
-`aws s3 cp s3://example/space.txt space.txt`
+```
+$ aws s3 cp s3://example/space.txt space.txt
+```

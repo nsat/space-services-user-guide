@@ -27,7 +27,7 @@ Schedule the `SDR` to run a `PAYLOAD_SDR` window in 24 hours, that sends the fil
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN], [YOUR_SAT_ID] as needed.</aside>
 
-```bash
+```
 $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 

@@ -112,15 +112,15 @@ EOF
 
 ## Review Deploy Log
 
-```bash
-aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
+```
+$ aws s3 ls --recursive s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/
 
-aws s3 cp s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log -
+$ aws s3 cp s3://user-s3-bucket/a/directory/${SAT_ID}/downlink/2021/09/06/20210906T043229Z_py-install-2022_01_06_15_02_05.log -
 ```
 
 Response:
 
-```bash
+```
 2021-09-06 04:32:29          0 2021/
 2021-09-06 04:32:29          0 2021/09/
 2021-09-06 04:32:29          0 2021/09/06/

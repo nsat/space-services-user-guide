@@ -19,7 +19,7 @@ All tutorials require the steps outlined in the [Getting Started Guide](../../Ge
 
 Use the [`find_transit`](https://github.com/nsat/space-services-user-guide/blob/main/tutorials/aoi/find_transit) script from the [Tracking an Area Of Interest](../aoi/#finding-a-transit-time) tutorial to identify a time window where the satellite transits over an area of interest at a reasonable elevation. The example below is for satellite with Norad Id `51099` (`FM1`) and an elevation of 80 degrees, but consider reducing the elevation so that a transit can be found for between 24 and 48 hours in the future. 
 
-```json
+```
 $ python3 aoi/find_transit --sat 51099 --min 80 --hours 168
 2021-12-22 14:12:36.630581      773.389237      89.663970
 [
@@ -74,7 +74,7 @@ The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutor
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed. Replace [YOUR_START] & [YOUR_END] with the `start` and `end` results of `find_transit`</aside>
 
-```bash
+```
 $ adcs-lease/deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID] [YOUR_START] [YOUR_END]
 ```
 

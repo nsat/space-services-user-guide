@@ -37,7 +37,7 @@ The [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutor
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN], [SAT_ID_TX] & [SAT_ID_RX] as needed.</aside>
 
-```bash
+```
 $ ./deploy "[AUTH_TOKEN]" [SAT_ID_TX] [SAT_ID_RX]
 ```
 
