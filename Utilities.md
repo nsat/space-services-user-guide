@@ -99,7 +99,7 @@ iqgenerator
   -h                        help
 ```
 
-This utility generates [IQ](./FAQ/#iq-file) files based on the desired signal based on coding (BPSK, QPSK, PSK8) and sample per symbol. The types of signals available are:
+This utility generates [IQ](./FAQ.md#what-is-an-iq-file) files based on the desired signal based on coding (BPSK, QPSK, PSK8) and sample per symbol. The types of signals available are:
 
 - `tone`, all bytes are `0x00`
 - `square`, all bytes are `0xAA`

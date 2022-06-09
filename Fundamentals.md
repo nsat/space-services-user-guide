@@ -1,6 +1,6 @@
 # Fundamentals
 
-In simple terms, applications are deployed to the satellite, time is scheduled to run the applications, and the output is downloaded to AWS S3. Applications have access to satellite hardware and telemetry.
+In simple terms, applications are deployed to the satellite, a time window is scheduled to run the applications, and the output is downloaded to AWS S3. Applications have access to satellite hardware and telemetry.
 
 Everything happens as time windows on a schedule. The schedule holds all upcoming contact windows with the ground (and other satellites), and all reservation windows made by users. Users reserve specific hardware over a time window on a satellite. The schedule is synchronized with the satellite at each contact.
 
@@ -18,7 +18,7 @@ The satellite bus is managed and monitored by the Spire Operations Team. Users a
 1. **Analyze** received data
 
 ## Execution Environment
-The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (e.g. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (e.g. for telemetry or attitude control), as well as an SDK. [Read on..](./ExecutionEnvironment.md)
+The satellite hosts multiple Linux computers ("payloads") with each managing specific hardware (e.g. cameras, transceivers or GPUs). Spire provides a persistent isolated execution environment for the user to upload files to and run applications. An output provides a way to downlink files. A local agent provides a REST API to interact with the satellite bus (e.g. for telemetry or attitude control), as well as an SDK. It is documented [there](./ExecutionEnvironment.md).
 
 
 ## Satellite Bus

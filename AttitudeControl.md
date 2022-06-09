@@ -7,7 +7,7 @@ No other controls (e.g. thrusters or orbit changes) are available to users. [Orb
 
 ## Setting ADCS on windows
 
-If the user knows ahead of time what the are of interest is (e.g. tracking a point on earth or facing a fixed direction) then this information can be provided in [`adcs_config`](https://developers.spire.com/tasking-api-docs/#adcs_config) on the  payload window. For example, to take a photo of a location on earth, the user would schedule an [`PAYLOAD_IPI`](https://developers.spire.com/tasking-api-docs/#payload_ipi) window to have the the `IPI` aperture track that location:
+If the user knows ahead of time what the area of interest is (e.g. tracking a point on earth or facing a fixed direction) then this information can be provided in [`adcs_config`](https://developers.spire.com/tasking-api-docs/#adcs_config) on the  payload window. For example, to take a photo of a location on earth, the user would schedule an [`PAYLOAD_IPI`](https://developers.spire.com/tasking-api-docs/#payload_ipi) window to have the the `IPI` aperture track that location:
 
 ```json
 {

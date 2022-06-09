@@ -1,6 +1,6 @@
 # User Guide for Payloads In Space
 
-Payload in Space is the term used for users that own the payload being hosted by the Spire satellite bus. Users may provide Spire any hardware they wish. Where the customer chooses to run a Linux OS, install the [Spire Linux Agent], and allow Spire `ssh` & TCP port `2005` access to the payload, all of the [Software In Space](./Fundamentals.md) services are provided.
+Payload in Space is the term used for users that own the payload being hosted by the Spire satellite bus. Users may provide Spire any hardware they wish. Where the customer chooses to run a Linux OS, install the [Spire Linux Agent](#spire-linux-agent), and allow Spire `ssh` & TCP port `2005` access to the payload, all of the [Software In Space](./Fundamentals.md) services are provided.
 
 The diagram below shows the architecture for customers hosting their own payloads on a Spire satellite bus.
 
@@ -107,5 +107,5 @@ After the window is executed any data sent to the Data Pipeline API is queued fo
 
 ## Examples
 
- - [Download a File from Space](https://github.com/nsat/space-services-user-guide/blob/main/payload_in_space/download_file/) - A trivial example showing the code necessary to create and download a file from a payload.
+ - [Download a File from Space](tutorials/payload_in_space/download_file/) - A trivial example showing the code necessary to create and download a file from a payload.
 
