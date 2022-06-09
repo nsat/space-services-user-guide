@@ -33,22 +33,22 @@ The tutorial comes with 2 scripts:
 
 First, the CUDA compiler is checked for availability:
 
-```bash
-/usr/local/cuda/bin/nvcc -V
+```
+$ /usr/local/cuda/bin/nvcc -V
 ```
 
 Next, the CUDA samples source is copied to `~/` as the system location is not writable:
 
-```bash
-cp -a /usr/local/cuda/samples ~/
+```
+$ cp -a /usr/local/cuda/samples ~/
 ```
 
 Finally some of the CUDA samples are built & run. Here are the commands for building & running `deviceQuery`:
 
-```bash
-cd ~/samples/1_Utilities/deviceQuery
-make
-./deviceQuery
+```
+$ cd ~/samples/1_Utilities/deviceQuery
+$ make
+$ ./deviceQuery
 ```
 
 

@@ -31,22 +31,22 @@ The tutorial comes with 2 scripts:
 
 First, the CUDA compiler is checked for availability:
 
-```bash
-/usr/local/cuda/bin/nvcc -V
+```
+$ /usr/local/cuda/bin/nvcc -V
 ```
 
 Next, the cuDNN samples source is copied to `~/` as the system location is not writable:
 
-```bash
-cp -a /usr/src/cudnn_samples_v7 ~/
+```
+$ cp -a /usr/src/cudnn_samples_v7 ~/
 ```
 
 Finally some of the CUDA samples are built & run. Here are the commands for building & running `mnistCUDNN`:
 
-```bash
-cd ~/cudnn_samples_v7/mnistCUDNN
-make
-./mnistCUDNN
+```
+$ cd ~/cudnn_samples_v7/mnistCUDNN
+$ make
+$ ./mnistCUDNN
 ```
 
 
@@ -135,7 +135,7 @@ Run [`deploy`](https://github.com/nsat/space-services-user-guide/blob/main/tutor
 
 <aside class="notice">Replace [YOUR_AUTH_TOKEN] & [YOUR_SAT_ID] as needed.</aside>
 
-```bash
+```
 $ ./deploy "[YOUR_AUTH_TOKEN]" [YOUR_SAT_ID]
 ```
 
