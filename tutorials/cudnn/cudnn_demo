@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -xe
+
+# verify CUDA env
+/usr/local/cuda/bin/nvcc -V
+
+mkdir -p /persist/samples
+
+SAMPLES_ROOT=/persist/samples/cudnn_samples_v7
+
+# copy samples to writable dir
+cp -a /usr/src/cudnn_samples_v7 /persist/samples/
+trap "rm -rf $SAMPLES_ROOT" EXIT
+
+# build and run some samples
+(   cd "$SAMPLES_ROOT/mnistCUDNN" &&
+    make &&
+    ./mnistCUDNN
+)
+(   cd "$SAMPLES_ROOT/RNN" &&
+    make clean &&
+    make run
+)

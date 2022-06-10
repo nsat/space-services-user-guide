@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy and run data_xfr demo
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+
+HOST="https://api.orb.spire.com"
+
+START=$(( `date -u +'%s'` + 86400 ))
+DATA='{\"destination\":\"ground\",\"filepath\":\"/var/log/syslog\",\"topic\":\"demo\",\"options\":{\"reliable\":true,\"TTLParams\":{\"urgent\":0,\"bulk\":0,\"surplus\":86400}}}'
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": 60,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": [
+                "curl", "-XPOST", "-v",
+                "-H", "Content-type: application/json",
+                "-d", "${DATA}",
+                "http://localhost:2005/sdk/v1/send_file"
+            ]
+        },
+        "downlink_budget": 1
+    }
+}
+EOF
+
+echo "Done."

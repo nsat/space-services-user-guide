@@ -1,0 +1,87 @@
+#!/usr/bin/python3
+
+import argparse
+import json
+from time import sleep, time
+from datetime import datetime
+import logging
+import sys
+
+log = logging.getLogger()
+log.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s\t%(name)s\t%(levelname)s\t%(message)s')
+handler.setFormatter(formatter)
+log.addHandler(handler)
+
+from oort_sdk_client.api.sdk_api import SdkApi
+from oort_sdk_client.models import AdcsCommandRequest, AdcsHk, AdcsTarget
+
+MODE = "TRACK"
+LATLON_ERR_DEG = 1
+COMMAND_WAIT_INTERVAL_SECS = 5
+POLL_INTERVAL_SECS = 1
+DATA_FILE = "/outbox/adcs_data.json"
+
+
+def assert_tracking(hk, mode, lat, lon):
+    log.info("ADCS: %s", repr(hk))
+    if hk.acs_mode_active == mode \
+        and abs(hk.latlontrack_lat - lat) < LATLON_ERR_DEG \
+        and abs(hk.latlontrack_lon - lon) < LATLON_ERR_DEG:
+        log.info("Tracking... %d %d %d", hk.latlontrack_lat, hk.latlontrack_lon, hk.control_error_angle_deg)
+    return True
+
+    raise Exception("No longer tracking target. " + 
+        "Expected: ({},{},{}), Actual: ({},{},{})".format(mode, lat, lon, 
+            hk.acs_mode_active, hk.latlontrack_lat, hk.latlontrack_lon))
+
+
+def main(lat, lon, window_end):
+    agent = SdkApi()
+
+    log.info("Starting ADCS %s", repr(agent.get_adcs()))
+    log.info("Requesting tracking to ( %d , %d) for %d seconds.", lat, lon, int(window_end - time()))
+
+    cmd = AdcsCommandRequest(command="TRACK", aperture="IPI", target=AdcsTarget(lat, lon))
+    res = agent.command_adcs(cmd)
+    log.info("Result: %s", repr(res))
+
+    sleep(COMMAND_WAIT_INTERVAL_SECS)
+    last_call = time()
+    adcs = agent.get_adcs()
+    output = [adcs.hk.to_dict()]
+
+    try:
+        while assert_tracking(adcs.hk, MODE, lat, lon):        
+            if time() >= window_end:
+                break
+            now = time()
+            if (last_call + POLL_INTERVAL_SECS) > now:
+                sleep(last_call + POLL_INTERVAL_SECS - now)
+            last_call = now
+            adcs = agent.get_adcs()
+            output.append(adcs.hk.to_dict())
+    except (KeyboardInterrupt, SystemExit) as ex:
+        log.info("Exit Requested")
+    except Exception as ex:
+        log.exception("Unhandled Error")
+        
+    log.info("Window has ended. Writing %d lines to %s", len(output), DATA_FILE)
+
+    with open(DATA_FILE, "w") as f:
+        f.seek(0)
+        f.truncate()
+        f.write(json.dumps(output, indent=4, default=lambda o: None))
+
+    log.info("Done.")
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('window_end', nargs='?', type=int, help='Window end time, in epoch seconds', default=int(time())+20)
+    parser.add_argument('lat', nargs='?', type=float, help='Latitude to track', default=40.0)
+    parser.add_argument('lon', nargs='?', type=float, help='Longitude to track', default=-176.0)
+    exit(main(**vars(parser.parse_args())))

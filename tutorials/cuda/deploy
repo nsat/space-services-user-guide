@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy and run cuda_demo
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+
+
+HOST="https://api.orb.spire.com"
+SATELLITE_ID="satellite_id=${SAT_ID}"
+PAYLOAD="payload=SABERTOOTH"
+DESTINATION_PATH="destination_path=/persist/bin/cuda_demo"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+START=$(( `date -u +'%s'` + 86400 ))
+
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@cuda_demo"
+
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SABERTOOTH",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": 180,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": ["/persist/bin/cuda_demo"]
+        },
+        "downlink_budget": 1
+    }
+}
+EOF
+
+echo "Done."

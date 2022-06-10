@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -xeu
+
+export PYTHONUSERBASE=$1
+mkdir -p "$PYTHONUSERBASE/usr/include"
+
+export CPATH="$PYTHONUSERBASE/usr/include/python3.6m/:$PYTHONUSERBASE/usr/include"
+export PATH=$PYTHONUSERBASE/bin:$PATH
+
+LOGFILE="py-install-$(date +"%Y_%m_%d_%H_%M_%S").log"
+
+SETUPTOOLS="setuptools-59.6.0-py3-none-any.whl"
+PIP="pip-20.3.4-py2.py3-none-any.whl"
+
+if mkdir -p /outbox 2>/dev/null; then
+    LOGFILE="/outbox/$LOGFILE"
+else
+    mkdir -p "$PYTHONUSERBASE/var/log" 
+    LOGFILE="$PYTHONUSERBASE/var/log/$LOGFILE"
+fi
+
+((
+    echo "logs written to $LOGFILE"
+
+    # find start of tar file appended to this file
+    match=$(grep --text --line-number '^PAYLOAD:' $0 | cut -d ':' -f 1)
+    payload_start=$((match + 1))
+
+
+    # extract tar file from end of this file
+    tail -n +$payload_start $0 | tar --no-overwrite-dir --no-same-owner -xmJf -
+    trap "rm -rf sabertooth-py-setup" EXIT
+
+
+    # pip
+    (   cd sabertooth-py-setup/pip \
+        && zip -0 -q -r ../$PIP * \
+        && cd .. \
+        && python3 $PIP/pip install --force-reinstall --no-index --user $PIP
+    )
+
+
+    # setuptools
+    (   cd sabertooth-py-setup/setuptools \
+        && zip -0 -q -r ../$SETUPTOOLS * \
+        && cd .. \
+        && pip3 install --force-reinstall --user $SETUPTOOLS
+    )
+
+
+    # pyutil
+    pip3 install \
+        --force-reinstall \
+        --user \
+        sabertooth-py-setup/pyutil/pyutil-3.3.0
+
+
+    # zfec
+    cp -af sabertooth-py-setup/py-include/* "$PYTHONUSERBASE/usr/include/"
+    pip3 install \
+        --force-reinstall \
+        --no-deps \
+        --user \
+        --global-option=build_ext \
+        sabertooth-py-setup/zfec/zfec-1.5.1/
+
+    echo "$(date -u) Done"
+
+) 2>&1) | tee "$LOGFILE"
+
+exit 0
+
+# marker for finding tar file
+PAYLOAD:

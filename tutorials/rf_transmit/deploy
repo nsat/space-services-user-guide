@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -xe
+
+########################################
+#
+# Deploy and run rf_transmit demo
+#
+# Usage:
+#
+#    deploy <AUTH_TOKEN> <SAT_ID> <START>
+#
+########################################
+
+AUTH_HEADER="Authorization: Bearer $1"
+SAT_ID="$2"
+START=$3
+
+
+HOST="https://api.orb.spire.com"
+
+SATELLITE_ID="satellite_id=${SAT_ID}"
+PAYLOAD="payload=SDR"
+DESTINATION_PATH="destination_path=/persist/bin/rf_transmit_demo"
+EXECUTABLE="executable=true"
+QUERY_PARAMS="${SATELLITE_ID}&${PAYLOAD}&${DESTINATION_PATH}&${EXECUTABLE}"
+
+curl -X POST ${HOST}/tasking/upload?${QUERY_PARAMS} \
+-H "${AUTH_HEADER}"  \
+-F "file=@rf_transmit_demo"
+
+
+curl -X POST ${HOST}/tasking/window \
+-H "${AUTH_HEADER}" \
+-H "Content-Type: application/json" \
+-d @- << EOF
+{
+    "type": "PAYLOAD_SDR",
+    "satellite_id": "${SAT_ID}",
+    "start": ${START},
+    "duration": 60,
+    "parameters": {
+        "user_command": {
+            "executable": "/persist/bin/entry.sh",
+            "executable_arguments": ["/persist/bin/rf_transmit_demo"]
+        },
+        "downlink_budget": 1
+    }
+}
+EOF
+
+echo "Done."

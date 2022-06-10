@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -xe
+
+date -u
+uname -a
+(rfcollect -w /outbox/rf_collect.iq -S 0 -o -l 0 2>&1 || echo "rfcollect error: $?")
