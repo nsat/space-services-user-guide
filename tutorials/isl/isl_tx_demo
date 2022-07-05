@@ -54,7 +54,10 @@ done
 # if no file, generate one:
 if [ "$file" == "" ]; then
   file=$TMPDIR/isl_data.bin
-  dd if=/dev/urandom of=$file bs=128k count=1
+  bs=`bc -l <<< "scale=3; $packetsize * ( 255 / $fec_ratio ) - 1000"`
+  # strip decimals
+  bs=${bs%.*}
+  dd if=/dev/urandom of=$file bs=$bs count=1
 fi
 
 # netcat traditional (-w) or openbsd (-q) ?
