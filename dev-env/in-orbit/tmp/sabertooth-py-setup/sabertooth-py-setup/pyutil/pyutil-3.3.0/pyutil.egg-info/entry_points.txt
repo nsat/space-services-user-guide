@@ -1,0 +1,10 @@
+[console_scripts]
+lines = pyutil.scripts.lines:main
+passphrase = pyutil.scripts.passphrase:main
+randcookie = pyutil.scripts.randcookie:main
+randfile = pyutil.scripts.randfile:main
+tailx = pyutil.scripts.tailx:main
+try_decoding = pyutil.scripts.try_decoding:main
+unsort = pyutil.scripts.unsort:main
+verinfo = pyutil.scripts.verinfo:main
+
