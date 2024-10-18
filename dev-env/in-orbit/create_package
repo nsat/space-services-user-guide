@@ -4,38 +4,16 @@ set -xeu
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CWD=$PWD
 PACKAGE="sabertooth-py-setup"
-LIBPYTHON3="$SCRIPT_DIR/../assets/libpython3.6-dev_3.6.9-1~18.04ubuntu1.6_arm64.deb"
-PIP="$SCRIPT_DIR/../assets/pip-20.3.4-py2.py3-none-any.whl"
-SETUPTOOLS="$SCRIPT_DIR/../assets/setuptools-59.6.0-py3-none-any.whl"
-PYUTIL=$SCRIPT_DIR/../assets/"pyutil-3.3.0.tar.gz"
-ZFEC="$SCRIPT_DIR/../assets/zfec-1.5.1.tar.gz"
+ZFEC="zfec-1.5.5.1.zip"
 
 tmpdir="$TMPDIR/$PACKAGE"
 mkdir -p "$tmpdir"
-#trap "rm -rf $tmpdir" EXIT
-
-
-PKGDIR="$tmpdir/$PACKAGE"
-mkdir -p "$tmpdir/tmp"
-mkdir -p "$PKGDIR"
-
-# extract packages
-ar x --output "$tmpdir/tmp" "$LIBPYTHON3" data.tar.xz
-(cd "$tmpdir/tmp" && tar -xJf data.tar.xz)
-rm -rf "$PKGDIR/py-include"
-# only need the includes from this package
-mv "$tmpdir/tmp/usr/include" "$PKGDIR/py-include"
-
-unzip -o -q "$PIP" -d "$PKGDIR/pip"
-unzip -o -q "$SETUPTOOLS" -d "$PKGDIR/setuptools"
-mkdir -p "$PKGDIR/pyutil"
-tar -C "$PKGDIR/pyutil" -zxf "$PYUTIL"
-mkdir -p "$PKGDIR/zfec"
-tar -C "$PKGDIR/zfec" -zxf "$ZFEC"
 
 # build installer
 cat "$CWD/install.in" > "$CWD/install"
-(cd "$tmpdir" && tar -cJf - "$PACKAGE") >> "$CWD/install"
+
+# download packages
+curl -C - -o - "https://github.com/nsat/zfec/releases/download/release-zfec-1.5.5.1/zfec-1.5.5.1.zip" >> "$CWD/install"
 
 echo package created at $CWD/install
 
